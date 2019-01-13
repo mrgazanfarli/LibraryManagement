@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e507a94c5bf546ce9e95ecdde4fc3efd" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Book" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Case" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Client" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Reservation" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.User" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="LibraryModel.FK_Reservations_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_Reservations_Cases" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_Clients_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_Reservations_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_Reservations_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_Reservations_Users1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
