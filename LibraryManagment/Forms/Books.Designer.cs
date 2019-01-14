@@ -268,6 +268,7 @@
             this.Name = "Books";
             this.Text = "Kitablar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Books_FormClosed);
             this.Click += new System.EventHandler(this.Books_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).EndInit();
             this.groupBox1.ResumeLayout(false);

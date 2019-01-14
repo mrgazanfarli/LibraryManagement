@@ -30,7 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.DgvUsers = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtPhone = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.BtnAddUser = new System.Windows.Forms.Button();
             this.BtnDeleteUser = new System.Windows.Forms.Button();
             this.BtnUpdateUser = new System.Windows.Forms.Button();
@@ -48,15 +57,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.CmbUsersShown = new System.Windows.Forms.ComboBox();
-            this.TxtPhone = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,44 @@
             this.DgvUsers.Size = new System.Drawing.Size(615, 439);
             this.DgvUsers.TabIndex = 0;
             this.DgvUsers.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvUsers_RowHeaderMouseClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Ad";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Soyad";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Istifadəçi adı";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Şifrə";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 70F;
+            this.Column6.HeaderText = "İdarəçidir";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.FillWeight = 120F;
+            this.Column7.HeaderText = "Telefon";
+            this.Column7.Name = "Column7";
             // 
             // groupBox1
             // 
@@ -108,6 +146,24 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İstifadəçi";
+            // 
+            // TxtPhone
+            // 
+            this.TxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPhone.Location = new System.Drawing.Point(9, 151);
+            this.TxtPhone.Name = "TxtPhone";
+            this.TxtPhone.Size = new System.Drawing.Size(241, 24);
+            this.TxtPhone.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(6, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 18);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Telefon";
             // 
             // BtnAddUser
             // 
@@ -279,62 +335,6 @@
             this.CmbUsersShown.TabIndex = 11;
             this.CmbUsersShown.SelectedIndexChanged += new System.EventHandler(this.CmbUsersShown_SelectedIndexChanged);
             // 
-            // TxtPhone
-            // 
-            this.TxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPhone.Location = new System.Drawing.Point(9, 151);
-            this.TxtPhone.Name = "TxtPhone";
-            this.TxtPhone.Size = new System.Drawing.Size(241, 24);
-            this.TxtPhone.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 130);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 18);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Telefon";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Ad";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Soyad";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Istifadəçi adı";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Şifrə";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 70F;
-            this.Column6.HeaderText = "İdarəçidir";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.FillWeight = 120F;
-            this.Column7.HeaderText = "Telefon";
-            this.Column7.Name = "Column7";
-            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +350,7 @@
             this.Name = "Users";
             this.Text = "İstifadəçilər";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Users_FormClosed);
             this.Click += new System.EventHandler(this.Users_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsers)).EndInit();
             this.groupBox1.ResumeLayout(false);

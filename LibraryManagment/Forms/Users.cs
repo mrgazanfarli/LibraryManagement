@@ -17,9 +17,11 @@ namespace LibraryManagment.Forms
         private int clickedId;
         private int clickedRow;
         private string[] CmbItems;
-        public Users()
+        private MainBoard Board;
+        public Users(MainBoard board)
         {
             InitializeComponent();
+            Board = board;
             CmbItems = new string[]
             {
                 "Hamısı",
@@ -204,6 +206,12 @@ namespace LibraryManagment.Forms
         private void Users_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        // Declare this form to be closed. See the reason in MainBoard.cs
+        private void Users_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Board.UserIsOpen = false;
         }
     }
 }

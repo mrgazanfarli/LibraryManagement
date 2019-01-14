@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryManagment.Models;
+using LibraryManagment.Properties;
 
 namespace LibraryManagment.Forms
 {
@@ -24,17 +25,19 @@ namespace LibraryManagment.Forms
             if(string.IsNullOrEmpty(TxtUsername.Text) || string.IsNullOrEmpty(TxtPassword.Text))
             {
                 MessageBox.Show("Boş xana buraxmayın");
+                PicLogin.Image = Resources.login__1_;
                 return;
             }
             if(!db.Users.Any(u=> u.Username == TxtUsername.Text && u.Password == TxtPassword.Text))
             {
                 MessageBox.Show("İstifadəçi adı və ya şifrə düzgün deyil!");
+                PicLogin.Image = Resources.enter;
                 return;
             }
             else
             {
-                int UserId = db.Users.First(u => u.Username == TxtUsername.Text).Id;
-                MainBoard form = new MainBoard(UserId);
+                User User = db.Users.First(u => u.Username == TxtUsername.Text);
+                MainBoard form = new MainBoard(User);
                 form.Show();
                 this.Hide();
             }

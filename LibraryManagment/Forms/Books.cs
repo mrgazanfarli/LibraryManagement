@@ -18,9 +18,11 @@ namespace LibraryManagment.Forms
         private string[] WhatToShow;
         private int clickedId;
         private int clickedRow;
-        public Books()
+        private MainBoard Board;
+        public Books(MainBoard board)
         {
             InitializeComponent();
+            Board = board;
             WhatToShow = new string[]
             {
                 "Hamısı",
@@ -32,7 +34,6 @@ namespace LibraryManagment.Forms
         }
 
         // Fill CmbShowBooks to assume which books to show
-
         private void FillCmbWhatToShow()
         {
             CmbShowBooks.Items.Clear();
@@ -44,14 +45,17 @@ namespace LibraryManagment.Forms
         {
             DgvBooks.Rows.Clear();
             List<Book> books = new List<Book>();
+            // Brings all books
             if (CmbShowBooks.SelectedItem == null || CmbShowBooks.SelectedIndex == 0)
             {
                 books = db.Books.OrderByDescending(b=> b.Name).ToList();
             }
+            // Only books that exist
             if(CmbShowBooks.SelectedIndex == 1)
             {
                 books = db.Books.Where(b => b.Count > 0).OrderByDescending(b => b.Name).ToList();
             }
+            // Only books that do not exist
             if(CmbShowBooks.SelectedIndex == 2)
             {
                 books = db.Books.Where(b => b.Count == 0).OrderByDescending(b => b.Name).ToList();
@@ -89,14 +93,14 @@ namespace LibraryManagment.Forms
                 TxtAuthor.Text = DgvBooks.Rows[e.RowIndex].Cells[2].Value.ToString();
                 NumPrice.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[3].Value.ToString());
                 NumCount.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[4].Value.ToString());
+                BtnUpdateBook.Visible = true;
+                BtnDeleteBook.Visible = true;
             }
             catch
             {
-                Exception ClickedLastRow = new KeyNotFoundException();
+                // When the DGV is not filled, the row click will return an error because the empty row has no index
                 Reset();
             }
-            BtnUpdateBook.Visible = true;
-            BtnDeleteBook.Visible = true;
         }
 
         // Check if the book parameters are correct or not, and the add the book to database, and bring it to the DgvBooks
@@ -158,12 +162,7 @@ namespace LibraryManagment.Forms
                 MessageBox.Show("Kitab və müəllif adı boş ola bilməz");
                 return;
             }
-            // Check if the book exists or not
-            if (db.Books.Any(b => b.Name == TxtBookName.Text && b.Author == TxtAuthor.Text))
-            {
-                MessageBox.Show("Bu kitab artıq mövcuddur. Əlavə etmək üçün sayını artıra bilərsiniz...");
-                return;
-            }
+
 
             Book book = db.Books.Find(clickedId);
             book.Name = TxtBookName.Text;
@@ -198,6 +197,7 @@ namespace LibraryManagment.Forms
             }
         }
 
+        // Show the books according to the selected item in CmbShowBooks
         private void CmbShowBooks_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillDgvBooks();
@@ -206,6 +206,12 @@ namespace LibraryManagment.Forms
         private void Books_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        // This method makes the Books form open again when it is closed before (see the MainBoard form to get info)
+        private void Books_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Board.BookIsOpen = false;
         }
     }
 }

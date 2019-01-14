@@ -139,6 +139,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Models\Database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -172,6 +173,15 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Employees1.png" />
+    <None Include="Resources\Employees.png" />
+    <None Include="Resources\collaboration.png" />
+    <None Include="Resources\Readers.png" />
+    <None Include="Resources\bookshelf %281%29.png" />
+    <None Include="Resources\bookshelf.png" />
+    <None Include="Resources\login %281%29.png" />
+    <None Include="Resources\keyhole.png" />
+    <None Include="Resources\enter.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

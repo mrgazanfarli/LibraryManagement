@@ -247,6 +247,7 @@
             this.Name = "Clients";
             this.Text = "Clients";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clients_FormClosed);
             this.Click += new System.EventHandler(this.Clients_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DgvClients)).EndInit();
             this.groupBox1.ResumeLayout(false);
