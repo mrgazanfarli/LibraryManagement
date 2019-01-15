@@ -63,6 +63,16 @@ namespace LibraryManagment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add {
+            get {
+                object obj = ResourceManager.GetObject("Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bookshelf {
             get {
                 object obj = ResourceManager.GetObject("bookshelf", resourceCulture);
@@ -73,9 +83,9 @@ namespace LibraryManagment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bookshelf__1_ {
+        internal static System.Drawing.Bitmap Door {
             get {
-                object obj = ResourceManager.GetObject("bookshelf (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("Door", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +123,19 @@ namespace LibraryManagment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap login__1_ {
+        internal static System.Drawing.Bitmap Login {
             get {
-                object obj = ResourceManager.GetObject("login (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("Login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logout {
+            get {
+                object obj = ResourceManager.GetObject("Logout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

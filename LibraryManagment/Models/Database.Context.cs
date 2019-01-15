@@ -32,8 +32,6 @@ public partial class LibraryEntities : DbContext
     }
 
 
-    public virtual DbSet<Book> Books { get; set; }
-
     public virtual DbSet<Case> Cases { get; set; }
 
     public virtual DbSet<Reservation> Reservations { get; set; }
@@ -41,6 +39,10 @@ public partial class LibraryEntities : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Client> Clients { get; set; }
+
+    public virtual DbSet<Author> Authors { get; set; }
+
+    public virtual DbSet<Book> Books { get; set; }
 
 }
 

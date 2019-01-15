@@ -25,7 +25,6 @@ namespace LibraryManagment.Forms
             if(string.IsNullOrEmpty(TxtUsername.Text) || string.IsNullOrEmpty(TxtPassword.Text))
             {
                 MessageBox.Show("Boş xana buraxmayın");
-                PicLogin.Image = Resources.login__1_;
                 return;
             }
             if(!db.Users.Any(u=> u.Username == TxtUsername.Text && u.Password == TxtPassword.Text))
@@ -41,6 +40,12 @@ namespace LibraryManagment.Forms
                 form.Show();
                 this.Hide();
             }
+        }
+
+        // Prevent the app running background when the user logs out and closes this form...
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

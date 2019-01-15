@@ -34,3 +34,7 @@ C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryM
 C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagement.csproj.CopyComplete
 C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagement.csprojAssemblyReference.cache
 C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagment.Forms.Clients.resources
+C:\Users\User\source\repos\LibraryManagement\LibraryManagment\bin\Debug\az-Latn\LibraryManagment.resources.dll
+C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagment.MainBoard.az-Latn.resources
+C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\az-Latn\LibraryManagment.resources.dll
+C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagment.Forms.Authors.resources

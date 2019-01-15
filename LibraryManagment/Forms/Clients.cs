@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryManagment.Models;
+using System.Globalization;
 
 namespace LibraryManagment.Forms
 {
@@ -17,6 +18,7 @@ namespace LibraryManagment.Forms
         private int clickedId;
         private int clickedRow;
         private User User;
+        private CultureInfo CultureInfo;
         private string[] CmbItems;
         private MainBoard Board;
         public Clients(User user, MainBoard board)
@@ -32,6 +34,7 @@ namespace LibraryManagment.Forms
             };
             FillDgvClients();
             FillCmbShowClients();
+            CultureInfo = new System.Globalization.CultureInfo("az-AZ");
         }
 
         private string GenerateClientNumber()
@@ -86,7 +89,7 @@ namespace LibraryManagment.Forms
 
             foreach (Client client in clients)
             {
-                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " "+ client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"));
+                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"));
             }
         }
 
@@ -113,14 +116,13 @@ namespace LibraryManagment.Forms
                 TxtName.Text = DgvClients.Rows[e.RowIndex].Cells[1].Value.ToString();
                 TxtSurname.Text = DgvClients.Rows[e.RowIndex].Cells[2].Value.ToString();
                 TxtPhone.Text = DgvClients.Rows[e.RowIndex].Cells[3].Value.ToString();
+                BtnDeleteClient.Visible = true;
+                BtnUpdateClient.Visible = true;
             }
             catch
             {
-                Exception ClickedLastRow = new KeyNotFoundException();
                 Reset();
             }
-            BtnDeleteClient.Visible = true;
-            BtnUpdateClient.Visible = true;
         }
         
         // When a client is added, validations are done and some other parameters are created...

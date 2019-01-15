@@ -57,7 +57,8 @@
             // 
             // PicLogin
             // 
-            this.PicLogin.Image = global::LibraryManagment.Properties.Resources.login__1_;
+            this.PicLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PicLogin.BackgroundImage")));
+            this.PicLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PicLogin.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicLogin.InitialImage")));
             this.PicLogin.Location = new System.Drawing.Point(99, 26);
             this.PicLogin.Name = "PicLogin";
@@ -126,6 +127,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giriş";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogin)).EndInit();

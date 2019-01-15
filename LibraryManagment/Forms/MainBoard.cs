@@ -25,6 +25,11 @@ namespace LibraryManagment
             BookIsOpen = false;
             ClientIsOpen = false;
             User = user;
+            if (!User.IsBoss)
+            {
+                BtnUsers.Visible = false;
+                LblUsers.Visible = false;
+            }
         }
 
         // Prevent the application from running in the background after it is closed
@@ -37,7 +42,7 @@ namespace LibraryManagment
         private void BtnBooks_Click(object sender, EventArgs e)
         {
             //Create a Books form
-            Books form = new Books(this);
+            Books form = new Books(this, User);
 
             if (!BookIsOpen) // If Books form is not opened, open it.
             {
@@ -107,6 +112,33 @@ namespace LibraryManagment
                     }
                 }
             }
+        }
+
+        // Exit
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("Proqram bağlanılsın?", "Çıxış", MessageBoxButtons.YesNo);
+            if (r == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        // Back to login and close all existing forms
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Login form = new Login();
+            foreach (Form f in Application.OpenForms)
+            {
+                f.Hide();
+            }
+            form.Show();
+        }
+
+        // Give a book
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

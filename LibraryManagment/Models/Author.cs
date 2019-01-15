@@ -15,14 +15,14 @@ namespace LibraryManagment.Models
 using System;
     using System.Collections.Generic;
     
-public partial class Book
+public partial class Author
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Book()
+    public Author()
     {
 
-        this.Reservations = new HashSet<Reservation>();
+        this.Books = new HashSet<Book>();
 
     }
 
@@ -31,19 +31,11 @@ public partial class Book
 
     public string Name { get; set; }
 
-    public int AuthorId { get; set; }
 
-    public Nullable<decimal> Price { get; set; }
-
-    public Nullable<int> Count { get; set; }
-
-
-
-    public virtual Author Author { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Reservation> Reservations { get; set; }
+    public virtual ICollection<Book> Books { get; set; }
 
 }
 

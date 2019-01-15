@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="LibraryModelStoreContainer" CdmEntityContainer="LibraryEntities">
-    <EntitySetMapping Name="Books">
-      <EntityTypeMapping TypeName="LibraryModel.Book">
-        <MappingFragment StoreEntitySet="Books">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Author" ColumnName="Author" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Count" ColumnName="Count" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cases">
       <EntityTypeMapping TypeName="LibraryModel.Case">
         <MappingFragment StoreEntitySet="Cases">
@@ -58,6 +47,25 @@
           <ScalarProperty Name="ClientNumber" ColumnName="ClientNumber" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="LibraryModel.Author">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="LibraryModel.Book">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

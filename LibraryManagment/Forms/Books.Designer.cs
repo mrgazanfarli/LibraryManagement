@@ -32,25 +32,27 @@
             this.CmbShowBooks = new System.Windows.Forms.ComboBox();
             this.DgvBooks = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GrbCrud = new System.Windows.Forms.GroupBox();
+            this.CmbAuthors = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnUpdateBook = new System.Windows.Forms.Button();
             this.BtnDeleteBook = new System.Windows.Forms.Button();
             this.BtnAddBook = new System.Windows.Forms.Button();
             this.NumCount = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblBookCount = new System.Windows.Forms.Label();
             this.NumPrice = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.TxtAuthor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtBookName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.BtnAuthors = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.GrbCrud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +74,7 @@
             this.CmbShowBooks.Location = new System.Drawing.Point(89, 9);
             this.CmbShowBooks.Name = "CmbShowBooks";
             this.CmbShowBooks.Size = new System.Drawing.Size(181, 26);
-            this.CmbShowBooks.TabIndex = 1;
+            this.CmbShowBooks.TabIndex = 8;
             this.CmbShowBooks.SelectedIndexChanged += new System.EventHandler(this.CmbShowBooks_SelectedIndexChanged);
             // 
             // DgvBooks
@@ -81,6 +83,7 @@
             this.DgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column6,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -96,6 +99,12 @@
             this.Column1.HeaderText = "Id";
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "AuthorId";
+            this.Column6.Name = "Column6";
+            this.Column6.Visible = false;
             // 
             // Column2
             // 
@@ -117,27 +126,36 @@
             this.Column5.HeaderText = "Sayı";
             this.Column5.Name = "Column5";
             // 
-            // groupBox1
+            // GrbCrud
             // 
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.BtnUpdateBook);
-            this.groupBox1.Controls.Add(this.BtnDeleteBook);
-            this.groupBox1.Controls.Add(this.BtnAddBook);
-            this.groupBox1.Controls.Add(this.NumCount);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.NumPrice);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.TxtAuthor);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.TxtBookName);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(529, 70);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(243, 369);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Kitab";
+            this.GrbCrud.Controls.Add(this.CmbAuthors);
+            this.GrbCrud.Controls.Add(this.label6);
+            this.GrbCrud.Controls.Add(this.BtnUpdateBook);
+            this.GrbCrud.Controls.Add(this.BtnDeleteBook);
+            this.GrbCrud.Controls.Add(this.BtnAddBook);
+            this.GrbCrud.Controls.Add(this.NumCount);
+            this.GrbCrud.Controls.Add(this.LblBookCount);
+            this.GrbCrud.Controls.Add(this.NumPrice);
+            this.GrbCrud.Controls.Add(this.label4);
+            this.GrbCrud.Controls.Add(this.label3);
+            this.GrbCrud.Controls.Add(this.TxtBookName);
+            this.GrbCrud.Controls.Add(this.label2);
+            this.GrbCrud.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GrbCrud.Location = new System.Drawing.Point(529, 70);
+            this.GrbCrud.Name = "GrbCrud";
+            this.GrbCrud.Size = new System.Drawing.Size(243, 369);
+            this.GrbCrud.TabIndex = 3;
+            this.GrbCrud.TabStop = false;
+            this.GrbCrud.Text = "Kitab";
+            // 
+            // CmbAuthors
+            // 
+            this.CmbAuthors.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmbAuthors.FormattingEnabled = true;
+            this.CmbAuthors.Location = new System.Drawing.Point(10, 108);
+            this.CmbAuthors.Name = "CmbAuthors";
+            this.CmbAuthors.Size = new System.Drawing.Size(224, 26);
+            this.CmbAuthors.TabIndex = 2;
             // 
             // label6
             // 
@@ -153,7 +171,7 @@
             this.BtnUpdateBook.Location = new System.Drawing.Point(10, 254);
             this.BtnUpdateBook.Name = "BtnUpdateBook";
             this.BtnUpdateBook.Size = new System.Drawing.Size(224, 30);
-            this.BtnUpdateBook.TabIndex = 10;
+            this.BtnUpdateBook.TabIndex = 6;
             this.BtnUpdateBook.Text = "Dəyişdir";
             this.BtnUpdateBook.UseVisualStyleBackColor = true;
             this.BtnUpdateBook.Visible = false;
@@ -164,7 +182,7 @@
             this.BtnDeleteBook.Location = new System.Drawing.Point(10, 326);
             this.BtnDeleteBook.Name = "BtnDeleteBook";
             this.BtnDeleteBook.Size = new System.Drawing.Size(224, 30);
-            this.BtnDeleteBook.TabIndex = 9;
+            this.BtnDeleteBook.TabIndex = 7;
             this.BtnDeleteBook.Text = "Sil";
             this.BtnDeleteBook.UseVisualStyleBackColor = true;
             this.BtnDeleteBook.Visible = false;
@@ -175,7 +193,7 @@
             this.BtnAddBook.Location = new System.Drawing.Point(10, 290);
             this.BtnAddBook.Name = "BtnAddBook";
             this.BtnAddBook.Size = new System.Drawing.Size(224, 30);
-            this.BtnAddBook.TabIndex = 8;
+            this.BtnAddBook.TabIndex = 5;
             this.BtnAddBook.Text = "Əlavə et";
             this.BtnAddBook.UseVisualStyleBackColor = true;
             this.BtnAddBook.Click += new System.EventHandler(this.BtnAddBook_Click);
@@ -186,17 +204,17 @@
             this.NumCount.Location = new System.Drawing.Point(10, 224);
             this.NumCount.Name = "NumCount";
             this.NumCount.Size = new System.Drawing.Size(224, 24);
-            this.NumCount.TabIndex = 7;
+            this.NumCount.TabIndex = 4;
             // 
-            // label5
+            // LblBookCount
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 199);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 18);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Sayı";
+            this.LblBookCount.AutoSize = true;
+            this.LblBookCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBookCount.Location = new System.Drawing.Point(7, 199);
+            this.LblBookCount.Name = "LblBookCount";
+            this.LblBookCount.Size = new System.Drawing.Size(36, 18);
+            this.LblBookCount.TabIndex = 6;
+            this.LblBookCount.Text = "Sayı";
             // 
             // NumPrice
             // 
@@ -205,7 +223,7 @@
             this.NumPrice.Location = new System.Drawing.Point(10, 172);
             this.NumPrice.Name = "NumPrice";
             this.NumPrice.Size = new System.Drawing.Size(224, 24);
-            this.NumPrice.TabIndex = 5;
+            this.NumPrice.TabIndex = 3;
             // 
             // label4
             // 
@@ -217,20 +235,11 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Qiymət";
             // 
-            // TxtAuthor
-            // 
-            this.TxtAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthor.Location = new System.Drawing.Point(10, 102);
-            this.TxtAuthor.MaxLength = 100;
-            this.TxtAuthor.Name = "TxtAuthor";
-            this.TxtAuthor.Size = new System.Drawing.Size(224, 24);
-            this.TxtAuthor.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 81);
+            this.label3.Location = new System.Drawing.Point(7, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 18);
             this.label3.TabIndex = 2;
@@ -239,7 +248,7 @@
             // TxtBookName
             // 
             this.TxtBookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBookName.Location = new System.Drawing.Point(10, 47);
+            this.TxtBookName.Location = new System.Drawing.Point(10, 50);
             this.TxtBookName.MaxLength = 150;
             this.TxtBookName.Name = "TxtBookName";
             this.TxtBookName.Size = new System.Drawing.Size(224, 24);
@@ -249,18 +258,30 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 26);
+            this.label2.Location = new System.Drawing.Point(7, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Adı";
             // 
+            // BtnAuthors
+            // 
+            this.BtnAuthors.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAuthors.Location = new System.Drawing.Point(302, 9);
+            this.BtnAuthors.Name = "BtnAuthors";
+            this.BtnAuthors.Size = new System.Drawing.Size(180, 26);
+            this.BtnAuthors.TabIndex = 9;
+            this.BtnAuthors.Text = "Müəlliflər";
+            this.BtnAuthors.UseVisualStyleBackColor = true;
+            this.BtnAuthors.Click += new System.EventHandler(this.BtnAuthors_Click);
+            // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 481);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1370, 481);
+            this.Controls.Add(this.BtnAuthors);
+            this.Controls.Add(this.GrbCrud);
             this.Controls.Add(this.DgvBooks);
             this.Controls.Add(this.CmbShowBooks);
             this.Controls.Add(this.label1);
@@ -271,8 +292,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Books_FormClosed);
             this.Click += new System.EventHandler(this.Books_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GrbCrud.ResumeLayout(false);
+            this.GrbCrud.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).EndInit();
             this.ResumeLayout(false);
@@ -285,23 +306,25 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CmbShowBooks;
         private System.Windows.Forms.DataGridView DgvBooks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox GrbCrud;
         private System.Windows.Forms.Button BtnUpdateBook;
         private System.Windows.Forms.Button BtnDeleteBook;
         private System.Windows.Forms.Button BtnAddBook;
         private System.Windows.Forms.NumericUpDown NumCount;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblBookCount;
         private System.Windows.Forms.NumericUpDown NumPrice;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TxtAuthor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtBookName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox CmbAuthors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button BtnAuthors;
     }
 }

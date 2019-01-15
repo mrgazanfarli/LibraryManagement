@@ -346,9 +346,8 @@
             this.Controls.Add(this.DgvUsers);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Users";
-            this.Text = "İstifadəçilər";
+            this.Text = "İşçilər";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Users_FormClosed);
             this.Click += new System.EventHandler(this.Users_Click);

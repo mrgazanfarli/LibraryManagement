@@ -18,11 +18,22 @@ namespace LibraryManagment.Forms
         private string[] WhatToShow;
         private int clickedId;
         private int clickedRow;
+        public bool AuthorsIsOpen;
+        private User User;
         private MainBoard Board;
-        public Books(MainBoard board)
+        public Books(MainBoard board, User user) // Bring user so that only bosses can control the book count
         {
             InitializeComponent();
             Board = board;
+            User = user;
+            AuthorsIsOpen = false;
+            if (!User.IsBoss)
+            {
+                LblBookCount.Visible = false;
+                NumCount.Visible = false;
+                GrbCrud.Height = 327;
+                DgvBooks.Height = 325;
+            }
             WhatToShow = new string[]
             {
                 "Hamısı",
@@ -31,6 +42,7 @@ namespace LibraryManagment.Forms
             };
             FillCmbWhatToShow();
             FillDgvBooks();
+            FillCmbAuthors();
         }
 
         // Fill CmbShowBooks to assume which books to show
@@ -40,8 +52,19 @@ namespace LibraryManagment.Forms
             CmbShowBooks.Items.AddRange(WhatToShow);
         }
 
+        // Fill CmbAuthors from database
+        public void FillCmbAuthors()
+        {
+            CmbAuthors.Items.Clear();
+            List<Author> authors = db.Authors.OrderBy(a=> a.Name).ToList();
+            foreach (Author author in authors)
+            {
+                CmbAuthors.Items.Add(author.Id + "-" + author.Name);
+            }
+        }
+
         // Fill DgvBooks According the item selected from CmbShowBooks
-        private void FillDgvBooks()
+        public void FillDgvBooks()
         {
             DgvBooks.Rows.Clear();
             List<Book> books = new List<Book>();
@@ -63,7 +86,7 @@ namespace LibraryManagment.Forms
 
             foreach (Book book in books)
             {
-                DgvBooks.Rows.Add(book.Id, book.Name, book.Author, book.Price, book.Count);
+                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
             }
         }
 
@@ -71,7 +94,7 @@ namespace LibraryManagment.Forms
         private void Reset()
         {
             TxtBookName.ResetText();
-            TxtAuthor.ResetText();
+            CmbAuthors.ResetText();
             NumPrice.Value = 0;
             NumCount.Value = 0;
             clickedId = 0;
@@ -89,12 +112,15 @@ namespace LibraryManagment.Forms
                 // Take the clicked row in order to update the row when deleting, updating (no need to call FillDgvBooks() again)
                 clickedId = Convert.ToInt32(DgvBooks.Rows[e.RowIndex].Cells[0].Value.ToString());
                 clickedRow = e.RowIndex;
-                TxtBookName.Text = DgvBooks.Rows[e.RowIndex].Cells[1].Value.ToString();
-                TxtAuthor.Text = DgvBooks.Rows[e.RowIndex].Cells[2].Value.ToString();
-                NumPrice.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[3].Value.ToString());
-                NumCount.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[4].Value.ToString());
+                TxtBookName.Text = DgvBooks.Rows[e.RowIndex].Cells[2].Value.ToString();
+                CmbAuthors.SelectedItem = DgvBooks.Rows[e.RowIndex].Cells[1].Value.ToString() + "-" + DgvBooks.Rows[e.RowIndex].Cells[3].Value;
+                NumPrice.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[4].Value.ToString());
+                NumCount.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[5].Value.ToString());
                 BtnUpdateBook.Visible = true;
-                BtnDeleteBook.Visible = true;
+                if (User.IsBoss)
+                {
+                    BtnDeleteBook.Visible = true;
+                }
             }
             catch
             {
@@ -107,13 +133,16 @@ namespace LibraryManagment.Forms
         private void BtnAddBook_Click(object sender, EventArgs e)
         {
             // Check for empty places
-            if (string.IsNullOrEmpty(TxtBookName.Text) || string.IsNullOrEmpty(TxtAuthor.Text))
+            if (string.IsNullOrEmpty(TxtBookName.Text) || CmbAuthors.SelectedIndex == -1)
             {
                 MessageBox.Show("Kitab və müəllif adı boş ola bilməz");
                 return;
             }
+            // Take the selected author:
+            int SelectedAuthorId = Convert.ToInt32(CmbAuthors.SelectedItem.ToString().Split('-')[0]);
+
             // Check if the book exists or not
-            if (db.Books.Any(b => b.Name == TxtBookName.Text && b.Author == TxtAuthor.Text))
+            if (db.Books.Any(b => b.Name == TxtBookName.Text && b.AuthorId == SelectedAuthorId))
             {
                 MessageBox.Show("Bu kitab artıq mövcuddur. Əlavə etmək üçün sayını artıra bilərsiniz...");
                 return;
@@ -122,7 +151,7 @@ namespace LibraryManagment.Forms
             Book book = new Book
             {
                 Name = TxtBookName.Text,
-                Author = TxtAuthor.Text,
+                AuthorId = SelectedAuthorId,
                 Price = NumPrice.Value,
                 Count = Convert.ToInt32(NumCount.Value)
             };
@@ -148,7 +177,7 @@ namespace LibraryManagment.Forms
 
             db.Books.Add(book);
             db.SaveChanges();
-            DgvBooks.Rows.Add(book.Id, book.Name, book.Author, book.Price, book.Count);
+            DgvBooks.Rows.Add(book.Id, book.AuthorId, book.Name, book.Author.Name, book.Price, book.Count);
             MessageBox.Show("Kitab əlavə olundu!");
             Reset();
         }
@@ -157,24 +186,26 @@ namespace LibraryManagment.Forms
         private void BtnUpdateBook_Click(object sender, EventArgs e)
         {
             // Check for empty places
-            if (string.IsNullOrEmpty(TxtBookName.Text) || string.IsNullOrEmpty(TxtAuthor.Text))
+            if (string.IsNullOrEmpty(TxtBookName.Text) || CmbAuthors.SelectedIndex == -1)
             {
                 MessageBox.Show("Kitab və müəllif adı boş ola bilməz");
                 return;
             }
-
+            // Assume which author is taken from Combo Box
+            int SelectedAuthorId = Convert.ToInt32(CmbAuthors.SelectedItem.ToString().Split('-')[0]);
 
             Book book = db.Books.Find(clickedId);
             book.Name = TxtBookName.Text;
-            book.Author = TxtAuthor.Text;
+            book.AuthorId = SelectedAuthorId;
             book.Price = NumPrice.Value;
             book.Count = Convert.ToInt32(NumCount.Value);
             db.SaveChanges();
             // Update the data grid view
-            DgvBooks.Rows[clickedRow].Cells[1].Value = book.Name;
-            DgvBooks.Rows[clickedRow].Cells[2].Value = book.Author;
-            DgvBooks.Rows[clickedRow].Cells[3].Value = book.Price;
-            DgvBooks.Rows[clickedRow].Cells[4].Value = book.Count;
+            DgvBooks.Rows[clickedRow].Cells[1].Value = book.AuthorId;
+            DgvBooks.Rows[clickedRow].Cells[2].Value = book.Name;
+            DgvBooks.Rows[clickedRow].Cells[3].Value = book.Author.Name;
+            DgvBooks.Rows[clickedRow].Cells[4].Value = book.Price;
+            DgvBooks.Rows[clickedRow].Cells[5].Value = book.Count;
             // Got done with data grid view
             MessageBox.Show("Kitab dəyişdirildi");
             Reset();
@@ -203,6 +234,7 @@ namespace LibraryManagment.Forms
             FillDgvBooks();
         }
 
+        // Empty the inputs
         private void Books_Click(object sender, EventArgs e)
         {
             Reset();
@@ -212,6 +244,17 @@ namespace LibraryManagment.Forms
         private void Books_FormClosed(object sender, FormClosedEventArgs e)
         {
             Board.BookIsOpen = false;
+        }
+
+        // Get the CRUD of authors
+        private void BtnAuthors_Click(object sender, EventArgs e)
+        {
+            Authors form = new Authors(this);
+            if (!AuthorsIsOpen)
+            {
+                form.ShowDialog();
+                return;
+            }
         }
     }
 }

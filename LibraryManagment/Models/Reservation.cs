@@ -42,8 +42,6 @@ public partial class Reservation
 
 
 
-    public virtual Book Book { get; set; }
-
     public virtual Case Case { get; set; }
 
     public virtual User User { get; set; }
@@ -51,6 +49,8 @@ public partial class Reservation
     public virtual User User1 { get; set; }
 
     public virtual Client Client { get; set; }
+
+    public virtual Book Book { get; set; }
 
 }
 

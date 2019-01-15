@@ -86,7 +86,7 @@
             this.Column7});
             this.DgvClients.Location = new System.Drawing.Point(16, 56);
             this.DgvClients.Name = "DgvClients";
-            this.DgvClients.Size = new System.Drawing.Size(688, 294);
+            this.DgvClients.Size = new System.Drawing.Size(734, 294);
             this.DgvClients.TabIndex = 4;
             this.DgvClients.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvClients_RowHeaderMouseClick);
             // 
@@ -138,7 +138,7 @@
             this.groupBox1.Controls.Add(this.TxtName);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(733, 56);
+            this.groupBox1.Location = new System.Drawing.Point(771, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 294);
             this.groupBox1.TabIndex = 5;
@@ -238,7 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 452);
+            this.ClientSize = new System.Drawing.Size(1046, 452);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvClients);
             this.Controls.Add(this.CmbShowClients);
