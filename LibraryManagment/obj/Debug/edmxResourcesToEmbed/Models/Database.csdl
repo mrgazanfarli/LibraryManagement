@@ -129,6 +129,7 @@
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="User" Relationship="LibraryModel.FK_Clients_Users" FromRole="Client" ToRole="User" />
     <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Clients" FromRole="Client" ToRole="Reservation" />
+    <Property Name="BookLimit" Type="Int32" />
   </EntityType>
   <Association Name="FK_Clients_Users">
     <End Type="LibraryModel.User" Role="User" Multiplicity="1" />

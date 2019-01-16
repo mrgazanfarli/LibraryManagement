@@ -38,3 +38,4 @@ C:\Users\User\source\repos\LibraryManagement\LibraryManagment\bin\Debug\az-Latn\
 C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagment.MainBoard.az-Latn.resources
 C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\az-Latn\LibraryManagment.resources.dll
 C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagment.Forms.Authors.resources
+C:\Users\User\source\repos\LibraryManagement\LibraryManagment\obj\Debug\LibraryManagment.Forms.AddReservation.resources

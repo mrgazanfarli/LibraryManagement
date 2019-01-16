@@ -31,13 +31,6 @@
             this.CmbShowClients = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DgvClients = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtPhone = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,8 +41,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NumBookLimit = new System.Windows.Forms.NumericUpDown();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvClients)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumBookLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // CmbShowClients
@@ -83,51 +87,18 @@
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7});
+            this.Column7,
+            this.Column8});
             this.DgvClients.Location = new System.Drawing.Point(16, 56);
             this.DgvClients.Name = "DgvClients";
-            this.DgvClients.Size = new System.Drawing.Size(734, 294);
+            this.DgvClients.Size = new System.Drawing.Size(845, 359);
             this.DgvClients.TabIndex = 4;
             this.DgvClients.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvClients_RowHeaderMouseClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Adı";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Soyadı";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Telefon";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Müştəri nömrəsi";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Yaratdı";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Qeydiyyat vaxtı";
-            this.Column7.Name = "Column7";
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.NumBookLimit);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.TxtPhone);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.BtnAddClient);
@@ -138,9 +109,9 @@
             this.groupBox1.Controls.Add(this.TxtName);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(771, 56);
+            this.groupBox1.Location = new System.Drawing.Point(879, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(256, 294);
+            this.groupBox1.Size = new System.Drawing.Size(256, 359);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Müştəri";
@@ -166,7 +137,7 @@
             // BtnAddClient
             // 
             this.BtnAddClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAddClient.Location = new System.Drawing.Point(9, 218);
+            this.BtnAddClient.Location = new System.Drawing.Point(9, 284);
             this.BtnAddClient.Name = "BtnAddClient";
             this.BtnAddClient.Size = new System.Drawing.Size(238, 30);
             this.BtnAddClient.TabIndex = 8;
@@ -177,7 +148,7 @@
             // BtnDeleteClient
             // 
             this.BtnDeleteClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDeleteClient.Location = new System.Drawing.Point(9, 252);
+            this.BtnDeleteClient.Location = new System.Drawing.Point(9, 318);
             this.BtnDeleteClient.Name = "BtnDeleteClient";
             this.BtnDeleteClient.Size = new System.Drawing.Size(238, 30);
             this.BtnDeleteClient.TabIndex = 10;
@@ -189,7 +160,7 @@
             // BtnUpdateClient
             // 
             this.BtnUpdateClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnUpdateClient.Location = new System.Drawing.Point(9, 185);
+            this.BtnUpdateClient.Location = new System.Drawing.Point(9, 251);
             this.BtnUpdateClient.Name = "BtnUpdateClient";
             this.BtnUpdateClient.Size = new System.Drawing.Size(238, 30);
             this.BtnUpdateClient.TabIndex = 9;
@@ -234,11 +205,81 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Ad";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 182);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 18);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Kitab limiti";
+            // 
+            // NumBookLimit
+            // 
+            this.NumBookLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NumBookLimit.Location = new System.Drawing.Point(9, 204);
+            this.NumBookLimit.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumBookLimit.Name = "NumBookLimit";
+            this.NumBookLimit.Size = new System.Drawing.Size(238, 26);
+            this.NumBookLimit.TabIndex = 16;
+            this.NumBookLimit.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Adı";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Soyadı";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Telefon";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Müştəri nömrəsi";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Yaratdı";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Qeydiyyat vaxtı";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 50F;
+            this.Column8.HeaderText = "Limit";
+            this.Column8.Name = "Column8";
+            // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 452);
+            this.ClientSize = new System.Drawing.Size(1147, 452);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvClients);
             this.Controls.Add(this.CmbShowClients);
@@ -252,6 +293,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvClients)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumBookLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,13 +304,6 @@
         private System.Windows.Forms.ComboBox CmbShowClients;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView DgvClients;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtPhone;
         private System.Windows.Forms.Label label6;
@@ -279,5 +314,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtName;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown NumBookLimit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }

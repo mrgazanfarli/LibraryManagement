@@ -42,6 +42,7 @@
     <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="LibraryModel.Client">
         <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="BookLimit" ColumnName="BookLimit" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="WhoRegistered" ColumnName="WhoRegistered" />
           <ScalarProperty Name="ClientNumber" ColumnName="ClientNumber" />

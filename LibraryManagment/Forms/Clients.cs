@@ -89,7 +89,7 @@ namespace LibraryManagment.Forms
 
             foreach (Client client in clients)
             {
-                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"));
+                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"), client.BookLimit);
             }
         }
 
@@ -101,6 +101,7 @@ namespace LibraryManagment.Forms
             TxtPhone.ResetText();
             BtnDeleteClient.Visible = false;
             BtnUpdateClient.Visible = false;
+            NumBookLimit.Value = 3;
             clickedId = 0;
             clickedRow = -1;
         }
@@ -116,6 +117,7 @@ namespace LibraryManagment.Forms
                 TxtName.Text = DgvClients.Rows[e.RowIndex].Cells[1].Value.ToString();
                 TxtSurname.Text = DgvClients.Rows[e.RowIndex].Cells[2].Value.ToString();
                 TxtPhone.Text = DgvClients.Rows[e.RowIndex].Cells[3].Value.ToString();
+                NumBookLimit.Value = Convert.ToDecimal(DgvClients.Rows[e.RowIndex].Cells[7].Value.ToString());
                 BtnDeleteClient.Visible = true;
                 BtnUpdateClient.Visible = true;
             }
@@ -142,12 +144,13 @@ namespace LibraryManagment.Forms
                 Phone = TxtPhone.Text,
                 WhoRegistered = User.Id,
                 CreatedAt = DateTime.Now,
-                ClientNumber = GenerateClientNumber()
+                ClientNumber = GenerateClientNumber(),
+                BookLimit = Convert.ToInt32(NumBookLimit.Value),
             };
             db.Clients.Add(cl);
             db.SaveChanges();
             // Add new user to DgvUsers
-            DgvClients.Rows.Add(cl.Id, cl.Name, cl.Surname, cl.Phone, cl.ClientNumber, db.Users.Find(cl.WhoRegistered).Name + " " + db.Users.Find(cl.WhoRegistered).Surname, cl.CreatedAt.ToString("dd MMMM yyyy HH:mm"));
+            DgvClients.Rows.Add(cl.Id, cl.Name, cl.Surname, cl.Phone, cl.ClientNumber, db.Users.Find(cl.WhoRegistered).Name + " " + db.Users.Find(cl.WhoRegistered).Surname, cl.CreatedAt.ToString("dd MMMM yyyy HH:mm"), cl.BookLimit);
             MessageBox.Show("Müştəri əlavə olundu!");
             Reset();
         }
@@ -156,7 +159,7 @@ namespace LibraryManagment.Forms
         private void BtnUpdateClient_Click(object sender, EventArgs e)
         {
             // Again check for empty places
-            if (string.IsNullOrEmpty(TxtName.Text) || string.IsNullOrEmpty(TxtSurname.Text) || string.IsNullOrEmpty(TxtPhone.Text))
+            if (string.IsNullOrEmpty(TxtName.Text) || string.IsNullOrEmpty(TxtSurname.Text) || string.IsNullOrEmpty(TxtPhone.Text) || NumBookLimit.Value == 0)
             {
                 MessageBox.Show("Boş yer buraxmayın!");
                 return;
@@ -165,11 +168,13 @@ namespace LibraryManagment.Forms
             cl.Name = TxtName.Text;
             cl.Surname = TxtSurname.Text;
             cl.Phone = TxtPhone.Text;
+            cl.BookLimit = Convert.ToInt32(NumBookLimit.Value);
             db.SaveChanges();
             // Now update the Data Grid View
             DgvClients.Rows[clickedRow].Cells[1].Value = cl.Name;
             DgvClients.Rows[clickedRow].Cells[2].Value = cl.Surname;
             DgvClients.Rows[clickedRow].Cells[3].Value = cl.Phone;
+            DgvClients.Rows[clickedRow].Cells[7].Value = cl.BookLimit;
             // Finished
             MessageBox.Show("Müştəri yeniləndi...");
             Reset();

@@ -41,6 +41,8 @@ public partial class Client
 
     public System.DateTime CreatedAt { get; set; }
 
+    public Nullable<int> BookLimit { get; set; }
+
 
 
     public virtual User User { get; set; }

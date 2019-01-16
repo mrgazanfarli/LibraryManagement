@@ -40,6 +40,7 @@
           <Property Name="ClientNumber" Type="nvarchar" MaxLength="7" Nullable="false" />
           <Property Name="WhoRegistered" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="BookLimit" Type="int" />
         </EntityType>
         <EntityType Name="Reservations">
           <Key>
@@ -70,7 +71,9 @@
           <Property Name="IsBoss" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Books_Authors">
-          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+          <End Role="Authors" Type="Self.Authors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Authors">
@@ -328,6 +331,7 @@
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="LibraryModel.FK_Clients_Users" FromRole="Client" ToRole="User" />
           <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Clients" FromRole="Client" ToRole="Reservation" />
+          <Property Name="BookLimit" Type="Int32" />
         </EntityType>
         <Association Name="FK_Clients_Users">
           <End Type="LibraryModel.User" Role="User" Multiplicity="1" />
@@ -446,6 +450,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="LibraryModel.Client">
               <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="BookLimit" ColumnName="BookLimit" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="WhoRegistered" ColumnName="WhoRegistered" />
                 <ScalarProperty Name="ClientNumber" ColumnName="ClientNumber" />

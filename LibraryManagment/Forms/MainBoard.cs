@@ -15,7 +15,7 @@ namespace LibraryManagment
     public partial class MainBoard : Form
     {
         private readonly LibraryEntities db = new LibraryEntities();
-        private User User;
+        private User User; // Take the user who logged in
         public bool BookIsOpen;
         public bool ClientIsOpen;
         public bool UserIsOpen;
@@ -25,6 +25,7 @@ namespace LibraryManagment
             BookIsOpen = false;
             ClientIsOpen = false;
             User = user;
+            // if the user is boss, let him/her to see the CRUD of workers(users)...
             if (!User.IsBoss)
             {
                 BtnUsers.Visible = false;
@@ -138,7 +139,8 @@ namespace LibraryManagment
         // Give a book
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            
+            AddReservation ReservForm = new AddReservation(User);
+            ReservForm.ShowDialog();
         }
     }
 }
