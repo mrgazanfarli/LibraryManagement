@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBoard));
             this.PnlMain = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.LblExit = new System.Windows.Forms.Label();
-            this.LblUsers = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.LblAdd = new System.Windows.Forms.Label();
             this.BtnAdd = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.BtnLogout = new System.Windows.Forms.Button();
+            this.LblExit = new System.Windows.Forms.Label();
             this.BtnExit = new System.Windows.Forms.Button();
+            this.LblUsers = new System.Windows.Forms.Label();
             this.BtnUsers = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.BtnClients = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.BtnBooks = new System.Windows.Forms.Button();
             this.PnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -63,51 +63,6 @@
             this.PnlMain.Controls.Add(this.BtnBooks);
             this.PnlMain.Name = "PnlMain";
             // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
-            this.label3.Name = "label3";
-            this.label3.Click += new System.EventHandler(this.BtnLogout_Click);
-            // 
-            // LblExit
-            // 
-            resources.ApplyResources(this.LblExit, "LblExit");
-            this.LblExit.BackColor = System.Drawing.Color.Transparent;
-            this.LblExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
-            this.LblExit.Name = "LblExit";
-            this.LblExit.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
-            // LblUsers
-            // 
-            resources.ApplyResources(this.LblUsers, "LblUsers");
-            this.LblUsers.BackColor = System.Drawing.Color.Transparent;
-            this.LblUsers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
-            this.LblUsers.Name = "LblUsers";
-            this.LblUsers.Click += new System.EventHandler(this.BtnUsers_Click);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
-            this.label2.Name = "label2";
-            this.label2.Click += new System.EventHandler(this.BtnClients_Click);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
-            this.label1.Name = "label1";
-            this.label1.Click += new System.EventHandler(this.BtnBooks_Click);
-            // 
             // LblAdd
             // 
             resources.ApplyResources(this.LblAdd, "LblAdd");
@@ -115,6 +70,7 @@
             this.LblAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LblAdd.ForeColor = System.Drawing.Color.Snow;
             this.LblAdd.Name = "LblAdd";
+            this.LblAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnAdd
             // 
@@ -126,6 +82,15 @@
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
+            this.label3.Name = "label3";
+            this.label3.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
             // BtnLogout
             // 
@@ -139,6 +104,15 @@
             this.BtnLogout.UseVisualStyleBackColor = false;
             this.BtnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
+            // LblExit
+            // 
+            resources.ApplyResources(this.LblExit, "LblExit");
+            this.LblExit.BackColor = System.Drawing.Color.Transparent;
+            this.LblExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
+            this.LblExit.Name = "LblExit";
+            this.LblExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
             // BtnExit
             // 
             resources.ApplyResources(this.BtnExit, "BtnExit");
@@ -151,6 +125,15 @@
             this.BtnExit.UseVisualStyleBackColor = false;
             this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
+            // LblUsers
+            // 
+            resources.ApplyResources(this.LblUsers, "LblUsers");
+            this.LblUsers.BackColor = System.Drawing.Color.Transparent;
+            this.LblUsers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LblUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
+            this.LblUsers.Name = "LblUsers";
+            this.LblUsers.Click += new System.EventHandler(this.BtnUsers_Click);
+            // 
             // BtnUsers
             // 
             this.BtnUsers.BackColor = System.Drawing.Color.Snow;
@@ -161,6 +144,15 @@
             this.BtnUsers.Name = "BtnUsers";
             this.BtnUsers.UseVisualStyleBackColor = false;
             this.BtnUsers.Click += new System.EventHandler(this.BtnUsers_Click);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
+            this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.BtnClients_Click);
             // 
             // BtnClients
             // 
@@ -173,6 +165,15 @@
             this.BtnClients.Name = "BtnClients";
             this.BtnClients.UseVisualStyleBackColor = false;
             this.BtnClients.Click += new System.EventHandler(this.BtnClients_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
+            this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.BtnBooks_Click);
             // 
             // BtnBooks
             // 

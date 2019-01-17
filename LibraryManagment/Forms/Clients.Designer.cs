@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DgvClients = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NumBookLimit = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.TxtPhone = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnAddClient = new System.Windows.Forms.Button();
@@ -41,8 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.NumBookLimit = new System.Windows.Forms.NumericUpDown();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +78,8 @@
             // 
             // DgvClients
             // 
+            this.DgvClients.AllowUserToAddRows = false;
+            this.DgvClients.AllowUserToDeleteRows = false;
             this.DgvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -91,7 +93,7 @@
             this.Column8});
             this.DgvClients.Location = new System.Drawing.Point(16, 56);
             this.DgvClients.Name = "DgvClients";
-            this.DgvClients.Size = new System.Drawing.Size(845, 359);
+            this.DgvClients.Size = new System.Drawing.Size(882, 359);
             this.DgvClients.TabIndex = 4;
             this.DgvClients.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvClients_RowHeaderMouseClick);
             // 
@@ -109,12 +111,40 @@
             this.groupBox1.Controls.Add(this.TxtName);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(879, 56);
+            this.groupBox1.Location = new System.Drawing.Point(915, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 359);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Müştəri";
+            // 
+            // NumBookLimit
+            // 
+            this.NumBookLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NumBookLimit.Location = new System.Drawing.Point(9, 204);
+            this.NumBookLimit.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumBookLimit.Name = "NumBookLimit";
+            this.NumBookLimit.Size = new System.Drawing.Size(238, 26);
+            this.NumBookLimit.TabIndex = 16;
+            this.NumBookLimit.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 182);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 18);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Kitab limiti";
             // 
             // TxtPhone
             // 
@@ -205,34 +235,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Ad";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 182);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 18);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Kitab limiti";
-            // 
-            // NumBookLimit
-            // 
-            this.NumBookLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NumBookLimit.Location = new System.Drawing.Point(9, 204);
-            this.NumBookLimit.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.NumBookLimit.Name = "NumBookLimit";
-            this.NumBookLimit.Size = new System.Drawing.Size(238, 26);
-            this.NumBookLimit.TabIndex = 16;
-            this.NumBookLimit.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Id";
@@ -271,15 +273,15 @@
             // 
             // Column8
             // 
-            this.Column8.FillWeight = 50F;
-            this.Column8.HeaderText = "Limit";
+            this.Column8.FillWeight = 80F;
+            this.Column8.HeaderText = "Kitablar/Limit";
             this.Column8.Name = "Column8";
             // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1147, 452);
+            this.ClientSize = new System.Drawing.Size(1183, 452);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvClients);
             this.Controls.Add(this.CmbShowClients);

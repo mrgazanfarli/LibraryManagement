@@ -78,18 +78,20 @@ namespace LibraryManagment.Forms
             {
                 clients = db.Clients.OrderByDescending(c => c.Surname).ToList();
             }
-            //if (CmbShowClients.SelectedIndex == 1)
-            //{
-            //    clients = db.Clients.Where(u => u.IsBoss).OrderByDescending(u => u.Name).ToList();
-            //}
-            //if (CmbShowClients.SelectedIndex == 2)
-            //{
-            //    clients = db.Clients.Where(u => !u.IsBoss).OrderByDescending(u => u.Name).ToList();
-            //}
+            if (CmbShowClients.SelectedIndex == 1)
+            {
+                // Select those who have at least one book that was taken but not given back yet...
+                clients = db.Clients.Where(c => c.Reservations.Any(r => r.TakenBackAt == null && r.GivenAt != null)).ToList();
+            }
+            if (CmbShowClients.SelectedIndex == 2)
+            {
+                // Select those who did not take a book or gave back all books that was taken (takenbackat is not null in this case)...
+                clients = db.Clients.Where(c => c.Reservations.Count() == 0 || !c.Reservations.Any(r => r.GivenAt != null && r.TakenBackAt == null)).ToList(); 
+            }
 
             foreach (Client client in clients)
             {
-                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"), client.BookLimit);
+                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"), client.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + client.BookLimit);
             }
         }
 
@@ -117,7 +119,7 @@ namespace LibraryManagment.Forms
                 TxtName.Text = DgvClients.Rows[e.RowIndex].Cells[1].Value.ToString();
                 TxtSurname.Text = DgvClients.Rows[e.RowIndex].Cells[2].Value.ToString();
                 TxtPhone.Text = DgvClients.Rows[e.RowIndex].Cells[3].Value.ToString();
-                NumBookLimit.Value = Convert.ToDecimal(DgvClients.Rows[e.RowIndex].Cells[7].Value.ToString());
+                NumBookLimit.Value = Convert.ToDecimal(DgvClients.Rows[e.RowIndex].Cells[7].Value.ToString().Split('/')[1]);
                 BtnDeleteClient.Visible = true;
                 BtnUpdateClient.Visible = true;
             }
@@ -150,8 +152,8 @@ namespace LibraryManagment.Forms
             db.Clients.Add(cl);
             db.SaveChanges();
             // Add new user to DgvUsers
-            DgvClients.Rows.Add(cl.Id, cl.Name, cl.Surname, cl.Phone, cl.ClientNumber, db.Users.Find(cl.WhoRegistered).Name + " " + db.Users.Find(cl.WhoRegistered).Surname, cl.CreatedAt.ToString("dd MMMM yyyy HH:mm"), cl.BookLimit);
-            MessageBox.Show("Müştəri əlavə olundu!");
+            DgvClients.Rows.Add(cl.Id, cl.Name, cl.Surname, cl.Phone, cl.ClientNumber, db.Users.Find(cl.WhoRegistered).Name + " " + db.Users.Find(cl.WhoRegistered).Surname, cl.CreatedAt.ToString("dd MMMM yyyy HH:mm"), cl.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + cl.BookLimit);
+            MessageBox.Show("Oxucu əlavə olundu!");
             Reset();
         }
 
@@ -174,16 +176,16 @@ namespace LibraryManagment.Forms
             DgvClients.Rows[clickedRow].Cells[1].Value = cl.Name;
             DgvClients.Rows[clickedRow].Cells[2].Value = cl.Surname;
             DgvClients.Rows[clickedRow].Cells[3].Value = cl.Phone;
-            DgvClients.Rows[clickedRow].Cells[7].Value = cl.BookLimit;
+            DgvClients.Rows[clickedRow].Cells[7].Value = cl.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + cl.BookLimit;
             // Finished
-            MessageBox.Show("Müştəri yeniləndi...");
+            MessageBox.Show("Oxucu məlumatları yeniləndi...");
             Reset();
         }
 
         private void BtnDeleteClient_Click(object sender, EventArgs e)
         {
             // First confirm user's request
-            DialogResult r = MessageBox.Show("Müştərini silməyə əminsinizmi? Bu zaman bu müştəri haqqında bütün məlumatlar silinəcək", "Sil", MessageBoxButtons.YesNo);
+            DialogResult r = MessageBox.Show("Oxucunu silməyə əminsinizmi? Bu zaman bu oxucu haqqında bütün məlumatlar silinəcək", "Sil", MessageBoxButtons.YesNo);
             // If he/she confirms, start deleting
             if (r == DialogResult.Yes)
             {
@@ -193,7 +195,7 @@ namespace LibraryManagment.Forms
                 // Update DGV
                 DgvClients.Rows.RemoveAt(clickedRow);
                 // Finished
-                MessageBox.Show("Müştəri silindi");
+                MessageBox.Show("Oxucu silindi");
                 Reset();
             }
         }
@@ -213,5 +215,6 @@ namespace LibraryManagment.Forms
         {
             Board.ClientIsOpen = false;
         }
+
     }
 }

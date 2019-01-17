@@ -43,23 +43,49 @@ namespace LibraryManagment.Forms
             FillCmbWhatToShow();
             FillDgvBooks();
             FillCmbAuthors();
+            FillCmbFindBook();
         }
 
         // Fill CmbShowBooks to assume which books to show
-        private void FillCmbWhatToShow()
+        public void FillCmbWhatToShow()
         {
             CmbShowBooks.Items.Clear();
             CmbShowBooks.Items.AddRange(WhatToShow);
         }
 
-        // Fill CmbAuthors from database
+        //Fill CmbFindBook
+        private void FillCmbFindBook()
+        {
+            CmbFindBook.Items.Clear();
+            List<Book> books = new List<Book>();
+            // check if any item of CmbFindAuthor was selected or not...
+            if (CmbFindAuthor.SelectedIndex != -1)
+            {
+                int authorId = Convert.ToInt32(CmbFindAuthor.SelectedItem.ToString().Split('-')[0]);
+                // Bring the books of the selected author only...
+                books = db.Books.Where(b => b.AuthorId == authorId).OrderBy(b => b.Name).ToList();
+            }
+            else
+            {
+                // If no author was selected, bring all books...
+                books = db.Books.OrderBy(b => b.Name).ToList();
+            }
+            foreach (Book book in books)
+            {
+                CmbFindBook.Items.Add(book.Id + "-" + book.Name);
+            }
+        }
+
+        // Fill CmbAuthors and CmbFindAuthor from database. Make it public to call from Authors form when there is an update...
         public void FillCmbAuthors()
         {
             CmbAuthors.Items.Clear();
+            CmbFindAuthor.Items.Clear();
             List<Author> authors = db.Authors.OrderBy(a=> a.Name).ToList();
             foreach (Author author in authors)
             {
                 CmbAuthors.Items.Add(author.Id + "-" + author.Name);
+                CmbFindAuthor.Items.Add(author.Id + "-" + author.Name);
             }
         }
 
@@ -68,17 +94,17 @@ namespace LibraryManagment.Forms
         {
             DgvBooks.Rows.Clear();
             List<Book> books = new List<Book>();
-            // Brings all books
+            // Brings all books...
             if (CmbShowBooks.SelectedItem == null || CmbShowBooks.SelectedIndex == 0)
             {
-                books = db.Books.OrderByDescending(b=> b.Name).ToList();
+                    books = db.Books.OrderByDescending(b => b.Name).ToList();
             }
-            // Only books that exist
+            // Only books that exist...
             if(CmbShowBooks.SelectedIndex == 1)
             {
                 books = db.Books.Where(b => b.Count > 0).OrderByDescending(b => b.Name).ToList();
             }
-            // Only books that do not exist
+            // Only books that do NOT exist...
             if(CmbShowBooks.SelectedIndex == 2)
             {
                 books = db.Books.Where(b => b.Count == 0).OrderByDescending(b => b.Name).ToList();
@@ -99,6 +125,8 @@ namespace LibraryManagment.Forms
             NumCount.Value = 0;
             clickedId = 0;
             clickedRow = -1;
+            CmbFindAuthor.SelectedIndex = -1;
+            CmbFindBook.SelectedIndex = -1;
             BtnDeleteBook.Visible = false;
             BtnUpdateBook.Visible = false;
         }
@@ -246,7 +274,7 @@ namespace LibraryManagment.Forms
             Board.BookIsOpen = false;
         }
 
-        // Get the CRUD of authors
+        // Get the CRUD of authors...
         private void BtnAuthors_Click(object sender, EventArgs e)
         {
             Authors form = new Authors(this);
@@ -254,6 +282,43 @@ namespace LibraryManagment.Forms
             {
                 form.ShowDialog();
                 return;
+            }
+        }
+
+        // Actions done on selecting author...
+        private void CmbFindAuthor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // prevent the real-time error...
+            if(CmbFindAuthor.SelectedIndex != -1)
+            {
+                DgvBooks.Rows.Clear();
+                CmbFindBook.Items.Clear();
+                // find which author is selected...
+                int authorId = Convert.ToInt32(CmbFindAuthor.SelectedItem.ToString().Split('-')[0]);
+                // get the books of the selected author...
+                List<Book> books = db.Books.Where(b => b.AuthorId == authorId).ToList();
+                foreach (Book book in books)
+                {
+                    DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
+                    // Do not let to select a book of a different author...
+                    CmbFindBook.Items.Add(book.Id + "-" + book.Name);
+                }
+                CmbFindBook.ResetText();
+            }
+        }
+        
+        // Actions done on selecting book...
+        private void CmbFindBook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbFindBook.SelectedIndex != -1)
+            {
+                // find which book is selected...
+                int bookId = Convert.ToInt32(CmbFindBook.SelectedItem.ToString().Split('-')[0]);
+                DgvBooks.Rows.Clear();
+                // bring this book's info...
+                Book book = db.Books.Find(bookId);
+                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
+                CmbFindAuthor.SelectedItem = book.Author.Id + "-" + book.Author.Name;
             }
         }
     }

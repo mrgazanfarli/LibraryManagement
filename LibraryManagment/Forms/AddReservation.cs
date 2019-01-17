@@ -125,7 +125,7 @@ namespace LibraryManagment.Forms
             // Check if the client reached the book limit or not...
             if (ClientBooks >= db.Clients.Find(clientId).BookLimit)
             {
-                MessageBox.Show("İstifadəçi artıq kitab limitinə çatıb!");
+                MessageBox.Show("Oxucu artıq kitab limitinə çatıb!");
                 Reset();
                 return;
             }
@@ -133,12 +133,22 @@ namespace LibraryManagment.Forms
             // Check if the client has already got the same book or not...
             if (db.Clients.Find(clientId).Reservations.Any(r => r.BookId == bookId && r.TakenBackAt == null))
             {
-                DialogResult r = MessageBox.Show("İstifadəçi artıq bu kitabdan istifadə edir. Eyni kitab yenidən verilsin?", "Xəbərdarlıq", MessageBoxButtons.YesNo);
+                DialogResult r = MessageBox.Show("Oxucu artıq bu kitabdan istifadə edir. Eyni kitab yenidən verilsin?", "Xəbərdarlıq", MessageBoxButtons.YesNo);
                 if (r == DialogResult.No)
                 {
                     Reset();
                     return;
                 }
+            }
+
+            // Check if the book exists or not
+            // Firstly, find how many books exists. Subtact the reserved books from the total number of books, and check if it is zero or not...
+            int? BookCount = db.Books.Find(bookId).Count - db.Reservations.Where(r => r.BookId == bookId && r.TakenBackAt == null).Count();
+
+            if (db.Books.Find(bookId).Count == 0 || BookCount <= 0)
+            {
+                MessageBox.Show("Kitab artıq tükənib!", "Xəbərdarlıq");
+                return;
             }
 
             Reservation reserv = new Reservation
