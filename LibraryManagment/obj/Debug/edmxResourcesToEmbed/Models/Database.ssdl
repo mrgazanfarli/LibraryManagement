@@ -14,8 +14,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="AuthorId" Type="int" Nullable="false" />
-    <Property Name="Price" Type="money" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Cases">
     <Key>

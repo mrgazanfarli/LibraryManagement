@@ -137,6 +137,7 @@ namespace LibraryManagment.Forms
         private void Authors_FormClosed(object sender, FormClosedEventArgs e)
         {
             Books.AuthorsIsOpen = false;
+            // Fill CmbAuthors to prevent errors of NOT FOUND...
             Books.FillCmbAuthors();
         }
     }

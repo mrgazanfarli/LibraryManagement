@@ -114,6 +114,12 @@
     <Compile Include="Forms\MainBoard.Designer.cs">
       <DependentUpon>MainBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reservations.Designer.cs">
+      <DependentUpon>Reservations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Users.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainBoard.resx">
       <DependentUpon>MainBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reservations.resx">
+      <DependentUpon>Reservations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

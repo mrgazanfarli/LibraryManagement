@@ -91,7 +91,7 @@ namespace LibraryManagment.Forms
 
             foreach (Client client in clients)
             {
-                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd MMMM yyyy HH:mm"), client.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + client.BookLimit);
+                DgvClients.Rows.Add(client.Id, client.Name, client.Surname, client.Phone, client.ClientNumber, client.User.Name + " " + client.User.Surname, client.CreatedAt.ToString("dd.MM.yyyy"), client.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + client.BookLimit);
             }
         }
 
@@ -152,7 +152,7 @@ namespace LibraryManagment.Forms
             db.Clients.Add(cl);
             db.SaveChanges();
             // Add new user to DgvUsers
-            DgvClients.Rows.Add(cl.Id, cl.Name, cl.Surname, cl.Phone, cl.ClientNumber, db.Users.Find(cl.WhoRegistered).Name + " " + db.Users.Find(cl.WhoRegistered).Surname, cl.CreatedAt.ToString("dd MMMM yyyy HH:mm"), cl.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + cl.BookLimit);
+            DgvClients.Rows.Add(cl.Id, cl.Name, cl.Surname, cl.Phone, cl.ClientNumber, db.Users.Find(cl.WhoRegistered).Name + " " + db.Users.Find(cl.WhoRegistered).Surname, cl.CreatedAt.ToString("dd.MM.yyyy"), cl.Reservations.Where(r => r.TakenBackAt == null).Count() + "/" + cl.BookLimit);
             MessageBox.Show("Oxucu əlavə olundu!");
             Reset();
         }

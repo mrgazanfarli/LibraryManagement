@@ -170,8 +170,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="AuthorId" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Author" Relationship="LibraryModel.FK_Books_Authors" FromRole="Book" ToRole="Author" />
     <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Books" FromRole="Book" ToRole="Reservation" />
   </EntityType>

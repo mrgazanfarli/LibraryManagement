@@ -258,7 +258,7 @@
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Müştəri nömrəsi";
+            this.Column5.HeaderText = "Oxucu nömrəsi";
             this.Column5.Name = "Column5";
             // 
             // Column6
@@ -268,7 +268,7 @@
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "Qeydiyyat vaxtı";
+            this.Column7.HeaderText = "Qeydiyyat tarixi";
             this.Column7.Name = "Column7";
             // 
             // Column8

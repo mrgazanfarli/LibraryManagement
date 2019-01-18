@@ -33,9 +33,9 @@ public partial class Book
 
     public int AuthorId { get; set; }
 
-    public Nullable<decimal> Price { get; set; }
+    public decimal Price { get; set; }
 
-    public Nullable<int> Count { get; set; }
+    public int Count { get; set; }
 
 
 

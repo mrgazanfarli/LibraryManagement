@@ -269,6 +269,7 @@
             this.Controls.Add(this.GrbClientDetails);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddReservation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kitab verilməsi";

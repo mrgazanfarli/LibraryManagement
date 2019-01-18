@@ -47,7 +47,7 @@ namespace LibraryManagment.Forms
         }
 
         // Fill CmbShowBooks to assume which books to show
-        public void FillCmbWhatToShow()
+        private void FillCmbWhatToShow()
         {
             CmbShowBooks.Items.Clear();
             CmbShowBooks.Items.AddRange(WhatToShow);
@@ -112,7 +112,7 @@ namespace LibraryManagment.Forms
 
             foreach (Book book in books)
             {
-                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
+                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price.ToString("0.00"), book.Count);
             }
         }
 
@@ -127,6 +127,7 @@ namespace LibraryManagment.Forms
             clickedRow = -1;
             CmbFindAuthor.SelectedIndex = -1;
             CmbFindBook.SelectedIndex = -1;
+            FillCmbFindBook();
             BtnDeleteBook.Visible = false;
             BtnUpdateBook.Visible = false;
         }
