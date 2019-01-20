@@ -99,6 +99,7 @@
             this.Column5});
             this.DgvBooks.Location = new System.Drawing.Point(15, 100);
             this.DgvBooks.Name = "DgvBooks";
+            this.DgvBooks.ReadOnly = true;
             this.DgvBooks.Size = new System.Drawing.Size(467, 369);
             this.DgvBooks.TabIndex = 2;
             this.DgvBooks.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvBooks_RowHeaderMouseClick);
@@ -107,33 +108,39 @@
             // 
             this.Column1.HeaderText = "Id";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "AuthorId";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Adı";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Müəllif";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Qiymət";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Sayı";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // GrbCrud
             // 

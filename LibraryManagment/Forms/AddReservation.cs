@@ -15,12 +15,21 @@ namespace LibraryManagment.Forms
     {
         private readonly LibraryEntities db = new LibraryEntities();
         private User User;
+        private Reservations Reservations;
         public AddReservation(User user)
         {
             InitializeComponent();
             FillCmbAuthors();
             FillCmbBooks();
             User = user;
+        }
+        public AddReservation (User user, Reservations reservations)
+        {
+            InitializeComponent();
+            FillCmbAuthors();
+            FillCmbBooks();
+            User = user;
+            Reservations = reservations;
         }
 
         // Bring authors to CMB
@@ -164,6 +173,13 @@ namespace LibraryManagment.Forms
             MessageBox.Show("Əlavə edildi...");
             Reset();
             this.Close();
+        }
+
+        // Fill Data Grid View if the form is opened from the Reservations form...
+        private void AddReservation_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(Reservations != null)
+            Reservations.FillDgvReservations();
         }
     }
 }

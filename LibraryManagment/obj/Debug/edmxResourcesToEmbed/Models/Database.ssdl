@@ -52,6 +52,7 @@
     <Property Name="Penalty" Type="money" />
     <Property Name="BookStatus" Type="int" />
     <Property Name="Comment" Type="ntext" />
+    <Property Name="LimitToReturn" Type="int" />
   </EntityType>
   <EntityType Name="Users">
     <Key>

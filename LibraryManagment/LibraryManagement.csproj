@@ -234,6 +234,9 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Stop.png" />
+    <None Include="Resources\book-and-plus-sign.png" />
     <None Include="Resources\getty_549933903_2000133320009280405_105293.jpg" />
     <None Include="Resources\bookreviews.jpg" />
     <None Include="Resources\Add2.png" />

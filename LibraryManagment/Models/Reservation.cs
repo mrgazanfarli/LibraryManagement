@@ -40,6 +40,8 @@ public partial class Reservation
 
     public string Comment { get; set; }
 
+    public Nullable<int> LimitToReturn { get; set; }
+
 
 
     public virtual Case Case { get; set; }

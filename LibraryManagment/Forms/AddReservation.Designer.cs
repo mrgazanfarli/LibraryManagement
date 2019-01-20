@@ -273,6 +273,7 @@
             this.Name = "AddReservation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kitab verilməsi";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddReservation_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumInterval)).EndInit();

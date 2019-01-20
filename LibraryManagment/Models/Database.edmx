@@ -57,6 +57,7 @@
           <Property Name="Penalty" Type="money" />
           <Property Name="BookStatus" Type="int" />
           <Property Name="Comment" Type="ntext" />
+          <Property Name="LimitToReturn" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -230,6 +231,7 @@
           <NavigationProperty Name="User1" Relationship="Self.FK_Reservations_Users1" FromRole="Reservations" ToRole="Users" />
           <NavigationProperty Name="Client" Relationship="LibraryModel.FK_Reservations_Clients" FromRole="Reservation" ToRole="Client" />
           <NavigationProperty Name="Book" Relationship="LibraryModel.FK_Reservations_Books" FromRole="Reservation" ToRole="Book" />
+          <Property Name="LimitToReturn" Type="Int32" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -420,6 +422,7 @@
           <EntitySetMapping Name="Reservations">
             <EntityTypeMapping TypeName="LibraryModel.Reservation">
               <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="LimitToReturn" ColumnName="LimitToReturn" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="BookId" ColumnName="BookId" />

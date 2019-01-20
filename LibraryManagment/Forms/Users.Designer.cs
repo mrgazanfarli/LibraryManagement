@@ -78,6 +78,7 @@
             this.Column7});
             this.DgvUsers.Location = new System.Drawing.Point(16, 69);
             this.DgvUsers.Name = "DgvUsers";
+            this.DgvUsers.ReadOnly = true;
             this.DgvUsers.Size = new System.Drawing.Size(615, 439);
             this.DgvUsers.TabIndex = 0;
             this.DgvUsers.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvUsers_RowHeaderMouseClick);
@@ -86,39 +87,46 @@
             // 
             this.Column1.HeaderText = "Id";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Ad";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Soyad";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Istifadəçi adı";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Şifrə";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.FillWeight = 70F;
             this.Column6.HeaderText = "İdarəçidir";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
             this.Column7.FillWeight = 120F;
             this.Column7.HeaderText = "Telefon";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // groupBox1
             // 
