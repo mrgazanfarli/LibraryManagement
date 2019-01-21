@@ -17,13 +17,15 @@ namespace LibraryManagment.Forms
         private readonly LibraryEntities db = new LibraryEntities();
         private int ClickedRow;
         private int ClickedId;
-        private Color ErrorColor = Color.FromArgb(255, 54, 0);
-        private Color SuccessColor = Color.FromArgb(147, 214, 21);
+        private User User;
+        private Color ErrorColor;
+        private Color SuccessColor;
         private string[] WhatToSearch;
         private string[] WhichDates;
-        public Reservations()
+        public Reservations(User user)
         {
             InitializeComponent();
+            User = user;
             WhatToSearch = new string[]
             {
                 "Oxucuya görə",
@@ -37,6 +39,8 @@ namespace LibraryManagment.Forms
                 "Verilib",
                 "Alınıb"
             };
+            ErrorColor = Color.FromArgb(255, 54, 0);
+            SuccessColor = Color.FromArgb(234, 156, 10);
             FillCmbSearch();
             FillDgvReservations();
         }
@@ -281,10 +285,14 @@ namespace LibraryManagment.Forms
             CmbUsers.SelectedIndex = -1;
             CmbWhichDates.SelectedIndex = -1;
             TxtClientNumber.ResetText();
+            ClickedRow = -1;
+            ClickedId = 0;
             // Do not show any group boxes because nothing is selected in CmbSearch...
             GrbUsers.Visible = false;
             GrbBookDetails.Visible = false;
             GrbClientNumber.Visible = false;
+            BtnStopReservation.Visible = false;
+            BtnDeleteReservation.Visible = false;
             FillDgvReservations();
         }
 
@@ -310,8 +318,25 @@ namespace LibraryManagment.Forms
         // Take all values when the row header is clicked...
         private void DgvReservations_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ClickedRow = e.RowIndex;
-            ClickedId = Convert.ToInt32(DgvReservations.Rows[e.RowIndex].Cells[0].Value.ToString());
+            try
+            {
+                ClickedRow = e.RowIndex;
+                ClickedId = Convert.ToInt32(DgvReservations.Rows[e.RowIndex].Cells[0].Value.ToString());
+                BtnStopReservation.Visible = true;
+                BtnDeleteReservation.Visible = true;
+                if (db.Reservations.Find(ClickedId).TakenBackAt != null)
+                {
+                    BtnStopReservation.Enabled = false;
+                }
+                else
+                {
+                    BtnStopReservation.Enabled = true;
+                }
+            }
+            catch
+            {
+                Reset();
+            }
         }
 
         // Automatically give a suggestion to search a reservation with client number (as the form loads)...
@@ -327,5 +352,39 @@ namespace LibraryManagment.Forms
             CmbSearch.SelectedIndex = -1;
             form.ShowDialog();
         }
+
+        private void BtnStopReservation_Click(object sender, EventArgs e)
+        {
+            StopReservation form = new StopReservation(User, ClickedId);
+            form.ShowDialog();
+        }
+
+        // Delete the reservations after confirmation of the user...
+        private void BtnDeleteReservation_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("Sifarişi silməyə əminsinizmi?", "Sifarişin silinməsi", MessageBoxButtons.YesNo);
+            if (r == DialogResult.Yes)
+            {
+                Reservation reserv = db.Reservations.Find(ClickedId);
+                db.Reservations.Remove(reserv);
+                db.SaveChanges();
+                MessageBox.Show("Sifariş silindi!");
+                DgvReservations.Rows.RemoveAt(ClickedRow);
+            }
+        }
+
+        //private void Test()
+        //{
+        //    DataGridViewCellStyle style = new DataGridViewCellStyle();
+        //    style.BackColor = Color.FromArgb(184, 123, 7);
+        //    style.ForeColor = Color.White;
+        //    foreach (DataGridViewRow row in DgvReservations.Rows)
+        //    {
+        //        for(int i = 0; i < row.Cells.Count; i++)
+        //        {
+        //            row.Cells[i].Style = style;
+        //        }
+        //    }
+        //}
     }
 }

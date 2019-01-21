@@ -81,6 +81,7 @@ namespace LibraryManagment.Forms
             this.DgvReservations.AllowUserToAddRows = false;
             this.DgvReservations.AllowUserToDeleteRows = false;
             this.DgvReservations.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvReservations.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(188)))), ((int)(((byte)(92)))));
             this.DgvReservations.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.DgvReservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvReservations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -182,6 +183,7 @@ namespace LibraryManagment.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 17);
@@ -191,6 +193,7 @@ namespace LibraryManagment.Forms
             // CmbSearch
             // 
             this.CmbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CmbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.CmbSearch.FormattingEnabled = true;
             this.CmbSearch.Location = new System.Drawing.Point(12, 43);
             this.CmbSearch.Name = "CmbSearch";
@@ -200,12 +203,15 @@ namespace LibraryManagment.Forms
             // 
             // GrbClientNumber
             // 
+            this.GrbClientNumber.BackColor = System.Drawing.Color.White;
             this.GrbClientNumber.Controls.Add(this.LblError);
             this.GrbClientNumber.Controls.Add(this.TxtClientNumber);
             this.GrbClientNumber.Controls.Add(this.label2);
-            this.GrbClientNumber.Location = new System.Drawing.Point(173, 5);
+            this.GrbClientNumber.Location = new System.Drawing.Point(173, 12);
+            this.GrbClientNumber.Margin = new System.Windows.Forms.Padding(0);
             this.GrbClientNumber.Name = "GrbClientNumber";
-            this.GrbClientNumber.Size = new System.Drawing.Size(216, 92);
+            this.GrbClientNumber.Padding = new System.Windows.Forms.Padding(0);
+            this.GrbClientNumber.Size = new System.Drawing.Size(204, 85);
             this.GrbClientNumber.TabIndex = 9;
             this.GrbClientNumber.TabStop = false;
             this.GrbClientNumber.Visible = false;
@@ -214,7 +220,7 @@ namespace LibraryManagment.Forms
             // 
             this.LblError.AutoSize = true;
             this.LblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(54)))), ((int)(((byte)(0)))));
-            this.LblError.Location = new System.Drawing.Point(7, 72);
+            this.LblError.Location = new System.Drawing.Point(6, 65);
             this.LblError.Name = "LblError";
             this.LblError.Size = new System.Drawing.Size(0, 13);
             this.LblError.TabIndex = 11;
@@ -222,7 +228,8 @@ namespace LibraryManagment.Forms
             // TxtClientNumber
             // 
             this.TxtClientNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TxtClientNumber.Location = new System.Drawing.Point(6, 41);
+            this.TxtClientNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
+            this.TxtClientNumber.Location = new System.Drawing.Point(5, 37);
             this.TxtClientNumber.Name = "TxtClientNumber";
             this.TxtClientNumber.Size = new System.Drawing.Size(188, 23);
             this.TxtClientNumber.TabIndex = 10;
@@ -231,8 +238,10 @@ namespace LibraryManagment.Forms
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
+            this.label2.Location = new System.Drawing.Point(3, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 17);
             this.label2.TabIndex = 9;
@@ -240,11 +249,12 @@ namespace LibraryManagment.Forms
             // 
             // GrbBookDetails
             // 
+            this.GrbBookDetails.BackColor = System.Drawing.Color.White;
             this.GrbBookDetails.Controls.Add(this.CmbBooks);
             this.GrbBookDetails.Controls.Add(this.label4);
             this.GrbBookDetails.Controls.Add(this.CmbAuthors);
             this.GrbBookDetails.Controls.Add(this.label3);
-            this.GrbBookDetails.Location = new System.Drawing.Point(172, 17);
+            this.GrbBookDetails.Location = new System.Drawing.Point(173, 17);
             this.GrbBookDetails.Name = "GrbBookDetails";
             this.GrbBookDetails.Size = new System.Drawing.Size(417, 74);
             this.GrbBookDetails.TabIndex = 12;
@@ -254,6 +264,7 @@ namespace LibraryManagment.Forms
             // CmbBooks
             // 
             this.CmbBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CmbBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.CmbBooks.FormattingEnabled = true;
             this.CmbBooks.Location = new System.Drawing.Point(224, 36);
             this.CmbBooks.Name = "CmbBooks";
@@ -265,6 +276,7 @@ namespace LibraryManagment.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.label4.Location = new System.Drawing.Point(221, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
@@ -274,6 +286,7 @@ namespace LibraryManagment.Forms
             // CmbAuthors
             // 
             this.CmbAuthors.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CmbAuthors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.CmbAuthors.FormattingEnabled = true;
             this.CmbAuthors.Location = new System.Drawing.Point(6, 36);
             this.CmbAuthors.Name = "CmbAuthors";
@@ -285,6 +298,7 @@ namespace LibraryManagment.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.label3.Location = new System.Drawing.Point(3, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 17);
@@ -295,7 +309,7 @@ namespace LibraryManagment.Forms
             // 
             this.GrbUsers.Controls.Add(this.CmbUsers);
             this.GrbUsers.Controls.Add(this.label5);
-            this.GrbUsers.Location = new System.Drawing.Point(169, 16);
+            this.GrbUsers.Location = new System.Drawing.Point(173, 11);
             this.GrbUsers.Name = "GrbUsers";
             this.GrbUsers.Size = new System.Drawing.Size(231, 74);
             this.GrbUsers.TabIndex = 4;
@@ -305,6 +319,7 @@ namespace LibraryManagment.Forms
             // CmbUsers
             // 
             this.CmbUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CmbUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.CmbUsers.FormattingEnabled = true;
             this.CmbUsers.Location = new System.Drawing.Point(10, 38);
             this.CmbUsers.Name = "CmbUsers";
@@ -316,6 +331,7 @@ namespace LibraryManagment.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.label5.Location = new System.Drawing.Point(7, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 17);
@@ -329,7 +345,7 @@ namespace LibraryManagment.Forms
             this.GrbDateDetails.Controls.Add(this.LblFrom);
             this.GrbDateDetails.Controls.Add(this.DtpTo);
             this.GrbDateDetails.Controls.Add(this.DtpFrom);
-            this.GrbDateDetails.Location = new System.Drawing.Point(169, 12);
+            this.GrbDateDetails.Location = new System.Drawing.Point(173, 11);
             this.GrbDateDetails.Name = "GrbDateDetails";
             this.GrbDateDetails.Size = new System.Drawing.Size(629, 79);
             this.GrbDateDetails.TabIndex = 13;
@@ -339,8 +355,9 @@ namespace LibraryManagment.Forms
             // CmbWhichDates
             // 
             this.CmbWhichDates.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CmbWhichDates.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.CmbWhichDates.FormattingEnabled = true;
-            this.CmbWhichDates.Location = new System.Drawing.Point(6, 31);
+            this.CmbWhichDates.Location = new System.Drawing.Point(6, 43);
             this.CmbWhichDates.Name = "CmbWhichDates";
             this.CmbWhichDates.Size = new System.Drawing.Size(136, 24);
             this.CmbWhichDates.TabIndex = 4;
@@ -350,6 +367,7 @@ namespace LibraryManagment.Forms
             // 
             this.LblTo.AutoSize = true;
             this.LblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LblTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.LblTo.Location = new System.Drawing.Point(414, 15);
             this.LblTo.Name = "LblTo";
             this.LblTo.Size = new System.Drawing.Size(53, 18);
@@ -361,6 +379,7 @@ namespace LibraryManagment.Forms
             // 
             this.LblFrom.AutoSize = true;
             this.LblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LblFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.LblFrom.Location = new System.Drawing.Point(163, 15);
             this.LblFrom.Name = "LblFrom";
             this.LblFrom.Size = new System.Drawing.Size(85, 18);
@@ -370,29 +389,35 @@ namespace LibraryManagment.Forms
             // 
             // DtpTo
             // 
+            this.DtpTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
+            this.DtpTo.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+            this.DtpTo.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.DtpTo.CustomFormat = "dd.MM.yyyy";
             this.DtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpTo.Location = new System.Drawing.Point(417, 42);
-            this.DtpTo.MaxDate = new System.DateTime(2019, 1, 20, 20, 5, 45, 757);
+            this.DtpTo.MaxDate = new System.DateTime(2019, 1, 21, 18, 47, 45, 228);
             this.DtpTo.Name = "DtpTo";
             this.DtpTo.Size = new System.Drawing.Size(200, 24);
             this.DtpTo.TabIndex = 1;
-            this.DtpTo.Value = new System.DateTime(2019, 1, 20, 20, 5, 45, 757);
+            this.DtpTo.Value = new System.DateTime(2019, 1, 21, 18, 47, 45, 228);
             this.DtpTo.Visible = false;
             this.DtpTo.ValueChanged += new System.EventHandler(this.Dtps_ValueChanged);
             // 
             // DtpFrom
             // 
+            this.DtpFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
+            this.DtpFrom.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+            this.DtpFrom.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(100)))), ((int)(((byte)(6)))));
             this.DtpFrom.CustomFormat = "dd.MM.yyyy";
             this.DtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpFrom.Location = new System.Drawing.Point(166, 43);
-            this.DtpFrom.MaxDate = new System.DateTime(2019, 1, 20, 20, 5, 45, 760);
+            this.DtpFrom.MaxDate = new System.DateTime(2019, 1, 21, 18, 47, 45, 233);
             this.DtpFrom.Name = "DtpFrom";
             this.DtpFrom.Size = new System.Drawing.Size(200, 24);
             this.DtpFrom.TabIndex = 0;
-            this.DtpFrom.Value = new System.DateTime(2019, 1, 20, 0, 0, 0, 0);
+            this.DtpFrom.Value = new System.DateTime(2019, 1, 21, 18, 47, 45, 233);
             this.DtpFrom.Visible = false;
             this.DtpFrom.ValueChanged += new System.EventHandler(this.Dtps_ValueChanged);
             // 
@@ -410,6 +435,7 @@ namespace LibraryManagment.Forms
             // 
             this.BtnDeleteReservation.BackgroundImage = global::LibraryManagment.Properties.Resources.Delete;
             this.BtnDeleteReservation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnDeleteReservation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnDeleteReservation.FlatAppearance.BorderSize = 0;
             this.BtnDeleteReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDeleteReservation.Location = new System.Drawing.Point(265, 419);
@@ -417,11 +443,14 @@ namespace LibraryManagment.Forms
             this.BtnDeleteReservation.Size = new System.Drawing.Size(72, 72);
             this.BtnDeleteReservation.TabIndex = 17;
             this.BtnDeleteReservation.UseVisualStyleBackColor = true;
+            this.BtnDeleteReservation.Visible = false;
+            this.BtnDeleteReservation.Click += new System.EventHandler(this.BtnDeleteReservation_Click);
             // 
             // BtnStopReservation
             // 
             this.BtnStopReservation.BackgroundImage = global::LibraryManagment.Properties.Resources.Stop;
             this.BtnStopReservation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnStopReservation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnStopReservation.FlatAppearance.BorderSize = 0;
             this.BtnStopReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnStopReservation.Location = new System.Drawing.Point(141, 419);
@@ -429,12 +458,15 @@ namespace LibraryManagment.Forms
             this.BtnStopReservation.Size = new System.Drawing.Size(72, 72);
             this.BtnStopReservation.TabIndex = 16;
             this.BtnStopReservation.UseVisualStyleBackColor = true;
+            this.BtnStopReservation.Visible = false;
+            this.BtnStopReservation.Click += new System.EventHandler(this.BtnStopReservation_Click);
             // 
             // BtnAddReservation
             // 
             this.BtnAddReservation.BackColor = System.Drawing.Color.White;
             this.BtnAddReservation.BackgroundImage = global::LibraryManagment.Properties.Resources.book_and_plus_sign;
             this.BtnAddReservation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnAddReservation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAddReservation.FlatAppearance.BorderSize = 0;
             this.BtnAddReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAddReservation.Location = new System.Drawing.Point(12, 419);
@@ -452,10 +484,10 @@ namespace LibraryManagment.Forms
             this.ClientSize = new System.Drawing.Size(1370, 606);
             this.Controls.Add(this.BtnDeleteReservation);
             this.Controls.Add(this.BtnStopReservation);
-            this.Controls.Add(this.BtnAddReservation);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.GrbDateDetails);
+            this.Controls.Add(this.BtnAddReservation);
             this.Controls.Add(this.GrbUsers);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.GrbBookDetails);
             this.Controls.Add(this.GrbClientNumber);
             this.Controls.Add(this.CmbSearch);
@@ -492,10 +524,6 @@ namespace LibraryManagment.Forms
         private System.Windows.Forms.TextBox TxtClientNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox GrbBookDetails;
-        private System.Windows.Forms.ComboBox CmbBooks;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox CmbAuthors;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox GrbUsers;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox CmbUsers;
@@ -522,5 +550,9 @@ namespace LibraryManagment.Forms
         private System.Windows.Forms.Button BtnAddReservation;
         private System.Windows.Forms.Button BtnStopReservation;
         private System.Windows.Forms.Button BtnDeleteReservation;
+        private System.Windows.Forms.ComboBox CmbBooks;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmbAuthors;
+        private System.Windows.Forms.Label label3;
     }
 }

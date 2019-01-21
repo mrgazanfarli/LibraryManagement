@@ -34,14 +34,14 @@
             this.BtnAdd = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnLogout = new System.Windows.Forms.Button();
+            this.LblExit = new System.Windows.Forms.Label();
+            this.BtnExit = new System.Windows.Forms.Button();
             this.LblUsers = new System.Windows.Forms.Label();
             this.BtnUsers = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnClients = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnBooks = new System.Windows.Forms.Button();
-            this.BtnExit = new System.Windows.Forms.Button();
-            this.LblExit = new System.Windows.Forms.Label();
             this.PnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +76,7 @@
             this.LblAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblAdd.ForeColor = System.Drawing.Color.Snow;
             this.LblAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblAdd.Location = new System.Drawing.Point(363, 79);
+            this.LblAdd.Location = new System.Drawing.Point(361, 79);
             this.LblAdd.Name = "LblAdd";
             this.LblAdd.Size = new System.Drawing.Size(76, 18);
             this.LblAdd.TabIndex = 11;
@@ -93,7 +93,7 @@
             this.BtnAdd.FlatAppearance.BorderSize = 0;
             this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnAdd.Location = new System.Drawing.Point(365, 5);
+            this.BtnAdd.Location = new System.Drawing.Point(363, 5);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(72, 72);
             this.BtnAdd.TabIndex = 1;
@@ -134,6 +134,40 @@
             this.BtnLogout.UseVisualStyleBackColor = false;
             this.BtnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
+            // LblExit
+            // 
+            this.LblExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblExit.AutoSize = true;
+            this.LblExit.BackColor = System.Drawing.Color.Transparent;
+            this.LblExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.LblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
+            this.LblExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.LblExit.Location = new System.Drawing.Point(866, 79);
+            this.LblExit.Name = "LblExit";
+            this.LblExit.Size = new System.Drawing.Size(50, 18);
+            this.LblExit.TabIndex = 7;
+            this.LblExit.Text = "Bağla";
+            this.LblExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // BtnExit
+            // 
+            this.BtnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExit.BackColor = System.Drawing.Color.Snow;
+            this.BtnExit.BackgroundImage = global::LibraryManagment.Properties.Resources.Door;
+            this.BtnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnExit.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.BtnExit.FlatAppearance.BorderSize = 0;
+            this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.BtnExit.Location = new System.Drawing.Point(855, 5);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(72, 72);
+            this.BtnExit.TabIndex = 6;
+            this.BtnExit.UseVisualStyleBackColor = false;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
             // LblUsers
             // 
             this.LblUsers.AutoSize = true;
@@ -142,7 +176,7 @@
             this.LblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.LblUsers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblUsers.Location = new System.Drawing.Point(262, 79);
+            this.LblUsers.Location = new System.Drawing.Point(263, 79);
             this.LblUsers.Name = "LblUsers";
             this.LblUsers.Size = new System.Drawing.Size(53, 18);
             this.LblUsers.TabIndex = 5;
@@ -159,7 +193,7 @@
             this.BtnUsers.FlatAppearance.BorderSize = 0;
             this.BtnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUsers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnUsers.Location = new System.Drawing.Point(252, 5);
+            this.BtnUsers.Location = new System.Drawing.Point(253, 5);
             this.BtnUsers.Name = "BtnUsers";
             this.BtnUsers.Size = new System.Drawing.Size(72, 72);
             this.BtnUsers.TabIndex = 4;
@@ -174,7 +208,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(139, 80);
+            this.label2.Location = new System.Drawing.Point(143, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 3;
@@ -191,7 +225,7 @@
             this.BtnClients.FlatAppearance.BorderSize = 0;
             this.BtnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnClients.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnClients.Location = new System.Drawing.Point(140, 5);
+            this.BtnClients.Location = new System.Drawing.Point(144, 5);
             this.BtnClients.Name = "BtnClients";
             this.BtnClients.Size = new System.Drawing.Size(72, 72);
             this.BtnClients.TabIndex = 3;
@@ -229,40 +263,6 @@
             this.BtnBooks.TabIndex = 2;
             this.BtnBooks.UseVisualStyleBackColor = false;
             this.BtnBooks.Click += new System.EventHandler(this.BtnBooks_Click);
-            // 
-            // BtnExit
-            // 
-            this.BtnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExit.BackColor = System.Drawing.Color.Snow;
-            this.BtnExit.BackgroundImage = global::LibraryManagment.Properties.Resources.Door;
-            this.BtnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnExit.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.BtnExit.FlatAppearance.BorderSize = 0;
-            this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnExit.Location = new System.Drawing.Point(855, 5);
-            this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(72, 72);
-            this.BtnExit.TabIndex = 6;
-            this.BtnExit.UseVisualStyleBackColor = false;
-            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
-            // LblExit
-            // 
-            this.LblExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LblExit.AutoSize = true;
-            this.LblExit.BackColor = System.Drawing.Color.Transparent;
-            this.LblExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.LblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
-            this.LblExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblExit.Location = new System.Drawing.Point(866, 79);
-            this.LblExit.Name = "LblExit";
-            this.LblExit.Size = new System.Drawing.Size(50, 18);
-            this.LblExit.TabIndex = 7;
-            this.LblExit.Text = "Bağla";
-            this.LblExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // MainBoard
             // 
