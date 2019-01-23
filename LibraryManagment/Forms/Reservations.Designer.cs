@@ -31,6 +31,7 @@ namespace LibraryManagment.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reservations));
             this.DgvReservations = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,7 @@ namespace LibraryManagment.Forms
             this.BtnStopReservation = new System.Windows.Forms.Button();
             this.BtnAddReservation = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.TmrSetPenalties = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DgvReservations)).BeginInit();
             this.GrbClientNumber.SuspendLayout();
             this.GrbBookDetails.SuspendLayout();
@@ -399,11 +401,11 @@ namespace LibraryManagment.Forms
             this.DtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpTo.Location = new System.Drawing.Point(417, 42);
-            this.DtpTo.MaxDate = System.DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
+            this.DtpTo.MaxDate = new System.DateTime(2019, 1, 24, 23, 59, 59, 999);
             this.DtpTo.Name = "DtpTo";
             this.DtpTo.Size = new System.Drawing.Size(200, 24);
             this.DtpTo.TabIndex = 1;
-            this.DtpTo.Value = System.DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
+            this.DtpTo.Value = new System.DateTime(2019, 1, 24, 23, 59, 59, 999);
             this.DtpTo.Visible = false;
             this.DtpTo.ValueChanged += new System.EventHandler(this.Dtps_ValueChanged);
             // 
@@ -420,7 +422,7 @@ namespace LibraryManagment.Forms
             this.DtpFrom.Name = "DtpFrom";
             this.DtpFrom.Size = new System.Drawing.Size(200, 24);
             this.DtpFrom.TabIndex = 0;
-            this.DtpFrom.Value = System.DateTime.Now.Date;
+            this.DtpFrom.Value = new System.DateTime(2019, 1, 24, 0, 0, 0, 0);
             this.DtpFrom.Visible = false;
             this.DtpFrom.ValueChanged += new System.EventHandler(this.Dtps_ValueChanged);
             // 
@@ -506,6 +508,11 @@ namespace LibraryManagment.Forms
             this.label7.Text = "Excel-ə köçür";
             this.label7.Click += new System.EventHandler(this.BtnExportToExcel_Click);
             // 
+            // TmrSetPenalties
+            // 
+            this.TmrSetPenalties.Interval = 3600000;
+            this.TmrSetPenalties.Tick += new System.EventHandler(this.TmrSetPenalties_Tick);
+            // 
             // Reservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,5 +596,6 @@ namespace LibraryManagment.Forms
         private System.Windows.Forms.Button BtnExportToExcel;
         private System.Windows.Forms.FolderBrowserDialog FbdGetExcelFilePath;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer TmrSetPenalties;
     }
 }

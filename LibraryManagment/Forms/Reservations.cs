@@ -46,6 +46,7 @@ namespace LibraryManagment.Forms
             SuccessColor = Color.FromArgb(234, 156, 10);
             FillCmbSearch();
             FillDgvReservations();
+            TmrSetPenalties.Enabled = true;
         }
         
         // Fill DgvReservations
@@ -109,7 +110,7 @@ namespace LibraryManagment.Forms
             {
                 if(reservation.TakenBackAt == null)
                 {
-                    DgvReservations.Rows.Add(reservation.Id, reservation.Client.Name + " " + reservation.Client.Surname, reservation.Client.ClientNumber, reservation.Book.Author.Name, reservation.Book.Name, reservation.Interval + " gün", reservation.User.Name + " " + reservation.User.Surname, reservation.GivenAt.ToString("dd.MM.yyyy"));
+                    DgvReservations.Rows.Add(reservation.Id, reservation.Client.Name + " " + reservation.Client.Surname, reservation.Client.ClientNumber, reservation.Book.Author.Name, reservation.Book.Name, reservation.Interval + " gün", reservation.User.Name + " " + reservation.User.Surname, reservation.GivenAt.ToString("dd.MM.yyyy"), "", "", reservation.Penalty == null ? "0 AZN" : reservation.Penalty?.ToString("0.00") + " AZN");
                 }
                 else
                 {
@@ -459,6 +460,21 @@ namespace LibraryManagment.Forms
         private void Reservations_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainBoard.ReservationsIsOpen = false;
+        }
+
+        private void TmrSetPenalties_Tick(object sender, EventArgs e)
+        {
+            db = new LibraryEntities();
+            List<Reservation> reservs = db.Reservations.Where(r => r.TakenBackAt == null).ToList();
+            foreach (Reservation reservation in reservs)
+            {
+                if (reservation.GivenAt.AddDays(Convert.ToDouble(reservation.Interval)) < DateTime.Now)
+                {
+                    TimeSpan diff = -reservation.GivenAt.AddDays(Convert.ToDouble(reservation.Interval)).Subtract(DateTime.Now);
+                    reservation.Penalty = reservation.Book.Price * 0.1M * Convert.ToDecimal(diff.TotalDays);
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

@@ -64,7 +64,14 @@ namespace LibraryManagment.Forms
             {
                 // Enable the NumericUpDown to set paymeny for lost or damaged books...
                 NumPenalty.Enabled = true;
-                NumPenalty.Value = Reservation.Book.Price * 10;
+                if(CmbBookStatus.SelectedIndex == 3)
+                {
+                    NumPenalty.Value = Reservation.Book.Price * 10;
+                }
+                else
+                {
+                    NumPenalty.Value = Convert.ToDecimal(Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value.ToString().Split(' ')[0]);
+                }
             }
         }
 

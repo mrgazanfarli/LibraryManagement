@@ -97,13 +97,18 @@
             // 
             // BtnFinish
             // 
-            this.BtnFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnFinish.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnFinish.ForeColor = System.Drawing.Color.Azure;
             this.BtnFinish.Location = new System.Drawing.Point(64, 156);
             this.BtnFinish.Name = "BtnFinish";
             this.BtnFinish.Size = new System.Drawing.Size(179, 36);
             this.BtnFinish.TabIndex = 4;
             this.BtnFinish.Text = "Sonlandır";
-            this.BtnFinish.UseVisualStyleBackColor = true;
+            this.BtnFinish.UseVisualStyleBackColor = false;
             this.BtnFinish.Click += new System.EventHandler(this.BtnFinish_Click);
             // 
             // ReturnLostBook

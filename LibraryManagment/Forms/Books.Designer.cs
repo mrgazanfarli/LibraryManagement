@@ -184,34 +184,52 @@
             // 
             // BtnUpdateBook
             // 
+            this.BtnUpdateBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnUpdateBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnUpdateBook.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnUpdateBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnUpdateBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnUpdateBook.ForeColor = System.Drawing.Color.Azure;
             this.BtnUpdateBook.Location = new System.Drawing.Point(10, 254);
             this.BtnUpdateBook.Name = "BtnUpdateBook";
             this.BtnUpdateBook.Size = new System.Drawing.Size(224, 30);
             this.BtnUpdateBook.TabIndex = 6;
             this.BtnUpdateBook.Text = "Dəyişdir";
-            this.BtnUpdateBook.UseVisualStyleBackColor = true;
+            this.BtnUpdateBook.UseVisualStyleBackColor = false;
             this.BtnUpdateBook.Visible = false;
             this.BtnUpdateBook.Click += new System.EventHandler(this.BtnUpdateBook_Click);
             // 
             // BtnDeleteBook
             // 
+            this.BtnDeleteBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnDeleteBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDeleteBook.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnDeleteBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDeleteBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDeleteBook.ForeColor = System.Drawing.Color.Azure;
             this.BtnDeleteBook.Location = new System.Drawing.Point(10, 326);
             this.BtnDeleteBook.Name = "BtnDeleteBook";
             this.BtnDeleteBook.Size = new System.Drawing.Size(224, 30);
             this.BtnDeleteBook.TabIndex = 7;
             this.BtnDeleteBook.Text = "Sil";
-            this.BtnDeleteBook.UseVisualStyleBackColor = true;
+            this.BtnDeleteBook.UseVisualStyleBackColor = false;
             this.BtnDeleteBook.Visible = false;
             this.BtnDeleteBook.Click += new System.EventHandler(this.BtnDeleteBook_Click);
             // 
             // BtnAddBook
             // 
+            this.BtnAddBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnAddBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAddBook.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAddBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAddBook.ForeColor = System.Drawing.Color.Azure;
             this.BtnAddBook.Location = new System.Drawing.Point(10, 290);
             this.BtnAddBook.Name = "BtnAddBook";
             this.BtnAddBook.Size = new System.Drawing.Size(224, 30);
             this.BtnAddBook.TabIndex = 5;
             this.BtnAddBook.Text = "Əlavə et";
-            this.BtnAddBook.UseVisualStyleBackColor = true;
+            this.BtnAddBook.UseVisualStyleBackColor = false;
             this.BtnAddBook.Click += new System.EventHandler(this.BtnAddBook_Click);
             // 
             // NumCount
@@ -282,13 +300,19 @@
             // 
             // BtnAuthors
             // 
-            this.BtnAuthors.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAuthors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnAuthors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAuthors.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAuthors.FlatAppearance.BorderSize = 2;
+            this.BtnAuthors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAuthors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAuthors.ForeColor = System.Drawing.Color.Azure;
             this.BtnAuthors.Location = new System.Drawing.Point(529, 12);
             this.BtnAuthors.Name = "BtnAuthors";
             this.BtnAuthors.Size = new System.Drawing.Size(243, 71);
             this.BtnAuthors.TabIndex = 9;
             this.BtnAuthors.Text = "Müəlliflər cədvəlinə keç";
-            this.BtnAuthors.UseVisualStyleBackColor = true;
+            this.BtnAuthors.UseVisualStyleBackColor = false;
             this.BtnAuthors.Click += new System.EventHandler(this.BtnAuthors_Click);
             // 
             // groupBox1

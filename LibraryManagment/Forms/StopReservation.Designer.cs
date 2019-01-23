@@ -110,13 +110,18 @@
             // 
             // BtnEndReservation
             // 
-            this.BtnEndReservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnEndReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnEndReservation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEndReservation.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnEndReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEndReservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnEndReservation.ForeColor = System.Drawing.Color.Azure;
             this.BtnEndReservation.Location = new System.Drawing.Point(16, 347);
             this.BtnEndReservation.Name = "BtnEndReservation";
             this.BtnEndReservation.Size = new System.Drawing.Size(204, 31);
             this.BtnEndReservation.TabIndex = 6;
             this.BtnEndReservation.Text = "Bitir";
-            this.BtnEndReservation.UseVisualStyleBackColor = true;
+            this.BtnEndReservation.UseVisualStyleBackColor = false;
             this.BtnEndReservation.Click += new System.EventHandler(this.BtnEndReservation_Click);
             // 
             // LblLimitToReturn

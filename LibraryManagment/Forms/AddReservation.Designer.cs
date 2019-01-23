@@ -81,13 +81,18 @@
             // 
             // BtnReserv
             // 
-            this.BtnReserv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnReserv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnReserv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnReserv.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnReserv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnReserv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnReserv.ForeColor = System.Drawing.Color.Azure;
             this.BtnReserv.Location = new System.Drawing.Point(10, 258);
             this.BtnReserv.Name = "BtnReserv";
             this.BtnReserv.Size = new System.Drawing.Size(224, 33);
             this.BtnReserv.TabIndex = 9;
             this.BtnReserv.Text = "Əlavə et";
-            this.BtnReserv.UseVisualStyleBackColor = true;
+            this.BtnReserv.UseVisualStyleBackColor = false;
             this.BtnReserv.Click += new System.EventHandler(this.BtnReserv_Click);
             // 
             // label4

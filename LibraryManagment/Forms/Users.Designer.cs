@@ -175,36 +175,51 @@
             // 
             // BtnAddUser
             // 
+            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAddUser.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAddUser.ForeColor = System.Drawing.Color.Azure;
             this.BtnAddUser.Location = new System.Drawing.Point(9, 365);
             this.BtnAddUser.Name = "BtnAddUser";
             this.BtnAddUser.Size = new System.Drawing.Size(238, 30);
             this.BtnAddUser.TabIndex = 8;
             this.BtnAddUser.Text = " Əlavə et";
-            this.BtnAddUser.UseVisualStyleBackColor = true;
+            this.BtnAddUser.UseVisualStyleBackColor = false;
             this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // BtnDeleteUser
             // 
+            this.BtnDeleteUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnDeleteUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDeleteUser.ForeColor = System.Drawing.Color.Azure;
             this.BtnDeleteUser.Location = new System.Drawing.Point(9, 399);
             this.BtnDeleteUser.Name = "BtnDeleteUser";
             this.BtnDeleteUser.Size = new System.Drawing.Size(238, 30);
             this.BtnDeleteUser.TabIndex = 10;
             this.BtnDeleteUser.Text = "Sil";
-            this.BtnDeleteUser.UseVisualStyleBackColor = true;
+            this.BtnDeleteUser.UseVisualStyleBackColor = false;
             this.BtnDeleteUser.Visible = false;
             this.BtnDeleteUser.Click += new System.EventHandler(this.BtnDeleteUser_Click);
             // 
             // BtnUpdateUser
             // 
+            this.BtnUpdateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnUpdateUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnUpdateUser.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnUpdateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUpdateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnUpdateUser.ForeColor = System.Drawing.Color.Azure;
             this.BtnUpdateUser.Location = new System.Drawing.Point(9, 332);
             this.BtnUpdateUser.Name = "BtnUpdateUser";
             this.BtnUpdateUser.Size = new System.Drawing.Size(238, 30);
             this.BtnUpdateUser.TabIndex = 9;
             this.BtnUpdateUser.Text = "Dəyişdir";
-            this.BtnUpdateUser.UseVisualStyleBackColor = true;
+            this.BtnUpdateUser.UseVisualStyleBackColor = false;
             this.BtnUpdateUser.Visible = false;
             this.BtnUpdateUser.Click += new System.EventHandler(this.BtnUpdateUser_Click);
             // 

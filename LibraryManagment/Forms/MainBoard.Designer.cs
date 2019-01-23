@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBoard));
             this.PnlMain = new System.Windows.Forms.Panel();
             this.LblReservations = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.BtnUsers = new System.Windows.Forms.Button();
             this.BtnClients = new System.Windows.Forms.Button();
             this.BtnBooks = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -340,6 +342,7 @@
         private System.Windows.Forms.Button BtnExit;
         private System.Windows.Forms.Label LblReservations;
         private System.Windows.Forms.Button BtnReservations;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

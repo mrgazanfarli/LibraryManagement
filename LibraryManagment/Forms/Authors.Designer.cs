@@ -87,37 +87,52 @@
             // 
             // BtnUpdate
             // 
-            this.BtnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnUpdate.ForeColor = System.Drawing.Color.Azure;
             this.BtnUpdate.Location = new System.Drawing.Point(10, 111);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(243, 33);
             this.BtnUpdate.TabIndex = 4;
             this.BtnUpdate.Text = "Dəyişdir";
-            this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Visible = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnDelete.ForeColor = System.Drawing.Color.Azure;
             this.BtnDelete.Location = new System.Drawing.Point(10, 183);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(243, 33);
             this.BtnDelete.TabIndex = 3;
             this.BtnDelete.Text = "Sil";
-            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.UseVisualStyleBackColor = false;
             this.BtnDelete.Visible = false;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(142)))), ((int)(((byte)(0)))));
+            this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAdd.ForeColor = System.Drawing.Color.Azure;
             this.BtnAdd.Location = new System.Drawing.Point(10, 147);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(243, 33);
             this.BtnAdd.TabIndex = 2;
             this.BtnAdd.Text = "Əlavə et";
-            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // TxtName
