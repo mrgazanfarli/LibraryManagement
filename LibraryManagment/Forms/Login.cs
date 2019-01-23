@@ -18,6 +18,8 @@ namespace LibraryManagment.Forms
         public Login()
         {
             InitializeComponent();
+            TxtUsername.Text = "mrgazanfarli";
+            TxtPassword.Text = "123";
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)

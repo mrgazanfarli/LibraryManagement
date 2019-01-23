@@ -16,28 +16,31 @@ namespace LibraryManagment
     {
         private readonly LibraryEntities db = new LibraryEntities();
         private User User; // Take the user who logged in
-        public bool BookIsOpen;
-        public bool ClientIsOpen;
-        public bool UserIsOpen;
+        protected internal bool BookIsOpen;
+        protected internal bool ClientIsOpen;
+        protected internal bool UserIsOpen;
+        protected internal bool ReservationsIsOpen;
         public MainBoard(User user)
         {
             InitializeComponent();
             BookIsOpen = false;
             ClientIsOpen = false;
+            ReservationsIsOpen = false;
+            UserIsOpen = false;
             User = user;
-            // if the user is boss, let him/her to see the CRUD of workers(users)...
+            // if the user is boss, let him/her to see the CRUD of workers(users), and Data of Reservations...
             if (!User.IsBoss)
             {
+                BtnReservations.Visible = false;
+                LblReservations.Visible = false;
                 BtnUsers.Visible = false;
                 LblUsers.Visible = false;
+                BtnAdd.Location = new Point(256, 5);
+                LblAdd.Location = new Point(254, 79);
             }
         }
 
-        // Prevent the application from running in the background after it is closed
-        private void MainBoard_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
+        #region Opening Main Forms on click of buttons...
 
         // Open Books form
         private void BtnBooks_Click(object sender, EventArgs e)
@@ -104,7 +107,7 @@ namespace LibraryManagment
             }
             else
             {
-                foreach (Form f in Application.OpenForms) // If Users is not opened, find the opened Books form
+                foreach (Form f in Application.OpenForms) // If Users is not opened, find the opened Users form
                 {
                     if (f.GetType() == form.GetType())
                     {
@@ -114,6 +117,31 @@ namespace LibraryManagment
                 }
             }
         }
+
+        private void BtnReservations_Click(object sender, EventArgs e)
+        {
+            Reservations form = new Reservations(this, User);
+
+            if (!ReservationsIsOpen) // If Reservations form is not opened, open it.
+            {
+                form.Show();
+                ReservationsIsOpen = true; // Reservations is already opened
+                return;
+            }
+            else
+            {
+                foreach (Form f in Application.OpenForms) // If Reservations is not opened, find the opened Reservations form
+                {
+                    if (f.GetType() == form.GetType())
+                    {
+                        f.BringToFront(); // Show the opened form
+                        return;
+                    }
+                }
+            }
+        }
+
+        #endregion
 
         // Exit
         private void BtnExit_Click(object sender, EventArgs e)
@@ -141,6 +169,12 @@ namespace LibraryManagment
         {
             AddReservation ReservForm = new AddReservation(User);
             ReservForm.ShowDialog();
+        }
+
+        // Prevent the application from running in the background after it is closed
+        private void MainBoard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

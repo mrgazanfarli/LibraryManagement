@@ -66,9 +66,12 @@ namespace LibraryManagment.Forms
             this.DtpTo = new System.Windows.Forms.DateTimePicker();
             this.DtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.FbdGetExcelFilePath = new System.Windows.Forms.FolderBrowserDialog();
+            this.BtnExportToExcel = new System.Windows.Forms.Button();
             this.BtnDeleteReservation = new System.Windows.Forms.Button();
             this.BtnStopReservation = new System.Windows.Forms.Button();
             this.BtnAddReservation = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvReservations)).BeginInit();
             this.GrbClientNumber.SuspendLayout();
             this.GrbBookDetails.SuspendLayout();
@@ -254,7 +257,7 @@ namespace LibraryManagment.Forms
             this.GrbBookDetails.Controls.Add(this.label4);
             this.GrbBookDetails.Controls.Add(this.CmbAuthors);
             this.GrbBookDetails.Controls.Add(this.label3);
-            this.GrbBookDetails.Location = new System.Drawing.Point(173, 17);
+            this.GrbBookDetails.Location = new System.Drawing.Point(172, 20);
             this.GrbBookDetails.Name = "GrbBookDetails";
             this.GrbBookDetails.Size = new System.Drawing.Size(417, 74);
             this.GrbBookDetails.TabIndex = 12;
@@ -309,7 +312,7 @@ namespace LibraryManagment.Forms
             // 
             this.GrbUsers.Controls.Add(this.CmbUsers);
             this.GrbUsers.Controls.Add(this.label5);
-            this.GrbUsers.Location = new System.Drawing.Point(173, 11);
+            this.GrbUsers.Location = new System.Drawing.Point(171, 21);
             this.GrbUsers.Name = "GrbUsers";
             this.GrbUsers.Size = new System.Drawing.Size(231, 74);
             this.GrbUsers.TabIndex = 4;
@@ -345,7 +348,7 @@ namespace LibraryManagment.Forms
             this.GrbDateDetails.Controls.Add(this.LblFrom);
             this.GrbDateDetails.Controls.Add(this.DtpTo);
             this.GrbDateDetails.Controls.Add(this.DtpFrom);
-            this.GrbDateDetails.Location = new System.Drawing.Point(173, 11);
+            this.GrbDateDetails.Location = new System.Drawing.Point(170, 17);
             this.GrbDateDetails.Name = "GrbDateDetails";
             this.GrbDateDetails.Size = new System.Drawing.Size(629, 79);
             this.GrbDateDetails.TabIndex = 13;
@@ -396,11 +399,11 @@ namespace LibraryManagment.Forms
             this.DtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpTo.Location = new System.Drawing.Point(417, 42);
-            this.DtpTo.MaxDate = new System.DateTime(2019, 1, 21, 18, 47, 45, 228);
+            this.DtpTo.MaxDate = System.DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
             this.DtpTo.Name = "DtpTo";
             this.DtpTo.Size = new System.Drawing.Size(200, 24);
             this.DtpTo.TabIndex = 1;
-            this.DtpTo.Value = new System.DateTime(2019, 1, 21, 18, 47, 45, 228);
+            this.DtpTo.Value = System.DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
             this.DtpTo.Visible = false;
             this.DtpTo.ValueChanged += new System.EventHandler(this.Dtps_ValueChanged);
             // 
@@ -413,11 +416,11 @@ namespace LibraryManagment.Forms
             this.DtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpFrom.Location = new System.Drawing.Point(166, 43);
-            this.DtpFrom.MaxDate = new System.DateTime(2019, 1, 21, 18, 47, 45, 233);
+            this.DtpFrom.MaxDate = new System.DateTime(2019, 1, 24, 1, 28, 36, 995);
             this.DtpFrom.Name = "DtpFrom";
             this.DtpFrom.Size = new System.Drawing.Size(200, 24);
             this.DtpFrom.TabIndex = 0;
-            this.DtpFrom.Value = new System.DateTime(2019, 1, 21, 18, 47, 45, 233);
+            this.DtpFrom.Value = System.DateTime.Now.Date;
             this.DtpFrom.Visible = false;
             this.DtpFrom.ValueChanged += new System.EventHandler(this.Dtps_ValueChanged);
             // 
@@ -430,6 +433,22 @@ namespace LibraryManagment.Forms
             this.label6.Size = new System.Drawing.Size(310, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "Seçimləri sıfırlamaq üçün boş sahəyə iki dəfə klik edin...";
+            // 
+            // BtnExportToExcel
+            // 
+            this.BtnExportToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExportToExcel.BackColor = System.Drawing.Color.Transparent;
+            this.BtnExportToExcel.BackgroundImage = global::LibraryManagment.Properties.Resources.Excel;
+            this.BtnExportToExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnExportToExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnExportToExcel.FlatAppearance.BorderSize = 0;
+            this.BtnExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExportToExcel.Location = new System.Drawing.Point(1277, 11);
+            this.BtnExportToExcel.Name = "BtnExportToExcel";
+            this.BtnExportToExcel.Size = new System.Drawing.Size(64, 64);
+            this.BtnExportToExcel.TabIndex = 18;
+            this.BtnExportToExcel.UseVisualStyleBackColor = false;
+            this.BtnExportToExcel.Click += new System.EventHandler(this.BtnExportToExcel_Click);
             // 
             // BtnDeleteReservation
             // 
@@ -476,19 +495,32 @@ namespace LibraryManagment.Forms
             this.BtnAddReservation.UseVisualStyleBackColor = false;
             this.BtnAddReservation.Click += new System.EventHandler(this.BtnAddReservation_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label7.Location = new System.Drawing.Point(1274, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Excel-ə köçür";
+            this.label7.Click += new System.EventHandler(this.BtnExportToExcel_Click);
+            // 
             // Reservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 606);
-            this.Controls.Add(this.BtnDeleteReservation);
-            this.Controls.Add(this.BtnStopReservation);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.BtnExportToExcel);
             this.Controls.Add(this.GrbDateDetails);
-            this.Controls.Add(this.BtnAddReservation);
+            this.Controls.Add(this.BtnDeleteReservation);
             this.Controls.Add(this.GrbUsers);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.GrbBookDetails);
+            this.Controls.Add(this.BtnStopReservation);
+            this.Controls.Add(this.BtnAddReservation);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.GrbClientNumber);
             this.Controls.Add(this.CmbSearch);
             this.Controls.Add(this.label1);
@@ -498,6 +530,7 @@ namespace LibraryManagment.Forms
             this.Name = "Reservations";
             this.Text = "Kitab Verilişi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Reservations_FormClosed);
             this.Load += new System.EventHandler(this.Reservations_Load);
             this.DoubleClick += new System.EventHandler(this.Reservations_DoubleClick);
             this.Resize += new System.EventHandler(this.Reservations_Resize);
@@ -516,8 +549,6 @@ namespace LibraryManagment.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView DgvReservations;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CmbSearch;
         private System.Windows.Forms.GroupBox GrbClientNumber;
@@ -554,5 +585,9 @@ namespace LibraryManagment.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox CmbAuthors;
         private System.Windows.Forms.Label label3;
+        protected internal System.Windows.Forms.DataGridView DgvReservations;
+        private System.Windows.Forms.Button BtnExportToExcel;
+        private System.Windows.Forms.FolderBrowserDialog FbdGetExcelFilePath;
+        private System.Windows.Forms.Label label7;
     }
 }

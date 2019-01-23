@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using ClosedXML.Excel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryManagment.Models;
@@ -14,18 +15,20 @@ namespace LibraryManagment.Forms
 {
     public partial class Reservations : Form
     {
-        private readonly LibraryEntities db = new LibraryEntities();
-        private int ClickedRow;
-        private int ClickedId;
+        private LibraryEntities db = new LibraryEntities();
+        protected internal int ClickedRow;
+        protected internal int ClickedId;
         private User User;
         private Color ErrorColor;
         private Color SuccessColor;
         private string[] WhatToSearch;
         private string[] WhichDates;
-        public Reservations(User user)
+        private MainBoard MainBoard;
+        public Reservations(MainBoard mainBoard, User user)
         {
             InitializeComponent();
             User = user;
+            MainBoard = mainBoard;
             WhatToSearch = new string[]
             {
                 "Oxucuya görə",
@@ -45,11 +48,13 @@ namespace LibraryManagment.Forms
             FillDgvReservations();
         }
         
-
         // Fill DgvReservations
-        public void FillDgvReservations()
+        protected internal void FillDgvReservations()
         {
             DgvReservations.Rows.Clear();
+
+            // Do it to prevent errors coming from cached data of database...
+            db = new LibraryEntities();
 
             List<Reservation> reservs = new List<Reservation>();
             if (CmbSearch.SelectedIndex == -1)
@@ -85,11 +90,12 @@ namespace LibraryManagment.Forms
                     reservs = db.Reservations.Where(r => r.TakenBackBy == UserId).OrderByDescending(r => r.GivenAt).ToList();
                 }
             }
-            if(DtpFrom.Value != DateTime.Now.Date)
+            if(CmbWhichDates.SelectedIndex != -1)
             {
                 // When it is required to bring data according to the giving date of books...
                 if(CmbWhichDates.SelectedIndex == 0)
                 {
+                    MessageBox.Show(DtpTo.Value.ToString());
                     reservs = db.Reservations.Where(r => r.GivenAt >= DtpFrom.Value && r.GivenAt <= DtpTo.Value).OrderByDescending(r => r.GivenAt).ToList();
                 }
                 // When it is required to bring data according to the taking back date of books...
@@ -107,7 +113,7 @@ namespace LibraryManagment.Forms
                 }
                 else
                 {
-                    DgvReservations.Rows.Add(reservation.Id, reservation.Client.Name + " " + reservation.Client.Surname, reservation.Client.ClientNumber, reservation.Book.Author.Name, reservation.Book.Name, reservation.Interval + " gün", reservation.User.Name + " " + reservation.User.Surname, reservation.GivenAt.ToString("dd.MM.yyyy"), reservation.User1.Name + " " + reservation.User1.Surname, reservation.TakenBackAt?.ToString("dd.MM.yyyy"), reservation.Penalty?.ToString("0.00") + " AZN", reservation.Case.Status);
+                    DgvReservations.Rows.Add(reservation.Id, reservation.Client.Name + " " + reservation.Client.Surname, reservation.Client.ClientNumber, reservation.Book.Author.Name, reservation.Book.Name, reservation.Interval + " gün", reservation.User.Name + " " + reservation.User.Surname, reservation.GivenAt.ToString("dd.MM.yyyy"), reservation.User1.Name + " " + reservation.User1.Surname, reservation.TakenBackAt?.ToString("dd.MM.yyyy"), reservation.Penalty == null ? "0 AZN" : reservation.Penalty?.ToString("0.00") + " AZN", reservation.Case.Status);
                 }
             }
         }
@@ -178,6 +184,11 @@ namespace LibraryManagment.Forms
         // Decide which group box to show when the selected index of CmbSearch is changed...
         private void CmbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Set the selected indexes -1. Because, when the user selects a book, and then selects Client Search option, the CmbBook's selected index remains. In this case, the FillDgvReservations() method gets CONFUSED AND WORKS IN A WRONG WAY...
+            CmbBooks.SelectedIndex = -1;
+            CmbUsers.SelectedIndex = -1;
+            CmbUsers.SelectedIndex = -1;
+            CmbWhichDates.SelectedIndex = -1;
             GrbClientNumber.Visible = false;
             GrbBookDetails.Visible = false;
             GrbUsers.Visible = false;
@@ -186,6 +197,7 @@ namespace LibraryManagment.Forms
             if (CmbSearch.SelectedIndex == 0)
             {
                 GrbClientNumber.Visible = true;
+                TxtClientNumber.Text = null;
             }
             if (CmbSearch.SelectedIndex == 1)
             {
@@ -272,6 +284,7 @@ namespace LibraryManagment.Forms
         // Fill data grid view Real-Time when the values of DTPs are changed...
         private void Dtps_ValueChanged(object sender, EventArgs e)
         {
+            DtpTo.MinDate = DtpFrom.Value;
             FillDgvReservations();
         }
 
@@ -355,7 +368,15 @@ namespace LibraryManagment.Forms
 
         private void BtnStopReservation_Click(object sender, EventArgs e)
         {
-            StopReservation form = new StopReservation(User, ClickedId);
+            Reservation res = db.Reservations.Find(ClickedId);
+            db = new LibraryEntities();
+            if (res.TakenBackAt == null && res.LimitToReturn != null && res.LimitToReturn != 0)
+            {
+                ReturnLostBook returnLost = new ReturnLostBook(this, User, ClickedId);
+                returnLost.Show();
+                return;
+            }
+            StopReservation form = new StopReservation(this, User, ClickedId);
             form.ShowDialog();
         }
 
@@ -373,18 +394,71 @@ namespace LibraryManagment.Forms
             }
         }
 
-        //private void Test()
-        //{
-        //    DataGridViewCellStyle style = new DataGridViewCellStyle();
-        //    style.BackColor = Color.FromArgb(184, 123, 7);
-        //    style.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in DgvReservations.Rows)
-        //    {
-        //        for(int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            row.Cells[i].Style = style;
-        //        }
-        //    }
-        //}
+        // Create the DataGridView in Excel...
+        private void BtnExportToExcel_Click(object sender, EventArgs e)
+        {
+            string ExcelFilePath;
+            // Open Dialog...
+            DialogResult r = FbdGetExcelFilePath.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                ExcelFilePath = FbdGetExcelFilePath.SelectedPath;
+
+                var WorkBook = new XLWorkbook();
+
+                var ws = WorkBook.Worksheets.Add("Vereq 1");
+
+                // This integer will determine the index of column...
+                int d = 1;
+
+                // Get each cell in each row...
+                for (int i = 0; i < DgvReservations.Rows.Count; i++)
+                {
+                    for (int j = 1; j < DgvReservations.Columns.Count; j++)
+                    {
+                        // Set value and alignment...
+                        ws.Cell(i + 2, j).Value = DgvReservations.Rows[i].Cells[j].Value;
+                        ws.Cell(i + 2, j).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                        ws.Cell(i + 2, j).Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
+                    }
+                }
+
+                // Set Columns...
+                foreach (DataGridViewColumn col in DgvReservations.Columns)
+                {
+                    // Do NOT set Id values...
+                    if (col.HeaderText != "Id")
+                    {
+                        // Set the values and styles...
+                        ws.Cell(1, d).Value = col.HeaderText;
+                        ws.Cell(1, d).Style.Font.FontSize = 13;
+                        ws.Cell(1, d).Style.Fill.BackgroundColor = XLColor.ForestGreen;
+                        ws.Cell(1, d).Style.Font.FontColor = XLColor.White;
+                        ws.Column(d).AdjustToContents();
+                        d++;
+                    }
+                }
+                // Create the file...
+                string FileName = @"\Kitabxana.xlsx";
+                try
+                {
+                    // Try because it can give an error on saving if the Excel file is open...
+                    WorkBook.SaveAs(ExcelFilePath + FileName);
+                    MessageBox.Show("Excel faylı yaradıldı (dəyişdirildi)...");
+                }
+                catch
+                {
+                    MessageBox.Show("Açıq Excel faylını bağlayıb, yenidən cəhd edin!");
+                    return;
+                }
+            }
+            
+
+        }
+
+        private void Reservations_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainBoard.ReservationsIsOpen = false;
+        }
     }
 }

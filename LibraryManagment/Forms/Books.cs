@@ -27,6 +27,7 @@ namespace LibraryManagment.Forms
             Board = board;
             User = user;
             AuthorsIsOpen = false;
+            // If the boss enters, enable the change on number of books, and deleting books...
             if (!User.IsBoss)
             {
                 LblBookCount.Visible = false;
@@ -45,6 +46,8 @@ namespace LibraryManagment.Forms
             FillCmbAuthors();
             FillCmbFindBook();
         }
+
+        #region Filling Combo Boxes
 
         // Fill CmbShowBooks to assume which books to show
         private void FillCmbWhatToShow()
@@ -89,6 +92,8 @@ namespace LibraryManagment.Forms
             }
         }
 
+        #endregion
+
         // Fill DgvBooks According the item selected from CmbShowBooks
         public void FillDgvBooks()
         {
@@ -112,7 +117,9 @@ namespace LibraryManagment.Forms
 
             foreach (Book book in books)
             {
-                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price.ToString("0.00"), book.Count);
+                // Find how many book(s) is(are) in use currently...
+                int BooksInUse = book.Reservations.Where(r => r.TakenBackAt == null).Count();
+                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price.ToString("0.00"), BooksInUse + "/" + book.Count);
             }
         }
 
@@ -132,6 +139,52 @@ namespace LibraryManagment.Forms
             BtnUpdateBook.Visible = false;
         }
 
+        #region Selected index changed events of Combo Boxes
+        // Show the books according to the selected item in CmbShowBooks
+        private void CmbShowBooks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillDgvBooks();
+        }
+
+        // Actions done on selecting author...
+        private void CmbFindAuthor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // prevent the real-time error...
+            if (CmbFindAuthor.SelectedIndex != -1)
+            {
+                DgvBooks.Rows.Clear();
+                CmbFindBook.Items.Clear();
+                // find which author is selected...
+                int authorId = Convert.ToInt32(CmbFindAuthor.SelectedItem.ToString().Split('-')[0]);
+                // get the books of the selected author...
+                List<Book> books = db.Books.Where(b => b.AuthorId == authorId).ToList();
+                foreach (Book book in books)
+                {
+                    DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
+                    // Do not let to select a book of a different author...
+                    CmbFindBook.Items.Add(book.Id + "-" + book.Name);
+                }
+                CmbFindBook.ResetText();
+            }
+        }
+
+        // Actions done on selecting book...
+        private void CmbFindBook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbFindBook.SelectedIndex != -1)
+            {
+                // find which book is selected...
+                int bookId = Convert.ToInt32(CmbFindBook.SelectedItem.ToString().Split('-')[0]);
+                DgvBooks.Rows.Clear();
+                // bring this book's info...
+                Book book = db.Books.Find(bookId);
+                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
+                CmbFindAuthor.SelectedItem = book.Author.Id + "-" + book.Author.Name;
+            }
+        }
+
+        #endregion
+
         // Fill all values and get clicked row (and Id) when the row header is clicked
         private void DgvBooks_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -144,7 +197,7 @@ namespace LibraryManagment.Forms
                 TxtBookName.Text = DgvBooks.Rows[e.RowIndex].Cells[2].Value.ToString();
                 CmbAuthors.SelectedItem = DgvBooks.Rows[e.RowIndex].Cells[1].Value.ToString() + "-" + DgvBooks.Rows[e.RowIndex].Cells[3].Value;
                 NumPrice.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[4].Value.ToString());
-                NumCount.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[5].Value.ToString());
+                NumCount.Value = Convert.ToDecimal(DgvBooks.Rows[e.RowIndex].Cells[5].Value.ToString().Split('/')[1]);
                 BtnUpdateBook.Visible = true;
                 if (User.IsBoss)
                 {
@@ -157,6 +210,8 @@ namespace LibraryManagment.Forms
                 Reset();
             }
         }
+
+        #region CRUD of books...
 
         // Check if the book parameters are correct or not, and the add the book to database, and bring it to the DgvBooks
         private void BtnAddBook_Click(object sender, EventArgs e)
@@ -206,7 +261,7 @@ namespace LibraryManagment.Forms
 
             db.Books.Add(book);
             db.SaveChanges();
-            DgvBooks.Rows.Add(book.Id, book.AuthorId, book.Name, book.Author.Name, book.Price, book.Count);
+            DgvBooks.Rows.Add(book.Id, book.AuthorId, book.Name, book.Author.Name, book.Price, "0/" + book.Count);
             MessageBox.Show("Kitab əlavə olundu!");
             Reset();
         }
@@ -230,11 +285,14 @@ namespace LibraryManagment.Forms
             book.Count = Convert.ToInt32(NumCount.Value);
             db.SaveChanges();
             // Update the data grid view
+            // Find how many book(s) is(are) in use currently...
+            int BooksInUse = book.Reservations.Where(r => r.TakenBackAt == null).Count();
+
             DgvBooks.Rows[clickedRow].Cells[1].Value = book.AuthorId;
             DgvBooks.Rows[clickedRow].Cells[2].Value = book.Name;
             DgvBooks.Rows[clickedRow].Cells[3].Value = book.Author.Name;
             DgvBooks.Rows[clickedRow].Cells[4].Value = book.Price;
-            DgvBooks.Rows[clickedRow].Cells[5].Value = book.Count;
+            DgvBooks.Rows[clickedRow].Cells[5].Value = BooksInUse + "/" + book.Count;
             // Got done with data grid view
             MessageBox.Show("Kitab dəyişdirildi");
             Reset();
@@ -257,11 +315,7 @@ namespace LibraryManagment.Forms
             }
         }
 
-        // Show the books according to the selected item in CmbShowBooks
-        private void CmbShowBooks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FillDgvBooks();
-        }
+        #endregion
 
         // Empty the inputs
         private void Books_Click(object sender, EventArgs e)
@@ -283,43 +337,6 @@ namespace LibraryManagment.Forms
             {
                 form.ShowDialog();
                 return;
-            }
-        }
-
-        // Actions done on selecting author...
-        private void CmbFindAuthor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // prevent the real-time error...
-            if(CmbFindAuthor.SelectedIndex != -1)
-            {
-                DgvBooks.Rows.Clear();
-                CmbFindBook.Items.Clear();
-                // find which author is selected...
-                int authorId = Convert.ToInt32(CmbFindAuthor.SelectedItem.ToString().Split('-')[0]);
-                // get the books of the selected author...
-                List<Book> books = db.Books.Where(b => b.AuthorId == authorId).ToList();
-                foreach (Book book in books)
-                {
-                    DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
-                    // Do not let to select a book of a different author...
-                    CmbFindBook.Items.Add(book.Id + "-" + book.Name);
-                }
-                CmbFindBook.ResetText();
-            }
-        }
-        
-        // Actions done on selecting book...
-        private void CmbFindBook_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CmbFindBook.SelectedIndex != -1)
-            {
-                // find which book is selected...
-                int bookId = Convert.ToInt32(CmbFindBook.SelectedItem.ToString().Split('-')[0]);
-                DgvBooks.Rows.Clear();
-                // bring this book's info...
-                Book book = db.Books.Find(bookId);
-                DgvBooks.Rows.Add(book.Id, book.Author.Id, book.Name, book.Author.Name, book.Price, book.Count);
-                CmbFindAuthor.SelectedItem = book.Author.Id + "-" + book.Author.Name;
             }
         }
     }

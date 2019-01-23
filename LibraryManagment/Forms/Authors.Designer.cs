@@ -145,6 +145,7 @@
             this.ClientSize = new System.Drawing.Size(586, 352);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvAuthors);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Authors";

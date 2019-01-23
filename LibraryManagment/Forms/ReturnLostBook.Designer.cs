@@ -116,7 +116,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReturnLostBook";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "İtirilmiş kitab";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

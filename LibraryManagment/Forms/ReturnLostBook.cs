@@ -61,9 +61,9 @@ namespace LibraryManagment.Forms
             db.SaveChanges();
             MessageBox.Show("Bitirildi...");
             // Update the Data Grid View in Reservations form...
-            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[8].Value = res.User1.Name + " " + res.User1.Surname;
+            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[8].Value = User.Name + " " + User.Surname;
             Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[9].Value = res.TakenBackAt?.ToString("dd.MM.yyyy");
-            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value = res.Penalty?.ToString("0.00");
+            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value = res.Penalty?.ToString("0.00") + " AZN";
             Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[11].Value = res.Case.Status;
 
             this.Close();

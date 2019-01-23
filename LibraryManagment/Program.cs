@@ -19,7 +19,7 @@ namespace LibraryManagment
             LibraryEntities db = new LibraryEntities();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Reservations(db.Users.Find(1)));
+            Application.Run(new Login());
         }
     }
 }

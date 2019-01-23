@@ -15,13 +15,15 @@ namespace LibraryManagment.Forms
     {
         private readonly LibraryEntities db = new LibraryEntities();
         private int ReservationId;
+        private Reservations Reservations;
         private User User;
         private Reservation Reservation;
-        public StopReservation(User user, int reservationId)
+        public StopReservation(Reservations reservations, User user, int reservationId)
         {
             InitializeComponent();
             ReservationId = reservationId;
             User = user;
+            Reservations = reservations;
             Reservation = db.Reservations.Find(ReservationId);
             FillCmbBookStatusAndNumPenalty();
         }
@@ -51,6 +53,7 @@ namespace LibraryManagment.Forms
             NumPenalty.Enabled = false;
             LblLimitToReturn.Enabled = false;
             NumLimitToReturn.Enabled = false;
+            NumPenalty.Value = 0;
             if (RbtnGiveChance.Checked)
             {
                 // Enable the items to set the days to return the book...
@@ -61,6 +64,7 @@ namespace LibraryManagment.Forms
             {
                 // Enable the NumericUpDown to set paymeny for lost or damaged books...
                 NumPenalty.Enabled = true;
+                NumPenalty.Value = Reservation.Book.Price * 10;
             }
         }
 
@@ -80,14 +84,13 @@ namespace LibraryManagment.Forms
             }
             if (CmbBookStatus.SelectedIndex != -1 && CmbBookStatus.SelectedIndex != 0)
             {
-                RbtnGiveChance.Enabled = true;
                 RbtnNoOptions.Enabled = true;
                 RbtnSetPayment.Enabled = true;
             }
             // If book was lost, then set the 10 times of book's price as a penalty and do not apply other penalties...
             if(CmbBookStatus.SelectedIndex == 3)
             {
-                NumPenalty.Value = Reservation.Book.Price * 10;
+                RbtnGiveChance.Enabled = true;
                 TxtComment.Text = "İtirilib!";
             }
             else
@@ -118,6 +121,10 @@ namespace LibraryManagment.Forms
             }
             db.SaveChanges();
             MessageBox.Show("Kitab qaytarıldı...");
+            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[8].Value = User.Name + " " + User.Surname;
+            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[9].Value = Reservation.TakenBackAt?.ToString("dd.MM.yyyy");
+            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value = Reservation.Penalty?.ToString("0.00") + " AZN";
+            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[11].Value = Reservation.Case.Status;
             this.Close();
         }
     }
