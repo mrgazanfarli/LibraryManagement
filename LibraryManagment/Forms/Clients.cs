@@ -216,5 +216,9 @@ namespace LibraryManagment.Forms
             Board.ClientIsOpen = false;
         }
 
+        private void BtnGetBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

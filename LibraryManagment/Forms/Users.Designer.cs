@@ -38,6 +38,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnShowPassword = new System.Windows.Forms.Button();
             this.TxtPhone = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnAddUser = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.CmbUsersShown = new System.Windows.Forms.ComboBox();
+            this.BtnGetBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +69,7 @@
             this.DgvUsers.AllowUserToDeleteRows = false;
             this.DgvUsers.AllowUserToOrderColumns = true;
             this.DgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(188)))), ((int)(((byte)(92)))));
             this.DgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -130,6 +133,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtnShowPassword);
             this.groupBox1.Controls.Add(this.TxtPhone);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.BtnAddUser);
@@ -154,6 +158,21 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İstifadəçi";
+            // 
+            // BtnShowPassword
+            // 
+            this.BtnShowPassword.BackColor = System.Drawing.Color.Transparent;
+            this.BtnShowPassword.BackgroundImage = global::LibraryManagment.Properties.Resources.Eye;
+            this.BtnShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnShowPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnShowPassword.FlatAppearance.BorderSize = 0;
+            this.BtnShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnShowPassword.Location = new System.Drawing.Point(223, 273);
+            this.BtnShowPassword.Name = "BtnShowPassword";
+            this.BtnShowPassword.Size = new System.Drawing.Size(25, 24);
+            this.BtnShowPassword.TabIndex = 15;
+            this.BtnShowPassword.UseVisualStyleBackColor = false;
+            this.BtnShowPassword.Click += new System.EventHandler(this.BtnShowPassword_Click);
             // 
             // TxtPhone
             // 
@@ -181,7 +200,7 @@
             this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAddUser.ForeColor = System.Drawing.Color.Azure;
-            this.BtnAddUser.Location = new System.Drawing.Point(9, 365);
+            this.BtnAddUser.Location = new System.Drawing.Point(9, 367);
             this.BtnAddUser.Name = "BtnAddUser";
             this.BtnAddUser.Size = new System.Drawing.Size(238, 30);
             this.BtnAddUser.TabIndex = 8;
@@ -197,7 +216,7 @@
             this.BtnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDeleteUser.ForeColor = System.Drawing.Color.Azure;
-            this.BtnDeleteUser.Location = new System.Drawing.Point(9, 399);
+            this.BtnDeleteUser.Location = new System.Drawing.Point(9, 401);
             this.BtnDeleteUser.Name = "BtnDeleteUser";
             this.BtnDeleteUser.Size = new System.Drawing.Size(238, 30);
             this.BtnDeleteUser.TabIndex = 10;
@@ -214,7 +233,7 @@
             this.BtnUpdateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUpdateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdateUser.ForeColor = System.Drawing.Color.Azure;
-            this.BtnUpdateUser.Location = new System.Drawing.Point(9, 332);
+            this.BtnUpdateUser.Location = new System.Drawing.Point(9, 334);
             this.BtnUpdateUser.Name = "BtnUpdateUser";
             this.BtnUpdateUser.Size = new System.Drawing.Size(238, 30);
             this.BtnUpdateUser.TabIndex = 9;
@@ -236,7 +255,7 @@
             // 
             this.RbtnNotBoss.AutoSize = true;
             this.RbtnNotBoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RbtnNotBoss.Location = new System.Drawing.Point(145, 296);
+            this.RbtnNotBoss.Location = new System.Drawing.Point(145, 299);
             this.RbtnNotBoss.Name = "RbtnNotBoss";
             this.RbtnNotBoss.Size = new System.Drawing.Size(102, 22);
             this.RbtnNotBoss.TabIndex = 7;
@@ -248,7 +267,7 @@
             // 
             this.RbtnIsBoss.AutoSize = true;
             this.RbtnIsBoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RbtnIsBoss.Location = new System.Drawing.Point(9, 296);
+            this.RbtnIsBoss.Location = new System.Drawing.Point(9, 299);
             this.RbtnIsBoss.Name = "RbtnIsBoss";
             this.RbtnIsBoss.Size = new System.Drawing.Size(85, 22);
             this.RbtnIsBoss.TabIndex = 6;
@@ -358,11 +377,27 @@
             this.CmbUsersShown.TabIndex = 11;
             this.CmbUsersShown.SelectedIndexChanged += new System.EventHandler(this.CmbUsersShown_SelectedIndexChanged);
             // 
+            // BtnGetBack
+            // 
+            this.BtnGetBack.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGetBack.BackgroundImage = global::LibraryManagment.Properties.Resources.back;
+            this.BtnGetBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnGetBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnGetBack.FlatAppearance.BorderSize = 0;
+            this.BtnGetBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGetBack.Location = new System.Drawing.Point(1288, 12);
+            this.BtnGetBack.Name = "BtnGetBack";
+            this.BtnGetBack.Size = new System.Drawing.Size(70, 70);
+            this.BtnGetBack.TabIndex = 12;
+            this.BtnGetBack.UseVisualStyleBackColor = false;
+            this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 528);
+            this.ClientSize = new System.Drawing.Size(1370, 528);
+            this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.CmbUsersShown);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
@@ -412,5 +447,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Button BtnShowPassword;
+        private System.Windows.Forms.Button BtnGetBack;
     }
 }

@@ -9,34 +9,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reservations">
-      <EntityTypeMapping TypeName="LibraryModel.Reservation">
-        <MappingFragment StoreEntitySet="Reservations">
-          <ScalarProperty Name="LimitToReturn" ColumnName="LimitToReturn" />
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="LibraryModel.Author">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-          <ScalarProperty Name="BookId" ColumnName="BookId" />
-          <ScalarProperty Name="Interval" ColumnName="Interval" />
-          <ScalarProperty Name="GivenBy" ColumnName="GivenBy" />
-          <ScalarProperty Name="GivenAt" ColumnName="GivenAt" />
-          <ScalarProperty Name="TakenBackBy" ColumnName="TakenBackBy" />
-          <ScalarProperty Name="TakenBackAt" ColumnName="TakenBackAt" />
-          <ScalarProperty Name="Penalty" ColumnName="Penalty" />
-          <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="LibraryModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="LibraryModel.Book">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="IsBoss" ColumnName="IsBoss" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -54,20 +42,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Authors">
-      <EntityTypeMapping TypeName="LibraryModel.Author">
-        <MappingFragment StoreEntitySet="Authors">
-          <ScalarProperty Name="Name" ColumnName="Name" />
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="LibraryModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="LimitToReturn" ColumnName="LimitToReturn" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
+          <ScalarProperty Name="Penalty" ColumnName="Penalty" />
+          <ScalarProperty Name="TakenBackAt" ColumnName="TakenBackAt" />
+          <ScalarProperty Name="TakenBackBy" ColumnName="TakenBackBy" />
+          <ScalarProperty Name="GivenAt" ColumnName="GivenAt" />
+          <ScalarProperty Name="GivenBy" ColumnName="GivenBy" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Books">
-      <EntityTypeMapping TypeName="LibraryModel.Book">
-        <MappingFragment StoreEntitySet="Books">
-          <ScalarProperty Name="Count" ColumnName="Count" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LibraryModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IsBoss" ColumnName="IsBoss" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

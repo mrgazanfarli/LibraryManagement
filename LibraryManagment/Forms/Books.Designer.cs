@@ -57,6 +57,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.CmbFindAuthor = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.BtnGetBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).BeginInit();
             this.GrbCrud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumCount)).BeginInit();
@@ -89,6 +90,7 @@
             this.DgvBooks.AllowUserToAddRows = false;
             this.DgvBooks.AllowUserToDeleteRows = false;
             this.DgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvBooks.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(188)))), ((int)(((byte)(92)))));
             this.DgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -369,17 +371,34 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Müəllif:";
             // 
+            // BtnGetBack
+            // 
+            this.BtnGetBack.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGetBack.BackgroundImage = global::LibraryManagment.Properties.Resources.back;
+            this.BtnGetBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnGetBack.FlatAppearance.BorderSize = 0;
+            this.BtnGetBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGetBack.Location = new System.Drawing.Point(1277, 0);
+            this.BtnGetBack.Name = "BtnGetBack";
+            this.BtnGetBack.Size = new System.Drawing.Size(80, 80);
+            this.BtnGetBack.TabIndex = 11;
+            this.BtnGetBack.UseVisualStyleBackColor = false;
+            this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
+            // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 481);
+            this.ControlBox = false;
+            this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnAuthors);
             this.Controls.Add(this.GrbCrud);
             this.Controls.Add(this.DgvBooks);
             this.Controls.Add(this.CmbShowBooks);
             this.Controls.Add(this.label1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Books";
@@ -429,5 +448,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox CmbFindAuthor;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button BtnGetBack;
     }
 }

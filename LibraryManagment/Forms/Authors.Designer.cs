@@ -46,6 +46,7 @@
             this.DgvAuthors.AllowUserToAddRows = false;
             this.DgvAuthors.AllowUserToDeleteRows = false;
             this.DgvAuthors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvAuthors.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(188)))), ((int)(((byte)(92)))));
             this.DgvAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAuthors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,

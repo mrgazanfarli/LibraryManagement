@@ -96,7 +96,6 @@ namespace LibraryManagment.Forms
                 // When it is required to bring data according to the giving date of books...
                 if(CmbWhichDates.SelectedIndex == 0)
                 {
-                    MessageBox.Show(DtpTo.Value.ToString());
                     reservs = db.Reservations.Where(r => r.GivenAt >= DtpFrom.Value && r.GivenAt <= DtpTo.Value).OrderByDescending(r => r.GivenAt).ToList();
                 }
                 // When it is required to bring data according to the taking back date of books...
@@ -419,8 +418,6 @@ namespace LibraryManagment.Forms
                     {
                         // Set value and alignment...
                         ws.Cell(i + 2, j).Value = DgvReservations.Rows[i].Cells[j].Value;
-                        ws.Cell(i + 2, j).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-                        ws.Cell(i + 2, j).Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
                     }
                 }
 
@@ -436,6 +433,8 @@ namespace LibraryManagment.Forms
                         ws.Cell(1, d).Style.Fill.BackgroundColor = XLColor.ForestGreen;
                         ws.Cell(1, d).Style.Font.FontColor = XLColor.White;
                         ws.Column(d).AdjustToContents();
+                        ws.Column(d).Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
+                        ws.Column(d).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                         d++;
                     }
                 }
@@ -457,24 +456,41 @@ namespace LibraryManagment.Forms
 
         }
 
+        // Set Reservations form as closed in the Main Board...
         private void Reservations_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainBoard.ReservationsIsOpen = false;
         }
 
+        // Add a timer to calculate the penalties at each hour...
         private void TmrSetPenalties_Tick(object sender, EventArgs e)
         {
             db = new LibraryEntities();
+            // Take all untaken books...
             List<Reservation> reservs = db.Reservations.Where(r => r.TakenBackAt == null).ToList();
             foreach (Reservation reservation in reservs)
             {
                 if (reservation.GivenAt.AddDays(Convert.ToDouble(reservation.Interval)) < DateTime.Now)
                 {
+                    // Set penalty for each delaying days...
                     TimeSpan diff = -reservation.GivenAt.AddDays(Convert.ToDouble(reservation.Interval)).Subtract(DateTime.Now);
                     reservation.Penalty = reservation.Book.Price * 0.1M * Convert.ToDecimal(diff.TotalDays);
                     db.SaveChanges();
                 }
             }
+        }
+
+        // Reservation's comment to the RtbComment...
+        private void DgvReservations_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int ResId = Convert.ToInt32(DgvReservations.Rows[e.RowIndex].Cells[0].Value.ToString());
+            Reservation res = db.Reservations.Find(ResId);
+            RtbComment.Text = res.Comment == null ? "" : res.Comment;
+        }
+
+        private void BtnGetBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

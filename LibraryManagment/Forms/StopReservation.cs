@@ -18,12 +18,22 @@ namespace LibraryManagment.Forms
         private Reservations Reservations;
         private User User;
         private Reservation Reservation;
+        private MainBoard MainBoard;
         public StopReservation(Reservations reservations, User user, int reservationId)
         {
             InitializeComponent();
             ReservationId = reservationId;
             User = user;
             Reservations = reservations;
+            Reservation = db.Reservations.Find(ReservationId);
+            FillCmbBookStatusAndNumPenalty();
+        }
+        public StopReservation(MainBoard mainBoard, User user, int reservationId)
+        {
+            InitializeComponent();
+            ReservationId = reservationId;
+            User = user;
+            MainBoard = mainBoard;
             Reservation = db.Reservations.Find(ReservationId);
             FillCmbBookStatusAndNumPenalty();
         }
@@ -128,11 +138,19 @@ namespace LibraryManagment.Forms
             }
             db.SaveChanges();
             MessageBox.Show("Kitab qaytarıldı...");
-            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[8].Value = User.Name + " " + User.Surname;
-            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[9].Value = Reservation.TakenBackAt?.ToString("dd.MM.yyyy");
-            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value = Reservation.Penalty?.ToString("0.00") + " AZN";
-            Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[11].Value = Reservation.Case.Status;
+            if(Reservations != null)
+            {
+                Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[8].Value = User.Name + " " + User.Surname;
+                Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[9].Value = Reservation.TakenBackAt?.ToString("dd.MM.yyyy");
+                Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value = Reservation.Penalty?.ToString("0.00") + " AZN";
+                Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[11].Value = Reservation.Case.Status;
+            }
+            if(MainBoard != null)
+            {
+                MainBoard.CreateLateBooksPanels();
+            }
             this.Close();
         }
+
     }
 }

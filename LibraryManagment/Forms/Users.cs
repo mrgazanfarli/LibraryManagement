@@ -16,12 +16,16 @@ namespace LibraryManagment.Forms
         private readonly LibraryEntities db = new LibraryEntities();
         private int clickedId;
         private int clickedRow;
+        private bool ShowPassword;
         private string[] CmbItems;
         private MainBoard Board;
-        public Users(MainBoard board)
+        private User EnteredUser;
+        public Users(MainBoard board, User enteredUser)
         {
             InitializeComponent();
             Board = board;
+            EnteredUser = enteredUser;
+            ShowPassword = false;
             CmbItems = new string[]
             {
                 "Hamısı",
@@ -31,12 +35,15 @@ namespace LibraryManagment.Forms
             FillCmbUsersShown();
             FillDgvUsers();
         }
+
+        // Fill Combo Box of users...
         private void FillCmbUsersShown()
         {
             CmbUsersShown.Items.Clear();
             CmbUsersShown.Items.AddRange(CmbItems);
         }
 
+        // Fill DataGridView taking into account the selection of the user...
         private void FillDgvUsers()
         {
             DgvUsers.Rows.Clear();
@@ -124,6 +131,12 @@ namespace LibraryManagment.Forms
                 TxtUsername.ResetText();
                 return;
             }
+            // Do not allow spaces in usernames...
+            if(TxtUsername.Text.Contains(' '))
+            {
+                MessageBox.Show("İstifadəçi adında boşluq istifadə etməyin!");
+                return;
+            }
 
             User user = new User
             {
@@ -158,6 +171,12 @@ namespace LibraryManagment.Forms
                 TxtUsername.ResetText();
                 return;
             }
+            // Do not allow spaces in usernames...
+            if (TxtUsername.Text.Contains(' '))
+            {
+                MessageBox.Show("İstifadəçi adında boşluq istifadə etməyin!");
+                return;
+            }
             User user = db.Users.Find(clickedId);
             user.Name = TxtName.Text;
             user.Surname = TxtSurname.Text;
@@ -166,6 +185,17 @@ namespace LibraryManagment.Forms
             user.IsBoss = RbtnIsBoss.Checked ? true : false;
             user.Phone = TxtPhone.Text;
             db.SaveChanges();
+            if(clickedId == EnteredUser.Id)
+            {
+                MessageBox.Show("Yenidən giriş edin...");
+                foreach (Form form in Application.OpenForms)
+                {
+                    form.Hide();
+                }
+                Login login = new Login();
+                login.Show();
+                return;
+            }
             // Update the data grid view
             DgvUsers.Rows[clickedRow].Cells[1].Value = user.Name;
             DgvUsers.Rows[clickedRow].Cells[2].Value = user.Surname;
@@ -178,6 +208,7 @@ namespace LibraryManagment.Forms
             Reset();
         }
 
+        // Delete selected user...
         private void BtnDeleteUser_Click(object sender, EventArgs e)
 
         {
@@ -198,11 +229,13 @@ namespace LibraryManagment.Forms
 
         }
 
+        // Fill DataGridView according to the CmbUsersShown
         private void CmbUsersShown_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillDgvUsers();
         }
 
+        // Reset values on click of the form itself...
         private void Users_Click(object sender, EventArgs e)
         {
             Reset();
@@ -212,6 +245,28 @@ namespace LibraryManagment.Forms
         private void Users_FormClosed(object sender, FormClosedEventArgs e)
         {
             Board.UserIsOpen = false;
+        }
+
+        // Function of showing password...
+        private void BtnShowPassword_Click(object sender, EventArgs e)
+        {
+            if (!ShowPassword)
+            {
+                TxtPassword.UseSystemPasswordChar = false;
+                BtnShowPassword.BackgroundImage = Properties.Resources.EyeOrange;
+                ShowPassword = true;
+            }
+            else
+            {
+                TxtPassword.UseSystemPasswordChar = true;
+                BtnShowPassword.BackgroundImage = Properties.Resources.Eye;
+                ShowPassword = false;
+            }
+        }
+
+        private void BtnGetBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

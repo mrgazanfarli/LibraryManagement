@@ -51,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.BtnGetBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvClients)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumBookLimit)).BeginInit();
@@ -81,6 +82,7 @@
             this.DgvClients.AllowUserToAddRows = false;
             this.DgvClients.AllowUserToDeleteRows = false;
             this.DgvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(188)))), ((int)(((byte)(92)))));
             this.DgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -301,11 +303,27 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Ad";
             // 
+            // BtnGetBack
+            // 
+            this.BtnGetBack.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGetBack.BackgroundImage = global::LibraryManagment.Properties.Resources.back;
+            this.BtnGetBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnGetBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnGetBack.FlatAppearance.BorderSize = 0;
+            this.BtnGetBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGetBack.Location = new System.Drawing.Point(1287, 12);
+            this.BtnGetBack.Name = "BtnGetBack";
+            this.BtnGetBack.Size = new System.Drawing.Size(70, 70);
+            this.BtnGetBack.TabIndex = 12;
+            this.BtnGetBack.UseVisualStyleBackColor = false;
+            this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
+            // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 452);
+            this.ClientSize = new System.Drawing.Size(1370, 452);
+            this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvClients);
             this.Controls.Add(this.CmbShowClients);
@@ -350,5 +368,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Button BtnGetBack;
     }
 }

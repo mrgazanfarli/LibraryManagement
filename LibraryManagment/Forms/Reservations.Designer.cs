@@ -68,17 +68,23 @@ namespace LibraryManagment.Forms
             this.DtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.FbdGetExcelFilePath = new System.Windows.Forms.FolderBrowserDialog();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TmrSetPenalties = new System.Windows.Forms.Timer(this.components);
             this.BtnExportToExcel = new System.Windows.Forms.Button();
             this.BtnDeleteReservation = new System.Windows.Forms.Button();
             this.BtnStopReservation = new System.Windows.Forms.Button();
             this.BtnAddReservation = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.TmrSetPenalties = new System.Windows.Forms.Timer(this.components);
+            this.PnlComment = new System.Windows.Forms.Panel();
+            this.RtbComment = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.BtnGetBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvReservations)).BeginInit();
             this.GrbClientNumber.SuspendLayout();
             this.GrbBookDetails.SuspendLayout();
             this.GrbUsers.SuspendLayout();
             this.GrbDateDetails.SuspendLayout();
+            this.PnlComment.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvReservations
@@ -108,6 +114,7 @@ namespace LibraryManagment.Forms
             this.DgvReservations.Size = new System.Drawing.Size(1346, 310);
             this.DgvReservations.TabIndex = 0;
             this.DgvReservations.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvReservations_RowHeaderMouseClick);
+            this.DgvReservations.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvReservations_RowHeaderMouseDoubleClick);
             // 
             // Column1
             // 
@@ -436,6 +443,22 @@ namespace LibraryManagment.Forms
             this.label6.TabIndex = 14;
             this.label6.Text = "Seçimləri sıfırlamaq üçün boş sahəyə iki dəfə klik edin...";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label7.Location = new System.Drawing.Point(1183, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Excel-ə köçür";
+            this.label7.Click += new System.EventHandler(this.BtnExportToExcel_Click);
+            // 
+            // TmrSetPenalties
+            // 
+            this.TmrSetPenalties.Interval = 3600000;
+            this.TmrSetPenalties.Tick += new System.EventHandler(this.TmrSetPenalties_Tick);
+            // 
             // BtnExportToExcel
             // 
             this.BtnExportToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -445,7 +468,7 @@ namespace LibraryManagment.Forms
             this.BtnExportToExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnExportToExcel.FlatAppearance.BorderSize = 0;
             this.BtnExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnExportToExcel.Location = new System.Drawing.Point(1277, 11);
+            this.BtnExportToExcel.Location = new System.Drawing.Point(1186, 15);
             this.BtnExportToExcel.Name = "BtnExportToExcel";
             this.BtnExportToExcel.Size = new System.Drawing.Size(64, 64);
             this.BtnExportToExcel.TabIndex = 18;
@@ -485,7 +508,7 @@ namespace LibraryManagment.Forms
             // BtnAddReservation
             // 
             this.BtnAddReservation.BackColor = System.Drawing.Color.White;
-            this.BtnAddReservation.BackgroundImage = global::LibraryManagment.Properties.Resources.book_and_plus_sign;
+            this.BtnAddReservation.BackgroundImage = global::LibraryManagment.Properties.Resources.AddBook;
             this.BtnAddReservation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BtnAddReservation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAddReservation.FlatAppearance.BorderSize = 0;
@@ -497,28 +520,75 @@ namespace LibraryManagment.Forms
             this.BtnAddReservation.UseVisualStyleBackColor = false;
             this.BtnAddReservation.Click += new System.EventHandler(this.BtnAddReservation_Click);
             // 
-            // label7
+            // PnlComment
             // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Location = new System.Drawing.Point(1274, 77);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Excel-ə köçür";
-            this.label7.Click += new System.EventHandler(this.BtnExportToExcel_Click);
+            this.PnlComment.AutoSize = true;
+            this.PnlComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(76)))), ((int)(((byte)(26)))));
+            this.PnlComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PnlComment.Controls.Add(this.RtbComment);
+            this.PnlComment.Controls.Add(this.label8);
+            this.PnlComment.Location = new System.Drawing.Point(12, 525);
+            this.PnlComment.Name = "PnlComment";
+            this.PnlComment.Size = new System.Drawing.Size(1334, 212);
+            this.PnlComment.TabIndex = 20;
             // 
-            // TmrSetPenalties
+            // RtbComment
             // 
-            this.TmrSetPenalties.Interval = 3600000;
-            this.TmrSetPenalties.Tick += new System.EventHandler(this.TmrSetPenalties_Tick);
+            this.RtbComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(76)))), ((int)(((byte)(26)))));
+            this.RtbComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RtbComment.ForeColor = System.Drawing.Color.Azure;
+            this.RtbComment.Location = new System.Drawing.Point(20, 39);
+            this.RtbComment.Name = "RtbComment";
+            this.RtbComment.ReadOnly = true;
+            this.RtbComment.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.RtbComment.Size = new System.Drawing.Size(1297, 162);
+            this.RtbComment.TabIndex = 1;
+            this.RtbComment.Text = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.Color.Azure;
+            this.label8.Location = new System.Drawing.Point(16, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 24);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Rəy";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 508);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(288, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Rəyləri görmək üçün müvafiq sıra başlığına iki dəfə tıklayın...";
+            // 
+            // BtnGetBack
+            // 
+            this.BtnGetBack.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGetBack.BackgroundImage = global::LibraryManagment.Properties.Resources.back;
+            this.BtnGetBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnGetBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnGetBack.FlatAppearance.BorderSize = 0;
+            this.BtnGetBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGetBack.Location = new System.Drawing.Point(1278, 12);
+            this.BtnGetBack.Name = "BtnGetBack";
+            this.BtnGetBack.Size = new System.Drawing.Size(80, 80);
+            this.BtnGetBack.TabIndex = 22;
+            this.BtnGetBack.UseVisualStyleBackColor = false;
+            this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
             // 
             // Reservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1370, 606);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.BtnGetBack);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.PnlComment);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.BtnExportToExcel);
             this.Controls.Add(this.GrbDateDetails);
@@ -550,6 +620,8 @@ namespace LibraryManagment.Forms
             this.GrbUsers.PerformLayout();
             this.GrbDateDetails.ResumeLayout(false);
             this.GrbDateDetails.PerformLayout();
+            this.PnlComment.ResumeLayout(false);
+            this.PnlComment.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,5 +669,10 @@ namespace LibraryManagment.Forms
         private System.Windows.Forms.FolderBrowserDialog FbdGetExcelFilePath;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer TmrSetPenalties;
+        private System.Windows.Forms.Panel PnlComment;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RichTextBox RtbComment;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button BtnGetBack;
     }
 }

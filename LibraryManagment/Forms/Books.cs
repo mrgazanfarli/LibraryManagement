@@ -339,5 +339,10 @@ namespace LibraryManagment.Forms
                 return;
             }
         }
+
+        private void BtnGetBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
