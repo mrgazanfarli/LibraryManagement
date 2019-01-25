@@ -30,7 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBoard));
-            this.PnlMain = new System.Windows.Forms.Panel();
+            this.PnlNavigation = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.BtnColorSettings = new System.Windows.Forms.Button();
             this.LblReservations = new System.Windows.Forms.Label();
             this.BtnReservations = new System.Windows.Forms.Button();
             this.LblAdd = new System.Windows.Forms.Label();
@@ -45,35 +47,71 @@
             this.BtnClients = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnBooks = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.TmrSetPenalties = new System.Windows.Forms.Timer(this.components);
-            this.PnlMain.SuspendLayout();
+            this.ClrMainPanelBack = new System.Windows.Forms.ColorDialog();
+            this.label5 = new System.Windows.Forms.Label();
+            this.BtnResetColors = new System.Windows.Forms.Button();
+            this.PnlNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // PnlMain
+            // PnlNavigation
             // 
-            this.PnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PnlNavigation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PnlMain.AutoSize = true;
-            this.PnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(64)))));
-            this.PnlMain.Controls.Add(this.LblReservations);
-            this.PnlMain.Controls.Add(this.BtnReservations);
-            this.PnlMain.Controls.Add(this.LblAdd);
-            this.PnlMain.Controls.Add(this.BtnAdd);
-            this.PnlMain.Controls.Add(this.label3);
-            this.PnlMain.Controls.Add(this.BtnLogout);
-            this.PnlMain.Controls.Add(this.LblExit);
-            this.PnlMain.Controls.Add(this.BtnExit);
-            this.PnlMain.Controls.Add(this.LblUsers);
-            this.PnlMain.Controls.Add(this.BtnUsers);
-            this.PnlMain.Controls.Add(this.label2);
-            this.PnlMain.Controls.Add(this.BtnClients);
-            this.PnlMain.Controls.Add(this.label1);
-            this.PnlMain.Controls.Add(this.BtnBooks);
-            this.PnlMain.Location = new System.Drawing.Point(0, 0);
-            this.PnlMain.Name = "PnlMain";
-            this.PnlMain.Size = new System.Drawing.Size(1385, 100);
-            this.PnlMain.TabIndex = 0;
+            this.PnlNavigation.AutoSize = true;
+            this.PnlNavigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(64)))));
+            this.PnlNavigation.Controls.Add(this.label5);
+            this.PnlNavigation.Controls.Add(this.BtnResetColors);
+            this.PnlNavigation.Controls.Add(this.label4);
+            this.PnlNavigation.Controls.Add(this.BtnColorSettings);
+            this.PnlNavigation.Controls.Add(this.LblReservations);
+            this.PnlNavigation.Controls.Add(this.BtnReservations);
+            this.PnlNavigation.Controls.Add(this.LblAdd);
+            this.PnlNavigation.Controls.Add(this.BtnAdd);
+            this.PnlNavigation.Controls.Add(this.label3);
+            this.PnlNavigation.Controls.Add(this.BtnLogout);
+            this.PnlNavigation.Controls.Add(this.LblExit);
+            this.PnlNavigation.Controls.Add(this.BtnExit);
+            this.PnlNavigation.Controls.Add(this.LblUsers);
+            this.PnlNavigation.Controls.Add(this.BtnUsers);
+            this.PnlNavigation.Controls.Add(this.label2);
+            this.PnlNavigation.Controls.Add(this.BtnClients);
+            this.PnlNavigation.Controls.Add(this.label1);
+            this.PnlNavigation.Controls.Add(this.BtnBooks);
+            this.PnlNavigation.Location = new System.Drawing.Point(0, 0);
+            this.PnlNavigation.Name = "PnlNavigation";
+            this.PnlNavigation.Size = new System.Drawing.Size(1370, 104);
+            this.PnlNavigation.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Snow;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(1059, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 18);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Rənglər";
+            this.label4.Click += new System.EventHandler(this.BtnColorSettings_Click);
+            // 
+            // BtnColorSettings
+            // 
+            this.BtnColorSettings.BackColor = System.Drawing.Color.Transparent;
+            this.BtnColorSettings.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
+            this.BtnColorSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnColorSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnColorSettings.FlatAppearance.BorderSize = 0;
+            this.BtnColorSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnColorSettings.Location = new System.Drawing.Point(1058, 9);
+            this.BtnColorSettings.Name = "BtnColorSettings";
+            this.BtnColorSettings.Size = new System.Drawing.Size(68, 68);
+            this.BtnColorSettings.TabIndex = 16;
+            this.BtnColorSettings.UseVisualStyleBackColor = false;
+            this.BtnColorSettings.Click += new System.EventHandler(this.BtnColorSettings_Click);
             // 
             // LblReservations
             // 
@@ -148,7 +186,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(1181, 79);
+            this.label3.Location = new System.Drawing.Point(1166, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 18);
             this.label3.TabIndex = 9;
@@ -166,7 +204,7 @@
             this.BtnLogout.FlatAppearance.BorderSize = 0;
             this.BtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnLogout.Location = new System.Drawing.Point(1169, 5);
+            this.BtnLogout.Location = new System.Drawing.Point(1154, 5);
             this.BtnLogout.Name = "BtnLogout";
             this.BtnLogout.Size = new System.Drawing.Size(72, 72);
             this.BtnLogout.TabIndex = 5;
@@ -182,7 +220,7 @@
             this.LblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.LblExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblExit.Location = new System.Drawing.Point(1294, 79);
+            this.LblExit.Location = new System.Drawing.Point(1279, 79);
             this.LblExit.Name = "LblExit";
             this.LblExit.Size = new System.Drawing.Size(50, 18);
             this.LblExit.TabIndex = 7;
@@ -200,7 +238,7 @@
             this.BtnExit.FlatAppearance.BorderSize = 0;
             this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnExit.Location = new System.Drawing.Point(1283, 5);
+            this.BtnExit.Location = new System.Drawing.Point(1268, 5);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(72, 72);
             this.BtnExit.TabIndex = 6;
@@ -303,18 +341,40 @@
             this.BtnBooks.UseVisualStyleBackColor = false;
             this.BtnBooks.Click += new System.EventHandler(this.BtnBooks_Click);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Maroon;
-            this.panel2.Location = new System.Drawing.Point(81, 446);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1217, 231);
-            this.panel2.TabIndex = 2;
-            // 
             // TmrSetPenalties
             // 
-            this.TmrSetPenalties.Interval = 3600000;
+            this.TmrSetPenalties.Interval = 1800000;
             this.TmrSetPenalties.Tick += new System.EventHandler(this.TmrSetPenalties_Tick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Snow;
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(912, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 18);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Rəngləri sıfırla";
+            this.label5.Click += new System.EventHandler(this.BtnResetColors_Click);
+            // 
+            // BtnResetColors
+            // 
+            this.BtnResetColors.BackColor = System.Drawing.Color.Transparent;
+            this.BtnResetColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
+            this.BtnResetColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnResetColors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnResetColors.FlatAppearance.BorderSize = 0;
+            this.BtnResetColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnResetColors.Location = new System.Drawing.Point(935, 9);
+            this.BtnResetColors.Name = "BtnResetColors";
+            this.BtnResetColors.Size = new System.Drawing.Size(68, 68);
+            this.BtnResetColors.TabIndex = 18;
+            this.BtnResetColors.UseVisualStyleBackColor = false;
+            this.BtnResetColors.Click += new System.EventHandler(this.BtnResetColors_Click);
             // 
             // MainBoard
             // 
@@ -322,8 +382,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.PnlMain);
+            this.Controls.Add(this.PnlNavigation);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -333,16 +392,14 @@
             this.Text = "Kitabxana";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainBoard_FormClosed);
-            this.PnlMain.ResumeLayout(false);
-            this.PnlMain.PerformLayout();
+            this.PnlNavigation.ResumeLayout(false);
+            this.PnlNavigation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel PnlMain;
         private System.Windows.Forms.Button BtnBooks;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -357,8 +414,13 @@
         private System.Windows.Forms.Button BtnExit;
         private System.Windows.Forms.Label LblReservations;
         private System.Windows.Forms.Button BtnReservations;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Timer TmrSetPenalties;
+        private System.Windows.Forms.ColorDialog ClrMainPanelBack;
+        private System.Windows.Forms.Button BtnColorSettings;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button BtnResetColors;
+        protected internal System.Windows.Forms.Panel PnlNavigation;
     }
 }
 

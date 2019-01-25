@@ -115,6 +115,8 @@ namespace LibraryManagment.Forms
             BtnDeleteUser.Visible = true;
         }
 
+        #region CRUD of Users...
+
         // Check if the user details are correct or not, and the add the user to database, and bring it to the DgvUsers
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
@@ -218,6 +220,13 @@ namespace LibraryManagment.Forms
             if (r == DialogResult.Yes)
             {
                 User user = db.Users.Find(clickedId);
+                // First manually remove all reservations related to this user. Because user (only one) is nullable, and returns an error on deleting...
+                List<Reservation> reservs = db.Reservations.Where(re => re.User.Id == user.Id || re.User1.Id == user.Id).ToList();
+                foreach (Reservation res in reservs)
+                {
+                    db.Reservations.Remove(res);
+                }
+                // Then delete the user itself...
                 db.Users.Remove(user);
                 db.SaveChanges();
                 // Update DGV
@@ -228,6 +237,8 @@ namespace LibraryManagment.Forms
             }
 
         }
+
+        #endregion
 
         // Fill DataGridView according to the CmbUsersShown
         private void CmbUsersShown_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,6 +256,7 @@ namespace LibraryManagment.Forms
         private void Users_FormClosed(object sender, FormClosedEventArgs e)
         {
             Board.UserIsOpen = false;
+            Board.CreateLateBooksPanels();
         }
 
         // Function of showing password...

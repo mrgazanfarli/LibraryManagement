@@ -80,7 +80,14 @@ namespace LibraryManagment.Forms
                 }
                 else
                 {
-                    NumPenalty.Value = Convert.ToDecimal(Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value.ToString().Split(' ')[0]);
+                    if (Reservations != null)
+                    {
+                        NumPenalty.Value = Convert.ToDecimal(Reservations.DgvReservations.Rows[Reservations.ClickedRow].Cells[10].Value.ToString().Split(' ')[0]);
+                    }
+                    if (MainBoard != null)
+                    {
+                        NumPenalty.Value = db.Reservations.Find(ReservationId).Penalty == null ? 0 : Convert.ToDecimal(db.Reservations.Find(ReservationId).Penalty?.ToString("0.00"));
+                    }
                 }
             }
         }
@@ -99,7 +106,7 @@ namespace LibraryManagment.Forms
             {
                 NumPenalty.Value = 0;
             }
-            if (CmbBookStatus.SelectedIndex != -1 && CmbBookStatus.SelectedIndex != 0)
+            if (CmbBookStatus.SelectedIndex != -1)
             {
                 RbtnNoOptions.Enabled = true;
                 RbtnSetPayment.Enabled = true;

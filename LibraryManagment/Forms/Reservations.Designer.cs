@@ -586,6 +586,7 @@ namespace LibraryManagment.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ControlBox = false;
             this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.PnlComment);

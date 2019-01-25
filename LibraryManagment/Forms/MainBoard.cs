@@ -20,14 +20,17 @@ namespace LibraryManagment
         protected internal bool ClientIsOpen;
         protected internal bool UserIsOpen;
         protected internal bool ReservationsIsOpen;
+        protected internal bool CreatedLateBooksPanel;
         public MainBoard(User user)
         {
             InitializeComponent();
             BookIsOpen = false;
             ClientIsOpen = false;
             ReservationsIsOpen = false;
+            CreatedLateBooksPanel = false;
             UserIsOpen = false;
             User = user;
+            TmrSetPenalties.Enabled = true;
             // if the user is boss, let him/her to see the CRUD of workers(users), and Data of Reservations...
             if (!User.IsBoss)
             {
@@ -186,6 +189,7 @@ namespace LibraryManagment
             List<Reservation> LateReservations = new List<Reservation>();
             // Take the unreturned book reservations...
             List<Reservation> UnreturnedReservations = db.Reservations.Where(r => r.TakenBackAt == null && r.LimitToReturn == null).ToList();
+            UnreturnedReservations = UnreturnedReservations.OrderByDescending(r => r.GivenAt.AddDays(Convert.ToDouble(r.Interval))).ToList();
             // Select the late reservations...
             foreach (Reservation reservation in UnreturnedReservations)
             {
@@ -194,13 +198,13 @@ namespace LibraryManagment
                     LateReservations.Add(reservation);
                 }
             }
-            // Get number of late reservations...
+            // Get number of late reservations... Make it double for calculations to be easier...
             double NumberOfUnreturnedBooks = LateReservations.Count();
             // Determine the size of the main panel... Each subpanel takes 96pt...
             int MainPanelYSize = Convert.ToInt32(Math.Ceiling(NumberOfUnreturnedBooks / 5) * 96 + 16);
             
             // Check if the panel already exists or not... If it does, remove it...
-            foreach (Panel item in this.Controls)
+            foreach (Panel item in this.Controls.OfType<Panel>())
             {
                 if(item.Name == "MainPanel")
                 {
@@ -208,10 +212,21 @@ namespace LibraryManagment
                 }
             }
             // Create main Panel...
+            Label LateBooksLabel = new Label
+            {
+                Name = "LateBooksLabel",
+                ForeColor = Color.FromArgb(82, 90, 39),
+                Text = "Gecikən Kitablar",
+                Font = new Font("Microsoft Sans Serif", 14),
+                Location = new Point(80, 165),
+                AutoSize = true
+            };
+            this.Controls.Add(LateBooksLabel);
+
             Panel MainPanel = new Panel
             {
                 Size = new Size(1228, MainPanelYSize),
-                Location = new Point(80, 154),
+                Location = new Point(80, 200),
                 BackColor = Color.FromArgb(82, 90, 39),
                 Name = "MainPanel"
             };
@@ -222,7 +237,7 @@ namespace LibraryManagment
             int YLocation = 16;
             int PanelCount = 0;
 
-            foreach (Reservation res in UnreturnedReservations)
+            foreach (Reservation res in LateReservations)
             {
                 // Create a panel for each of the late reservations...
                 Panel panel = new Panel
@@ -291,7 +306,8 @@ namespace LibraryManagment
                     Name = res.Id.ToString(),
                     AutoSize = false,
                     Size = new Size(142, 18),
-                    Text = "Gecikir: " + -Math.Floor(res.GivenAt.AddDays(Convert.ToDouble(res.Interval)).Subtract(DateTime.Now).TotalDays) + " gün",
+                    // Calculate the days passing from the returning day. Subtract 1 to show the late days exactly...
+                    Text = "Gecikir: " + (Math.Ceiling(DateTime.Now.Subtract(res.GivenAt.AddDays(Convert.ToDouble(res.Interval))).TotalDays) - 1) + " gün",
                     Location = new Point(76, 59),
                     ForeColor = Color.White,
                     Cursor = Cursors.Hand
@@ -303,6 +319,7 @@ namespace LibraryManagment
 
                 // After creating the subpanel, add it to the main panel...
                 MainPanel.Controls.Add(panel);
+                CreatedLateBooksPanel = true;
                 // Take into account the sizes...
                 PanelCount++;
                 if (PanelCount % 5 == 0)
@@ -316,7 +333,6 @@ namespace LibraryManagment
                 }
             }
         }
-
 
         // Create the event when clicking the late reservation panel...
         private void OpenLateReservation(object sender, EventArgs e)
@@ -361,8 +377,53 @@ namespace LibraryManagment
                     // Set penalty for each delaying days...
                     TimeSpan diff = -reservation.GivenAt.AddDays(Convert.ToDouble(reservation.Interval)).Subtract(DateTime.Now);
                     reservation.Penalty = reservation.Book.Price * 0.1M * Convert.ToDecimal(diff.TotalDays);
-                    db.SaveChanges();
                 }
+                db.SaveChanges();
+            }
+            CreateLateBooksPanels();
+        }
+
+        private void BtnEditPanelBackColor_Click(object sender, EventArgs e)
+        {
+            // Show the color dialog...
+            DialogResult r = ClrMainPanelBack.ShowDialog();
+            // After the color selection, start action(s)...
+            if (r == DialogResult.OK)
+            {
+                Color color = ClrMainPanelBack.Color;
+                foreach (Panel pnl in this.Controls.OfType<Panel>())
+                {
+                    if(pnl.Name == "MainPanel")
+                    {
+                        pnl.BackColor = color;
+                    }
+                }
+                foreach (Label lbl in this.Controls.OfType<Label>())
+                {
+                    if(lbl.Name== "LateBooksLabel")
+                    {
+                        lbl.ForeColor = color;
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void BtnColorSettings_Click(object sender, EventArgs e)
+        {
+            ColorSettings form = new ColorSettings(this);
+            form.Show();
+        }
+
+        private void BtnResetColors_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+            PnlNavigation.BackColor = Color.FromArgb(255, 189, 64);
+            Panel LateBooksPanel = (Panel)this.Controls.Find("MainPanel", true)[0];
+            LateBooksPanel.BackColor = Color.FromArgb(82, 90, 39);
+            foreach (Panel panel in LateBooksPanel.Controls.OfType<Panel>())
+            {
+                panel.BackColor = Color.FromArgb(82, 90, 39);
             }
         }
     }

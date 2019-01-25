@@ -37,6 +37,7 @@ namespace LibraryManagment.Forms
             CultureInfo = new System.Globalization.CultureInfo("az-AZ");
         }
 
+        // Generating a random client number...
         private string GenerateClientNumber()
         {
             string ClientNumber;
@@ -64,12 +65,14 @@ namespace LibraryManagment.Forms
             return ClientNumber;
         }
 
+        // Fill combo box clients...
         private void FillCmbShowClients()
         {
             CmbShowClients.Items.Clear();
             CmbShowClients.Items.AddRange(CmbItems);
         }
 
+        // Fill data grid view...
         private void FillDgvClients()
         {
             DgvClients.Rows.Clear();
@@ -95,7 +98,7 @@ namespace LibraryManagment.Forms
             }
         }
 
-        // Resets all text boxes
+        // Resets all values to default...
         private void Reset()
         {
             TxtName.ResetText();
@@ -108,6 +111,7 @@ namespace LibraryManagment.Forms
             clickedRow = -1;
         }
 
+        // Take all values on click...
         private void DgvClients_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Do not give an error when the row index not found (clicking the last empty row in Dgv)
@@ -128,7 +132,9 @@ namespace LibraryManagment.Forms
                 Reset();
             }
         }
-        
+
+        #region CRUD of Clients...
+
         // When a client is added, validations are done and some other parameters are created...
         private void BtnAddClient_Click(object sender, EventArgs e)
         {
@@ -200,6 +206,8 @@ namespace LibraryManagment.Forms
             }
         }
 
+        #endregion
+
         private void CmbShowClients_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillDgvClients();
@@ -214,6 +222,7 @@ namespace LibraryManagment.Forms
         private void Clients_FormClosed(object sender, FormClosedEventArgs e)
         {
             Board.ClientIsOpen = false;
+            Board.CreateLateBooksPanels();
         }
 
         private void BtnGetBack_Click(object sender, EventArgs e)

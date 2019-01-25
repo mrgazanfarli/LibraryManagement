@@ -460,6 +460,7 @@ namespace LibraryManagment.Forms
         private void Reservations_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainBoard.ReservationsIsOpen = false;
+            MainBoard.CreateLateBooksPanels();
         }
 
         // Add a timer to calculate the penalties at each hour...

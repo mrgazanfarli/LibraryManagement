@@ -327,6 +327,7 @@ namespace LibraryManagment.Forms
         private void Books_FormClosed(object sender, FormClosedEventArgs e)
         {
             Board.BookIsOpen = false;
+            Board.CreateLateBooksPanels();
         }
 
         // Get the CRUD of authors...

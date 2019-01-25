@@ -79,3 +79,4 @@ C:\Users\User\source\repos\LibraryManagement2\LibraryManagment\bin\Debug\ClosedX
 C:\Users\User\source\repos\LibraryManagement2\LibraryManagment\bin\Debug\ClosedXML.xml
 C:\Users\User\source\repos\LibraryManagement2\LibraryManagment\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\User\source\repos\LibraryManagement2\LibraryManagment\bin\Debug\ExcelNumberFormat.xml
+C:\Users\User\source\repos\LibraryManagement2\LibraryManagment\obj\Debug\LibraryManagment.Forms.ColorSettings.resources

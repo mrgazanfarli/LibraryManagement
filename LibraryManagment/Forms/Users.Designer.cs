@@ -397,6 +397,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 528);
+            this.ControlBox = false;
             this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.CmbUsersShown);
             this.Controls.Add(this.label7);
