@@ -38,8 +38,8 @@ namespace LibraryManagment
                 LblReservations.Visible = false;
                 BtnUsers.Visible = false;
                 LblUsers.Visible = false;
-                BtnAdd.Location = new Point(256, 5);
-                LblAdd.Location = new Point(254, 79);
+                BtnAdd.Location = new Point(356, 5);
+                LblAdd.Location = new Point(354, 79);
             }
             CreateLateBooksPanels();
         }
