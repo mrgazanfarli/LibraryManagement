@@ -25,15 +25,22 @@ namespace LibraryManagment.Forms
             SetColors();
         }
 
+        // Firstly, set the colors of the elements in MainBoard...
         private void SetColors()
         {
             BtnMainBoardBackColor.BackColor = MainBoard.BackColor;
+            MainBoardBackColor = MainBoard.BackColor;
             BtnNavigationPanelColor.BackColor = MainBoard.PnlNavigation.BackColor;
+            NavPanelColor = MainBoard.PnlNavigation.BackColor;
             if (MainBoard.CreatedLateBooksPanel)
             {
+                // Find the dynamically created panel...
                 BtnLateBooksPanelColor.BackColor = ((Panel)MainBoard.Controls.Find("MainPanel", true)[0]).BackColor;
+                LateBookPanelColor = BtnLateBooksPanelColor.BackColor;
             }
         }
+
+        #region Get Back colors of the form and panels...
 
         private void BtnMainBoardBackColor_Click(object sender, EventArgs e)
         {
@@ -75,11 +82,17 @@ namespace LibraryManagment.Forms
             }
         }
 
+        #endregion
+
+        // On save, change all the colors, no matter if there was a change or not...
         private void BtnSave_Click(object sender, EventArgs e)
         {
             MainBoard.BackColor = MainBoardBackColor;
             MainBoard.PnlNavigation.BackColor = NavPanelColor;
+            // Again find the panel and label which were created dynamically...
             Panel LateBooksPanel = (Panel)MainBoard.Controls.Find("MainPanel", true)[0];
+            Label MainLabelOfLateBooksPanel = (Label)MainBoard.Controls.Find("LateBooksLabel", true)[0];
+            MainLabelOfLateBooksPanel.ForeColor = LateBookPanelColor;
             LateBooksPanel.BackColor = LateBookPanelColor;
             foreach (Panel panel in LateBooksPanel.Controls.OfType <Panel>())
             {

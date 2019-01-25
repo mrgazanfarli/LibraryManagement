@@ -319,6 +319,7 @@ namespace LibraryManagment
 
                 // After creating the subpanel, add it to the main panel...
                 MainPanel.Controls.Add(panel);
+                // Declare that the LateBooksPanel exists...
                 CreatedLateBooksPanel = true;
                 // Take into account the sizes...
                 PanelCount++;
@@ -364,6 +365,25 @@ namespace LibraryManagment
             }
         }
 
+        // Open Color Settings...
+        private void BtnColorSettings_Click(object sender, EventArgs e)
+        {
+            ColorSettings form = new ColorSettings(this);
+            form.ShowDialog();
+        }
+
+        private void BtnResetColors_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+            PnlNavigation.BackColor = Color.FromArgb(255, 189, 64);
+            Panel LateBooksPanel = (Panel)this.Controls.Find("MainPanel", true)[0];
+            LateBooksPanel.BackColor = Color.FromArgb(82, 90, 39);
+            foreach (Panel panel in LateBooksPanel.Controls.OfType<Panel>())
+            {
+                panel.BackColor = Color.FromArgb(82, 90, 39);
+            }
+        }
+
         // Set Penalties for reservations automatically...
         private void TmrSetPenalties_Tick(object sender, EventArgs e)
         {
@@ -381,50 +401,6 @@ namespace LibraryManagment
                 db.SaveChanges();
             }
             CreateLateBooksPanels();
-        }
-
-        private void BtnEditPanelBackColor_Click(object sender, EventArgs e)
-        {
-            // Show the color dialog...
-            DialogResult r = ClrMainPanelBack.ShowDialog();
-            // After the color selection, start action(s)...
-            if (r == DialogResult.OK)
-            {
-                Color color = ClrMainPanelBack.Color;
-                foreach (Panel pnl in this.Controls.OfType<Panel>())
-                {
-                    if(pnl.Name == "MainPanel")
-                    {
-                        pnl.BackColor = color;
-                    }
-                }
-                foreach (Label lbl in this.Controls.OfType<Label>())
-                {
-                    if(lbl.Name== "LateBooksLabel")
-                    {
-                        lbl.ForeColor = color;
-                        return;
-                    }
-                }
-            }
-        }
-
-        private void BtnColorSettings_Click(object sender, EventArgs e)
-        {
-            ColorSettings form = new ColorSettings(this);
-            form.Show();
-        }
-
-        private void BtnResetColors_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.White;
-            PnlNavigation.BackColor = Color.FromArgb(255, 189, 64);
-            Panel LateBooksPanel = (Panel)this.Controls.Find("MainPanel", true)[0];
-            LateBooksPanel.BackColor = Color.FromArgb(82, 90, 39);
-            foreach (Panel panel in LateBooksPanel.Controls.OfType<Panel>())
-            {
-                panel.BackColor = Color.FromArgb(82, 90, 39);
-            }
         }
     }
 }

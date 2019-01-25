@@ -68,7 +68,6 @@ namespace LibraryManagment.Forms
             this.DtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.FbdGetExcelFilePath = new System.Windows.Forms.FolderBrowserDialog();
-            this.label7 = new System.Windows.Forms.Label();
             this.TmrSetPenalties = new System.Windows.Forms.Timer(this.components);
             this.BtnExportToExcel = new System.Windows.Forms.Button();
             this.BtnDeleteReservation = new System.Windows.Forms.Button();
@@ -79,6 +78,8 @@ namespace LibraryManagment.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.BtnGetBack = new System.Windows.Forms.Button();
+            this.BtnColors = new System.Windows.Forms.Button();
+            this.ClrBack = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.DgvReservations)).BeginInit();
             this.GrbClientNumber.SuspendLayout();
             this.GrbBookDetails.SuspendLayout();
@@ -443,17 +444,6 @@ namespace LibraryManagment.Forms
             this.label6.TabIndex = 14;
             this.label6.Text = "Seçimləri sıfırlamaq üçün boş sahəyə iki dəfə klik edin...";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Location = new System.Drawing.Point(1183, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Excel-ə köçür";
-            this.label7.Click += new System.EventHandler(this.BtnExportToExcel_Click);
-            // 
             // TmrSetPenalties
             // 
             this.TmrSetPenalties.Interval = 3600000;
@@ -468,7 +458,7 @@ namespace LibraryManagment.Forms
             this.BtnExportToExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnExportToExcel.FlatAppearance.BorderSize = 0;
             this.BtnExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnExportToExcel.Location = new System.Drawing.Point(1186, 15);
+            this.BtnExportToExcel.Location = new System.Drawing.Point(1082, 21);
             this.BtnExportToExcel.Name = "BtnExportToExcel";
             this.BtnExportToExcel.Size = new System.Drawing.Size(64, 64);
             this.BtnExportToExcel.TabIndex = 18;
@@ -580,6 +570,21 @@ namespace LibraryManagment.Forms
             this.BtnGetBack.UseVisualStyleBackColor = false;
             this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
             // 
+            // BtnColors
+            // 
+            this.BtnColors.BackColor = System.Drawing.Color.Transparent;
+            this.BtnColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
+            this.BtnColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnColors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnColors.FlatAppearance.BorderSize = 0;
+            this.BtnColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnColors.Location = new System.Drawing.Point(1183, 18);
+            this.BtnColors.Name = "BtnColors";
+            this.BtnColors.Size = new System.Drawing.Size(68, 68);
+            this.BtnColors.TabIndex = 23;
+            this.BtnColors.UseVisualStyleBackColor = false;
+            this.BtnColors.Click += new System.EventHandler(this.BtnColors_Click);
+            // 
             // Reservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -587,10 +592,10 @@ namespace LibraryManagment.Forms
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.ControlBox = false;
+            this.Controls.Add(this.BtnColors);
             this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.PnlComment);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.BtnExportToExcel);
             this.Controls.Add(this.GrbDateDetails);
             this.Controls.Add(this.BtnDeleteReservation);
@@ -603,6 +608,7 @@ namespace LibraryManagment.Forms
             this.Controls.Add(this.CmbSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DgvReservations);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Reservations";
@@ -668,12 +674,13 @@ namespace LibraryManagment.Forms
         protected internal System.Windows.Forms.DataGridView DgvReservations;
         private System.Windows.Forms.Button BtnExportToExcel;
         private System.Windows.Forms.FolderBrowserDialog FbdGetExcelFilePath;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer TmrSetPenalties;
         private System.Windows.Forms.Panel PnlComment;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RichTextBox RtbComment;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button BtnGetBack;
+        private System.Windows.Forms.Button BtnColors;
+        private System.Windows.Forms.ColorDialog ClrBack;
     }
 }

@@ -280,5 +280,15 @@ namespace LibraryManagment.Forms
         {
             this.Close();
         }
+
+        private void BtnColors_Click(object sender, EventArgs e)
+        {
+            DialogResult r = ClrBack.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                Color color = ClrBack.Color;
+                this.BackColor = color;
+            }
+        }
     }
 }

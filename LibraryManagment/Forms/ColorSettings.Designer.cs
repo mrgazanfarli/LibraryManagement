@@ -186,14 +186,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(458, 201);
             this.ControlBox = false;
             this.Controls.Add(this.BtnDiscard);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ColorSettings";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rəng Ayarları";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -271,6 +271,7 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ResetColors.png" />
     <None Include="Resources\ColorSettings.png" />
     <None Include="Resources\Colors.png" />
     <None Include="Resources\notebook %281%29.png" />

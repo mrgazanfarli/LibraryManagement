@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnLostBook));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LblBookNotReturned = new System.Windows.Forms.Label();
             this.RbtnBookNotReturned = new System.Windows.Forms.RadioButton();
@@ -118,6 +119,8 @@
             this.ClientSize = new System.Drawing.Size(313, 204);
             this.Controls.Add(this.BtnFinish);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReturnLostBook";

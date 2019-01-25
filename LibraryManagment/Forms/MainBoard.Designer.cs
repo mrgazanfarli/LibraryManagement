@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBoard));
             this.PnlNavigation = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.BtnResetColors = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.BtnColorSettings = new System.Windows.Forms.Button();
             this.LblReservations = new System.Windows.Forms.Label();
@@ -48,16 +50,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BtnBooks = new System.Windows.Forms.Button();
             this.TmrSetPenalties = new System.Windows.Forms.Timer(this.components);
-            this.ClrMainPanelBack = new System.Windows.Forms.ColorDialog();
-            this.label5 = new System.Windows.Forms.Label();
-            this.BtnResetColors = new System.Windows.Forms.Button();
             this.PnlNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlNavigation
             // 
-            this.PnlNavigation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.PnlNavigation.AutoSize = true;
             this.PnlNavigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(64)))));
             this.PnlNavigation.Controls.Add(this.label5);
@@ -80,8 +77,38 @@
             this.PnlNavigation.Controls.Add(this.BtnBooks);
             this.PnlNavigation.Location = new System.Drawing.Point(0, 0);
             this.PnlNavigation.Name = "PnlNavigation";
-            this.PnlNavigation.Size = new System.Drawing.Size(1370, 104);
+            this.PnlNavigation.Size = new System.Drawing.Size(1370, 105);
             this.PnlNavigation.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Snow;
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(780, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 18);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Rəngləri sıfırla";
+            this.label5.Click += new System.EventHandler(this.BtnResetColors_Click);
+            // 
+            // BtnResetColors
+            // 
+            this.BtnResetColors.BackColor = System.Drawing.Color.Transparent;
+            this.BtnResetColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ResetColors;
+            this.BtnResetColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnResetColors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnResetColors.FlatAppearance.BorderSize = 0;
+            this.BtnResetColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnResetColors.Location = new System.Drawing.Point(804, 5);
+            this.BtnResetColors.Name = "BtnResetColors";
+            this.BtnResetColors.Size = new System.Drawing.Size(68, 68);
+            this.BtnResetColors.TabIndex = 18;
+            this.BtnResetColors.UseVisualStyleBackColor = false;
+            this.BtnResetColors.Click += new System.EventHandler(this.BtnResetColors_Click);
             // 
             // label4
             // 
@@ -91,7 +118,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.Snow;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(1059, 80);
+            this.label4.Location = new System.Drawing.Point(958, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 18);
             this.label4.TabIndex = 17;
@@ -102,11 +129,11 @@
             // 
             this.BtnColorSettings.BackColor = System.Drawing.Color.Transparent;
             this.BtnColorSettings.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
-            this.BtnColorSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnColorSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BtnColorSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnColorSettings.FlatAppearance.BorderSize = 0;
             this.BtnColorSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnColorSettings.Location = new System.Drawing.Point(1058, 9);
+            this.BtnColorSettings.Location = new System.Drawing.Point(955, 5);
             this.BtnColorSettings.Name = "BtnColorSettings";
             this.BtnColorSettings.Size = new System.Drawing.Size(68, 68);
             this.BtnColorSettings.TabIndex = 16;
@@ -121,7 +148,7 @@
             this.LblReservations.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblReservations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.LblReservations.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblReservations.Location = new System.Drawing.Point(362, 79);
+            this.LblReservations.Location = new System.Drawing.Point(497, 79);
             this.LblReservations.Name = "LblReservations";
             this.LblReservations.Size = new System.Drawing.Size(91, 18);
             this.LblReservations.TabIndex = 15;
@@ -138,7 +165,7 @@
             this.BtnReservations.FlatAppearance.BorderSize = 0;
             this.BtnReservations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnReservations.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnReservations.Location = new System.Drawing.Point(371, 5);
+            this.BtnReservations.Location = new System.Drawing.Point(506, 5);
             this.BtnReservations.Name = "BtnReservations";
             this.BtnReservations.Size = new System.Drawing.Size(72, 72);
             this.BtnReservations.TabIndex = 14;
@@ -153,7 +180,7 @@
             this.LblAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblAdd.ForeColor = System.Drawing.Color.Snow;
             this.LblAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblAdd.Location = new System.Drawing.Point(490, 79);
+            this.LblAdd.Location = new System.Drawing.Point(653, 79);
             this.LblAdd.Name = "LblAdd";
             this.LblAdd.Size = new System.Drawing.Size(76, 18);
             this.LblAdd.TabIndex = 11;
@@ -170,7 +197,7 @@
             this.BtnAdd.FlatAppearance.BorderSize = 0;
             this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnAdd.Location = new System.Drawing.Point(493, 6);
+            this.BtnAdd.Location = new System.Drawing.Point(656, 6);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(68, 68);
             this.BtnAdd.TabIndex = 1;
@@ -186,7 +213,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(1166, 79);
+            this.label3.Location = new System.Drawing.Point(1107, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 18);
             this.label3.TabIndex = 9;
@@ -204,7 +231,7 @@
             this.BtnLogout.FlatAppearance.BorderSize = 0;
             this.BtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnLogout.Location = new System.Drawing.Point(1154, 5);
+            this.BtnLogout.Location = new System.Drawing.Point(1095, 5);
             this.BtnLogout.Name = "BtnLogout";
             this.BtnLogout.Size = new System.Drawing.Size(72, 72);
             this.BtnLogout.TabIndex = 5;
@@ -220,7 +247,7 @@
             this.LblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.LblExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblExit.Location = new System.Drawing.Point(1279, 79);
+            this.LblExit.Location = new System.Drawing.Point(1251, 79);
             this.LblExit.Name = "LblExit";
             this.LblExit.Size = new System.Drawing.Size(50, 18);
             this.LblExit.TabIndex = 7;
@@ -238,7 +265,7 @@
             this.BtnExit.FlatAppearance.BorderSize = 0;
             this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnExit.Location = new System.Drawing.Point(1268, 5);
+            this.BtnExit.Location = new System.Drawing.Point(1244, 5);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(72, 72);
             this.BtnExit.TabIndex = 6;
@@ -253,7 +280,7 @@
             this.LblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.LblUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.LblUsers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LblUsers.Location = new System.Drawing.Point(266, 79);
+            this.LblUsers.Location = new System.Drawing.Point(368, 80);
             this.LblUsers.Name = "LblUsers";
             this.LblUsers.Size = new System.Drawing.Size(53, 18);
             this.LblUsers.TabIndex = 5;
@@ -270,7 +297,7 @@
             this.BtnUsers.FlatAppearance.BorderSize = 0;
             this.BtnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUsers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnUsers.Location = new System.Drawing.Point(256, 5);
+            this.BtnUsers.Location = new System.Drawing.Point(356, 5);
             this.BtnUsers.Name = "BtnUsers";
             this.BtnUsers.Size = new System.Drawing.Size(72, 72);
             this.BtnUsers.TabIndex = 4;
@@ -285,7 +312,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(143, 80);
+            this.label2.Location = new System.Drawing.Point(205, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 3;
@@ -302,7 +329,7 @@
             this.BtnClients.FlatAppearance.BorderSize = 0;
             this.BtnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnClients.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnClients.Location = new System.Drawing.Point(144, 5);
+            this.BtnClients.Location = new System.Drawing.Point(206, 5);
             this.BtnClients.Name = "BtnClients";
             this.BtnClients.Size = new System.Drawing.Size(72, 72);
             this.BtnClients.TabIndex = 3;
@@ -317,7 +344,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(244)))), ((int)(((byte)(211)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(33, 79);
+            this.label1.Location = new System.Drawing.Point(60, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 18);
             this.label1.TabIndex = 1;
@@ -334,7 +361,7 @@
             this.BtnBooks.FlatAppearance.BorderSize = 0;
             this.BtnBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBooks.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnBooks.Location = new System.Drawing.Point(29, 5);
+            this.BtnBooks.Location = new System.Drawing.Point(56, 5);
             this.BtnBooks.Name = "BtnBooks";
             this.BtnBooks.Size = new System.Drawing.Size(72, 72);
             this.BtnBooks.TabIndex = 2;
@@ -345,36 +372,6 @@
             // 
             this.TmrSetPenalties.Interval = 1800000;
             this.TmrSetPenalties.Tick += new System.EventHandler(this.TmrSetPenalties_Tick);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Snow;
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(912, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 18);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Rəngləri sıfırla";
-            this.label5.Click += new System.EventHandler(this.BtnResetColors_Click);
-            // 
-            // BtnResetColors
-            // 
-            this.BtnResetColors.BackColor = System.Drawing.Color.Transparent;
-            this.BtnResetColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
-            this.BtnResetColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnResetColors.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnResetColors.FlatAppearance.BorderSize = 0;
-            this.BtnResetColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnResetColors.Location = new System.Drawing.Point(935, 9);
-            this.BtnResetColors.Name = "BtnResetColors";
-            this.BtnResetColors.Size = new System.Drawing.Size(68, 68);
-            this.BtnResetColors.TabIndex = 18;
-            this.BtnResetColors.UseVisualStyleBackColor = false;
-            this.BtnResetColors.Click += new System.EventHandler(this.BtnResetColors_Click);
             // 
             // MainBoard
             // 
@@ -415,7 +412,6 @@
         private System.Windows.Forms.Label LblReservations;
         private System.Windows.Forms.Button BtnReservations;
         private System.Windows.Forms.Timer TmrSetPenalties;
-        private System.Windows.Forms.ColorDialog ClrMainPanelBack;
         private System.Windows.Forms.Button BtnColorSettings;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

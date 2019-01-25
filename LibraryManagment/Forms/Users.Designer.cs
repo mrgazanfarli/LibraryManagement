@@ -59,6 +59,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.CmbUsersShown = new System.Windows.Forms.ComboBox();
             this.BtnGetBack = new System.Windows.Forms.Button();
+            this.BtnColors = new System.Windows.Forms.Button();
+            this.ClrBack = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -392,17 +394,35 @@
             this.BtnGetBack.UseVisualStyleBackColor = false;
             this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
             // 
+            // BtnColors
+            // 
+            this.BtnColors.BackColor = System.Drawing.Color.Transparent;
+            this.BtnColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
+            this.BtnColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnColors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnColors.FlatAppearance.BorderSize = 0;
+            this.BtnColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnColors.Location = new System.Drawing.Point(1190, 13);
+            this.BtnColors.Name = "BtnColors";
+            this.BtnColors.Size = new System.Drawing.Size(68, 68);
+            this.BtnColors.TabIndex = 19;
+            this.BtnColors.UseVisualStyleBackColor = false;
+            this.BtnColors.Click += new System.EventHandler(this.BtnColors_Click);
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 528);
             this.ControlBox = false;
+            this.Controls.Add(this.BtnColors);
             this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.CmbUsersShown);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvUsers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Users";
@@ -450,5 +470,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button BtnShowPassword;
         private System.Windows.Forms.Button BtnGetBack;
+        private System.Windows.Forms.Button BtnColors;
+        private System.Windows.Forms.ColorDialog ClrBack;
     }
 }

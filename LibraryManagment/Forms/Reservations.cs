@@ -489,6 +489,17 @@ namespace LibraryManagment.Forms
             RtbComment.Text = res.Comment == null ? "" : res.Comment;
         }
 
+        // Set bg color to the form...
+        private void BtnColors_Click(object sender, EventArgs e)
+        {
+            DialogResult r = ClrBack.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                Color color = ClrBack.Color;
+                this.BackColor = color;
+            }
+        }
+
         private void BtnGetBack_Click(object sender, EventArgs e)
         {
             this.Close();

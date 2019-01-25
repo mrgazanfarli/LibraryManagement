@@ -273,6 +273,7 @@
             this.Controls.Add(this.LblClientNotFound);
             this.Controls.Add(this.GrbClientDetails);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddReservation";

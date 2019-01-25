@@ -52,6 +52,8 @@
             this.TxtName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.BtnGetBack = new System.Windows.Forms.Button();
+            this.BtnColors = new System.Windows.Forms.Button();
+            this.ClrBack = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.DgvClients)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumBookLimit)).BeginInit();
@@ -311,24 +313,41 @@
             this.BtnGetBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGetBack.FlatAppearance.BorderSize = 0;
             this.BtnGetBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGetBack.Location = new System.Drawing.Point(1287, 12);
+            this.BtnGetBack.Location = new System.Drawing.Point(1292, 12);
             this.BtnGetBack.Name = "BtnGetBack";
             this.BtnGetBack.Size = new System.Drawing.Size(70, 70);
             this.BtnGetBack.TabIndex = 12;
             this.BtnGetBack.UseVisualStyleBackColor = false;
             this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
             // 
+            // BtnColors
+            // 
+            this.BtnColors.BackColor = System.Drawing.Color.Transparent;
+            this.BtnColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
+            this.BtnColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnColors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnColors.FlatAppearance.BorderSize = 0;
+            this.BtnColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnColors.Location = new System.Drawing.Point(1209, 12);
+            this.BtnColors.Name = "BtnColors";
+            this.BtnColors.Size = new System.Drawing.Size(68, 68);
+            this.BtnColors.TabIndex = 18;
+            this.BtnColors.UseVisualStyleBackColor = false;
+            this.BtnColors.Click += new System.EventHandler(this.BtnColors_Click);
+            // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 452);
+            this.ClientSize = new System.Drawing.Size(1386, 452);
             this.ControlBox = false;
+            this.Controls.Add(this.BtnColors);
             this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvClients);
             this.Controls.Add(this.CmbShowClients);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Clients";
             this.Text = "Clients";
@@ -370,5 +389,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Button BtnGetBack;
+        private System.Windows.Forms.Button BtnColors;
+        private System.Windows.Forms.ColorDialog ClrBack;
     }
 }

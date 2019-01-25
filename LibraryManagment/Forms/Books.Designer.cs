@@ -32,6 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmbShowBooks = new System.Windows.Forms.ComboBox();
             this.DgvBooks = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GrbCrud = new System.Windows.Forms.GroupBox();
             this.CmbAuthors = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,12 +58,8 @@
             this.CmbFindAuthor = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnGetBack = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnColors = new System.Windows.Forms.Button();
+            this.ClrBack = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).BeginInit();
             this.GrbCrud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumCount)).BeginInit();
@@ -105,6 +107,44 @@
             this.DgvBooks.Size = new System.Drawing.Size(467, 369);
             this.DgvBooks.TabIndex = 2;
             this.DgvBooks.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvBooks_RowHeaderMouseClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "AuthorId";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Adı";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Müəllif";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Qiymət";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "İşlədilən/Say";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // GrbCrud
             // 
@@ -347,50 +387,29 @@
             this.BtnGetBack.UseVisualStyleBackColor = false;
             this.BtnGetBack.Click += new System.EventHandler(this.BtnGetBack_Click);
             // 
-            // Column1
+            // BtnColors
             // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "AuthorId";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Adı";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Müəllif";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Qiymət";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "İşlədilən/Say";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.BtnColors.BackColor = System.Drawing.Color.Transparent;
+            this.BtnColors.BackgroundImage = global::LibraryManagment.Properties.Resources.ColorSettings;
+            this.BtnColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnColors.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnColors.FlatAppearance.BorderSize = 0;
+            this.BtnColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnColors.Location = new System.Drawing.Point(1178, 6);
+            this.BtnColors.Name = "BtnColors";
+            this.BtnColors.Size = new System.Drawing.Size(68, 68);
+            this.BtnColors.TabIndex = 17;
+            this.BtnColors.UseVisualStyleBackColor = false;
+            this.BtnColors.Click += new System.EventHandler(this.BtnColors_Click);
             // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 481);
             this.ControlBox = false;
+            this.Controls.Add(this.BtnColors);
             this.Controls.Add(this.BtnGetBack);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnAuthors);
@@ -399,6 +418,7 @@
             this.Controls.Add(this.CmbShowBooks);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Books";
@@ -449,5 +469,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button BtnColors;
+        private System.Windows.Forms.ColorDialog ClrBack;
     }
 }
