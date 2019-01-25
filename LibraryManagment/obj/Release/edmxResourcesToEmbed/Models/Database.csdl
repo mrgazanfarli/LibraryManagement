@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Cases" FromRole="Case" ToRole="Reservation" />
+  </EntityType>
+  <EntityContainer Name="LibraryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cases" EntityType="Self.Case" />
+    <EntitySet Name="Authors" EntityType="LibraryModel.Author" />
+    <EntitySet Name="Books" EntityType="LibraryModel.Book" />
+    <AssociationSet Name="FK_Books_Authors" Association="LibraryModel.FK_Books_Authors">
+      <End Role="Author" EntitySet="Authors" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <EntitySet Name="Clients" EntityType="LibraryModel.Client" />
+    <EntitySet Name="Reservations" EntityType="LibraryModel.Reservation" />
+    <AssociationSet Name="FK_Reservations_Books" Association="LibraryModel.FK_Reservations_Books">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservations_Cases" Association="LibraryModel.FK_Reservations_Cases">
+      <End Role="Case" EntitySet="Cases" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservations_Clients" Association="LibraryModel.FK_Reservations_Clients">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="LibraryModel.User" />
+    <AssociationSet Name="FK_Clients_Users" Association="LibraryModel.FK_Clients_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservations_Users" Association="LibraryModel.FK_Reservations_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservations_Users1" Association="LibraryModel.FK_Reservations_Users1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Books" Relationship="LibraryModel.FK_Books_Authors" FromRole="Author" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Author" Relationship="LibraryModel.FK_Books_Authors" FromRole="Book" ToRole="Author" />
+    <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Books" FromRole="Book" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_Books_Authors">
+    <End Type="LibraryModel.Author" Role="Author" Multiplicity="1" />
+    <End Type="LibraryModel.Book" Role="Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ClientNumber" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="WhoRegistered" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BookLimit" Type="Int32" />
+    <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Clients" FromRole="Client" ToRole="Reservation" />
+    <NavigationProperty Name="User" Relationship="LibraryModel.FK_Clients_Users" FromRole="Client" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientId" Type="Int32" Nullable="false" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="Interval" Type="Int32" Nullable="false" />
+    <Property Name="GivenBy" Type="Int32" Nullable="false" />
+    <Property Name="GivenAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TakenBackBy" Type="Int32" />
+    <Property Name="TakenBackAt" Type="DateTime" Precision="3" />
+    <Property Name="Penalty" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="BookStatus" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LimitToReturn" Type="Int32" />
+    <NavigationProperty Name="Book" Relationship="LibraryModel.FK_Reservations_Books" FromRole="Reservation" ToRole="Book" />
+    <NavigationProperty Name="Case" Relationship="LibraryModel.FK_Reservations_Cases" FromRole="Reservation" ToRole="Case" />
+    <NavigationProperty Name="Client" Relationship="LibraryModel.FK_Reservations_Clients" FromRole="Reservation" ToRole="Client" />
+    <NavigationProperty Name="User" Relationship="LibraryModel.FK_Reservations_Users" FromRole="Reservation" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="LibraryModel.FK_Reservations_Users1" FromRole="Reservation" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Reservations_Books">
+    <End Type="LibraryModel.Book" Role="Book" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LibraryModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservations_Cases">
+    <End Type="LibraryModel.Case" Role="Case" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LibraryModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="BookStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservations_Clients">
+    <End Type="LibraryModel.Client" Role="Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LibraryModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsBoss" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Clients" Relationship="LibraryModel.FK_Clients_Users" FromRole="User" ToRole="Client" />
+    <NavigationProperty Name="Reservations" Relationship="LibraryModel.FK_Reservations_Users" FromRole="User" ToRole="Reservation" />
+    <NavigationProperty Name="Reservations1" Relationship="LibraryModel.FK_Reservations_Users1" FromRole="User" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_Clients_Users">
+    <End Type="LibraryModel.User" Role="User" Multiplicity="1" />
+    <End Type="LibraryModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="WhoRegistered" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservations_Users">
+    <End Type="LibraryModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LibraryModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="GivenBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservations_Users1">
+    <End Type="LibraryModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="LibraryModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="TakenBackBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
